@@ -12,12 +12,13 @@ The datafile will have the following columns in h5py format.
 - Included Count
 
 """
-import os
 import logging
 import numpy as np
 import sys
 import time
 import h5py
+from constants import *
+from utils import get_rev_comp
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 # Length of the sequence.
@@ -85,28 +86,6 @@ else:
     ]
 
 
-def get_rev_comp(dna_sequence):
-    """Generate the reverse complement of a DNA sequence.
-
-    Args:
-        dna_sequence (str): A string representing the DNA sequence (only A, T, C, and G).
-
-    Returns:
-        str: The reverse complement of the DNA sequence.
-    """
-    complement = {"A": "T", "T": "A", "C": "G", "G": "C"}
-
-    if any(nucleotide not in complement for nucleotide in dna_sequence):
-        raise ValueError(
-            "Invalid DNA sequence. Sequence must contain only A, T, C, and G."
-        )
-
-    reverse_comp = "".join(
-        complement[nucleotide] for nucleotide in reversed(dna_sequence)
-    )
-
-    return reverse_comp
-
 
 CHROM = []
 BARCODE = []
@@ -119,8 +98,9 @@ INCLUDED_COUNT = []
 seq_dict = {}
 chrom_dict = {}
 
+##############################################################################
 # Read in the twist sequences.
-sequence_file = "/home/jupyter/melange/data/20230130_twist_library_v3.csv"
+##############################################################################
 f = open(sequence_file)
 lines = f.readlines()
 header = lines.pop(0).strip().split(",")
@@ -163,8 +143,9 @@ for line in lines:
 
 f.close()
 
+##############################################################################
 # Read in the splicing results table.
-splicing_results_file = "/home/jupyter/melange/data/umi_dedup_all.csv"
+##############################################################################
 f = open(splicing_results_file)
 lines = f.readlines()
 header = lines.pop(0).strip().split(",")
@@ -182,6 +163,7 @@ for line in lines:
     ) = line.strip().split(",")
     # Strip the double quotes from barcode.
     barcode = barcode.strip('"')
+    celltype = celltype.strip('"')
     if barcode in seq_dict:
         CHROM.append(chrom_dict[barcode])
         BARCODE.append(barcode)
@@ -196,9 +178,9 @@ for line in lines:
 print(n)
 f.close()
 
-
+##############################################################################
 # Save to h5py output.
-data_dir = "/home/jupyter/melange/data/"
+##############################################################################
 h5f = h5py.File(
     data_dir + "datafile" + "_" + sys.argv[1] + "_" + sys.argv[2] + ".h5", "w"
 )
