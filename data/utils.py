@@ -45,4 +45,4 @@ def create_datapoint(seq, celltype, skipped_count, included_count):
     X0 = np.array(list(map(int, list(seq))))
     one_hot_encode_seq = one_hot_encode(X0)
     Yd = np.array([skipped_count, included_count]).transpose()
-    return np.array([one_hot_encode_seq]), np.asarray([[Yd]])  # X and Y.
+    return np.array([one_hot_encode_seq]), Yd.reshape(1, 2)  # X and Y.

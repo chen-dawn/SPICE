@@ -51,9 +51,12 @@ for i in range(SEQ.shape[0]//CHUNK_SIZE):
 
         X, Y = create_datapoint(SEQ[idx], CELLTYPE[idx],
                                 SKIPPED_COUNT[idx], INCLUDED_COUNT[idx])
+        # print(Y[0], Y[1])
         X_batch.extend(X)
+        # print(Y[0][1])
         for t in range(1):
-            Y_batch[t].extend([Y[t]])
+            Y_batch[t].extend([Y])
+        # print(np.array(Y_batch).shape)
 
     X_batch = np.array(X_batch)
     Y_batch = np.array(Y_batch)

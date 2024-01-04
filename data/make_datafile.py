@@ -164,15 +164,17 @@ for line in lines:
     # Strip the double quotes from barcode.
     barcode = barcode.strip('"')
     celltype = celltype.strip('"')
+    # if int(included_count) < 0:
+    #     print(line)
     if barcode in seq_dict:
         CHROM.append(chrom_dict[barcode])
         BARCODE.append(barcode)
         CELLTYPE.append(celltype)
         SEQ.append(seq_dict[barcode])
-        skipped_count = skipped_count.strip('"')
-        included_count = included_count.strip('"')
         skipped_count = int(skipped_count)
         included_count = int(included_count)
+        if included_count < 0:
+            print(line)
         SKIPPED_COUNT.append(skipped_count)
         INCLUDED_COUNT.append(included_count)
 print(n)
