@@ -78,7 +78,7 @@ class Melange(nn.Module):
 
         x = F.relu(self.conv3(x))
         x = self.pool3(x)
-        # print(x.shape)
+
         # Flatten the output for the linear layer
         x = x.view(x.size(0), -1)  # Flatten
         
@@ -93,7 +93,7 @@ class Melange(nn.Module):
     
 if __name__ == "__main__":
     model = Melange()
-    x = torch.randn(32, 4, 900)
+    x = torch.randn(32, 4, 900) # Shape is [BATCH_SIZE, 4 (ACGT), SEQUENCE_LENGTH]
     # print(x)
     y = model(x)
-    print(y) # This is [BATCH_SIZE, SEQUENCE_LENGTH, 2]
+    print(y) # This is [1, BATCH_SIZE, SEQUENCE_LENGTH, 2]

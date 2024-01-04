@@ -121,9 +121,6 @@ def train(model, h5f, train_idxes, batch_size, criterion, optimizer):
             optimizer.zero_grad()
             output = model(X)
             print(output)
-            # print(output)
-            # print("Y SHAPE")
-            # print(Y.shape)
             # The order is [skipped_count, included_count]. PSI is % inclusion.
             # ouput_psi = output[:, :, 1] / (output[:, :, 0] + output[:, :, 1])
             output_psi = output
