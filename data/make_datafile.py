@@ -164,6 +164,13 @@ for line in lines:
     # Strip the double quotes from barcode.
     barcode = barcode.strip('"')
     celltype = celltype.strip('"')
+    # Skip the sequences that have <30 UMI in the included and skipped counts.
+    included_plus_skipped = int(included_count) + int(skipped_count)
+    if included_plus_skipped < 30:
+        continue
+
+    if celltype != "HEK":
+        continue
     # if int(included_count) < 0:
     #     print(line)
     if barcode in seq_dict:

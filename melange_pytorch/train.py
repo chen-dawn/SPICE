@@ -89,6 +89,8 @@ def train(model, h5f, train_idxes, batch_size, criterion, optimizer):
     for i, train_idx in enumerate(
         np.random.choice(train_idxes, size=len(train_idxes), replace=False)
     ):
+        # if i > 1:
+        #     break
         batch_idx += 1
         # The initial shape is (batch_size, 900, 4)
         X = h5f[f"X{train_idx}"]
@@ -120,59 +122,37 @@ def train(model, h5f, train_idxes, batch_size, criterion, optimizer):
 
             optimizer.zero_grad()
             output = model(X)
-            print(output)
+            # gene_latent = GeneExp(output)
+            # output = torch.cat((gene_latent, output), dim=1)
+            # latent = Merge(output)
+
             # The order is [skipped_count, included_count]. PSI is % inclusion.
             # ouput_psi = output[:, :, 1] / (output[:, :, 0] + output[:, :, 1])
             output_psi = output
-            Y_psi = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
             # print(ouput_psi.cpu().detach().numpy())
+            Y_psi = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
+
             loss = criterion(output_psi, Y_psi)
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5)
             optimizer.step()
 
             running_output.append(output.detach().cpu())
             running_label.append(Y.detach().cpu())
 
-            if batch_idx % 10 == 0:
+            if batch_idx % 20 == 0:
                 running_output = torch.cat(running_output, dim=0)
                 running_label = torch.cat(running_label, dim=0)
-                running_output_psi = running_output[:, :, 1] / (
-                    running_output[:, :, 0] + running_output[:, :, 1]
-                )
+                running_output_psi = running_output
                 running_label_psi = running_label[:, :, 1] / (
                     running_label[:, :, 0] + running_label[:, :, 1]
                 )
-
-                # top_k_acc1 = top_k_accuracy(running_output_prob[:,:,1], running_label[:,:,1])
-                # top_k_acc2 = top_k_accuracy(running_output_prob[:,:,2], running_label[:,:,2])
-                # auprc_1 = average_precision_score(running_label[:,:,1].view(-1), running_output_prob[:,:,1].view(-1))
-                # auprc_2 = average_precision_score(running_label[:,:,2].view(-1), running_output_prob[:,:,2].view(-1))
 
                 running_loss = criterion(running_output_psi, running_label_psi)
                 wandb.log(
                     {
                         "train_loss": running_loss.item(),
-                        # "top_k_acc1": top_k_acc1.item(),
-                        # "top_k_acc2": top_k_acc2.item(),
-                        # "auprc_1": auprc_1,
-                        # "auprc_2": auprc_2,
                     }
                 )
-                # wandb.log({
-                #     "train_loss": running_loss.item(),
-                #     "top_k_acc1": top_k_acc1.item(),
-                #     "top_k_acc2": top_k_acc2.item(),
-                #     "auprc_1": auprc_1,
-                #     "auprc_2": auprc_2,
-                # })
-                # bar.set_postfix({
-                #     "loss": running_loss.item(),
-                #     "top_k_acc1": top_k_acc1.item(),
-                #     "top_k_acc2": top_k_acc2.item(),
-                #     "auprc_1": auprc_1,
-                #     "auprc_2": auprc_2,
-                # })
 
                 running_output, running_label = [], []
 
@@ -190,16 +170,83 @@ def test(model, h5f, test_shard_ids, batch_size, criterion):
         # Final shape is (batch_size, 900, 2)
         Y = Y[0, ...]
 
+        dataset = TensorDataset(
+            torch.from_numpy(X).float(), torch.from_numpy(Y).float()
+        )
+        loader = DataLoader(
+            dataset,
+            batch_size=batch_size,
+            shuffle=False,
+            num_workers=8,
+            pin_memory=True,
+        )
+        bar = tqdm.tqdm(loader, leave=False, total=len(loader))
+        for batch in bar:
+            X = batch[0].cuda()
+            Y = batch[1].cuda()
+            _out = model(X).detach().cpu()
+            _label = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
+            _label = _label.detach().cpu()
+            out.append(_out)
+            label.append(_label)
+    out = torch.cat(out, dim=0)
+    label = torch.cat(label, dim=0)
+    loss = criterion(out, label)
+    print("Test loss: ", loss.item())
+    wandb.log({"test_loss": loss.item()})
+    return loss.item()
+
+
+def validate(model, h5f, val_shard_ids, batch_size, criterion):
+    model.eval()
+    out, label = [], []
+    for shard_idx in val_shard_ids:
+        X = h5f[f"X{shard_idx}"]
+        # Need to rearrange to (batch_size, 4, 900)
+        X = rearrange(X[:], "b c l -> b l c")
+        # This has shape (1, batch_size, 900, 2)
+        Y = h5f[f"Y{shard_idx}"]
+        # Just keep the first dimension.
+        # Final shape is (batch_size, 900, 2)
+        Y = Y[0, ...]
+
+        dataset = TensorDataset(
+            torch.from_numpy(X).float(), torch.from_numpy(Y).float()
+        )
+        loader = DataLoader(
+            dataset,
+            batch_size=batch_size,
+            shuffle=False,
+            num_workers=8,
+            pin_memory=True,
+        )
+        bar = tqdm.tqdm(loader, leave=False, total=len(loader))
+        for batch in bar:
+            X = batch[0].cuda()
+            Y = batch[1].cuda()
+            _out = model(X).detach().cpu()
+            _label = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
+            _label = _label.detach().cpu()
+            out.append(_out)
+            label.append(_label)
+    out = torch.cat(out, dim=0)
+    label = torch.cat(label, dim=0)
+    loss = criterion(out, label)
+    print("Validation loss: ", loss.item())
+    wandb.log({"val_loss": loss.item()})
+    return loss.item()
+
 
 if __name__ == "__main__":
     args = parse_args()
     set_seed_for_all(args.seed)
+    # Disable wandb if not using it.
     if not args.use_wandb:
         os.environ["WANDB_MODE"] = "disabled"
 
     # Initialize wandb
     wandb.init(
-        project="spliceai",
+        project="testing",
         config={
             "learning_rate": args.lr,
             "architecture": args.model,
@@ -225,23 +272,22 @@ if __name__ == "__main__":
 
     # Initialize model.
     model = Melange()
+    # GeneExp = GeneExp()
+    # Merge = Merge()
     model.cuda()
 
     # Criterion and optimizer.
     # criterion = nn.CrossEntropyLoss()
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
-    # scheduler = optim.lr_scheduler.MultiStepLR(
-    #     optimizer, milestones=[6, 7, 8, 9], gamma=0.5
-    # )
     scheduler = optim.lr_scheduler.MultiStepLR(
-        optimizer, milestones=[30, 60, 90], gamma=0.1
+        optimizer, milestones=[6, 7, 8, 9], gamma=0.5
     )
 
     for epoch in range(args.epochs):
         train(model, train_data, train_idx, args.batch_size, criterion, optimizer)
-        # validate(model, train_data, val_idx, criterion, epoch)
-        # test(model, test_data, test_shards_idx, criterion, epoch)
+        validate(model, train_data, val_idx, args.batch_size, criterion)
+        test(model, test_data, test_shards_idx, args.batch_size, criterion)
 
         scheduler.step()
 

@@ -55,43 +55,74 @@ class Melange(nn.Module):
         super().__init__()
         # Convolutional layers
         self.conv1 = nn.Conv1d(in_channels=4, out_channels=32, kernel_size=11, padding='same')
+        self.batchnorm1 = nn.BatchNorm1d(32)
         self.pool1 = nn.MaxPool1d(kernel_size=2, stride=2)
 
         self.conv2 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=11, padding='same')
+        self.batchnorm2 = nn.BatchNorm1d(32)
         self.pool2 = nn.MaxPool1d(kernel_size=2, stride=2)
 
-        self.conv3 = nn.Conv1d(in_channels=32, out_channels=2, kernel_size=11, padding='same')
+        self.conv3 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=11, padding='same')
+        self.batchnorm3 = nn.BatchNorm1d(32)
         self.pool3 = nn.MaxPool1d(kernel_size=2, stride=2)
-
+        
         # Linear layers
         # Assuming the sequence length is properly reduced to 1 after convolutions and pooling
-        self.fc1 = nn.Linear(in_features=224, out_features=32)
-        # self.fc2 = nn.Linear(in_features=32, out_features=2)  # To get an output of 2 features
+        self.fc1 = nn.Linear(in_features=3584, out_features=64)
+
+        self.fc2 = nn.Linear(in_features=64, out_features=1)  # To get an output of 1 feature
+
+        # self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
         # Apply convolutional layers with ReLU activations and max pooling
-        x = F.relu(self.conv1(x))
+        x = F.relu(self.batchnorm1(self.conv1(x)))
         x = self.pool1(x)
-
-        x = F.relu(self.conv2(x))
+        x = F.relu(self.batchnorm2(self.conv2(x)))
         x = self.pool2(x)
-
-        x = F.relu(self.conv3(x))
+        x = F.relu(self.batchnorm3(self.conv3(x)))
         x = self.pool3(x)
-
         # Flatten the output for the linear layer
         x = x.view(x.size(0), -1)  # Flatten
-        
         # Apply linear layers with ReLU activation
         x = F.relu(self.fc1(x))
-        # x = self.fc2(x)
+        x = self.fc2(x)
+        return x
 
-        # Reshape to get the desired output shape (batch, 1, 2)
-        x = x.view(-1, 1, 1)
+class GeneExp(nn.Module):
+    def __init__(self):
+        super().__init__()
 
+        self.fc1 = nn.Linear(in_features=20000, out_features=1024)
+        self.bn1 = nn.BatchNorm1d(1)
+        self.fc2 = nn.Linear(in_features=1024, out_features=256)
+        self.bn2 = nn.BatchNorm1d(1)
+        self.fc3 = nn.Linear(in_features=256, out_features=64)
+
+    def forward(self, x):
+        x = F.relu(self.bn1(self.fc1(x)))
+        x = F.relu(self.bn2(self.fc2(x)))
+        x = self.fc3(x)
+        return x
+    
+class Merge(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.fc1 = nn.Linear(in_features=128, out_features=32)
+        self.bn1 = nn.BatchNorm1d(1)
+        self.fc2 = nn.Linear(in_features=32, out_features=16)
+        self.bn2 = nn.BatchNorm1d(1)
+        self.fc3 = nn.Linear(in_features=16, out_features=1)
+    
+    def forward(self, x):
+        x = F.relu(self.bn1(self.fc1(x)))
+        x = F.relu(self.bn2(self.fc2(x)))
+        x = self.fc3(x)
         return x
     
 if __name__ == "__main__":
+
     model = Melange()
     x = torch.randn(32, 4, 900) # Shape is [BATCH_SIZE, 4 (ACGT), SEQUENCE_LENGTH]
     # print(x)

@@ -1,6 +1,8 @@
 # Folder specific
 data/*.csv
 *.h5
+*.torchfile
+melange_pytorch/wandb/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
