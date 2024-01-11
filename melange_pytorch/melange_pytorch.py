@@ -89,11 +89,11 @@ class Melange(nn.Module):
         x = self.fc2(x)
         return x
 
-class GeneExp(nn.Module):
+class GexFullyConnected(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.fc1 = nn.Linear(in_features=20000, out_features=1024)
+        self.fc1 = nn.Linear(in_features=19221, out_features=1024)
         self.bn1 = nn.BatchNorm1d(1)
         self.fc2 = nn.Linear(in_features=1024, out_features=256)
         self.bn2 = nn.BatchNorm1d(1)
@@ -104,8 +104,46 @@ class GeneExp(nn.Module):
         x = F.relu(self.bn2(self.fc2(x)))
         x = self.fc3(x)
         return x
+
+class SequenceCNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # Convolutional layers
+        self.conv1 = nn.Conv1d(in_channels=4, out_channels=32, kernel_size=11, padding='same')
+        self.batchnorm1 = nn.BatchNorm1d(32)
+        self.pool1 = nn.MaxPool1d(kernel_size=2, stride=2)
+
+        self.conv2 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=11, padding='same')
+        self.batchnorm2 = nn.BatchNorm1d(32)
+        self.pool2 = nn.MaxPool1d(kernel_size=2, stride=2)
+
+        self.conv3 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=11, padding='same')
+        self.batchnorm3 = nn.BatchNorm1d(32)
+        self.pool3 = nn.MaxPool1d(kernel_size=2, stride=2)
+        
+        # Linear layers
+        # Assuming the sequence length is properly reduced to 1 after convolutions and pooling
+        self.fc1 = nn.Linear(in_features=3584, out_features=64)
+
+
+    def forward(self, x):
+        # Apply convolutional layers with ReLU activations and max pooling
+        x = F.relu(self.batchnorm1(self.conv1(x)))
+        x = self.pool1(x)
+        x = F.relu(self.batchnorm2(self.conv2(x)))
+        x = self.pool2(x)
+        x = F.relu(self.batchnorm3(self.conv3(x)))
+        x = self.pool3(x)
+        # Flatten the output for the linear layer
+        x = x.view(x.size(0), -1)  # Flatten
+        # Apply linear layers with ReLU activation
+        x = self.fc1(x)
+        # Reshape this to be [BATCH_SIZE, 1, 64]
+        x = x.view(x.size(0), 1, -1)
+        return x
     
-class Merge(nn.Module):
+
+class MergSequenceAndGex(nn.Module):
     def __init__(self):
         super().__init__()
 
@@ -119,8 +157,10 @@ class Merge(nn.Module):
         x = F.relu(self.bn1(self.fc1(x)))
         x = F.relu(self.bn2(self.fc2(x)))
         x = self.fc3(x)
+        # Flatten the last dimension.
+        x = x.view(x.size(0), -1)
         return x
-    
+
 if __name__ == "__main__":
 
     model = Melange()
