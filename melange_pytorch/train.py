@@ -6,7 +6,7 @@ python train.py --output train_output.torchfile \
 """
 
 import argparse
-import tqdm
+from tqdm import tqdm
 import h5py
 import random
 import wandb  # Library for logging metrics.
@@ -34,13 +34,13 @@ def parse_args():
     parser.add_argument("--test_h5", required=True)
     parser.add_argument("--use-wandb", action="store_true", default=False)
 
-    parser.add_argument("--epochs", type=int, default=10)
-    parser.add_argument("--batch_size", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--batch_size", type=int, default=256)
 
     parser.add_argument("--lr", type=float, default=0.001)
     parser.add_argument("--weight_decay", type=float, default=0.0001)
     parser.add_argument(
-        "--model_path", type=str, default="melange_pytorch/model/model.pt"
+        "--model_path", type=str, default="model/model.pt"
     )
     parser.add_argument("--log_path", type=str, default="melange_pytorch/log/log.txt")
     parser.add_argument("--seed", type=int, default=0)
@@ -80,44 +80,30 @@ def set_seed_for_all(seed):
     # torch.backends.cudnn.deterministic = True
 
 
-def train(model, h5f, train_idxes, batch_size, criterion, optimizer):
-    model.train()
-    running_output, running_label = [], []
-
-    batch_idx = 0
-    print("Number of train idxes:", len(train_idxes))
-    for i, train_idx in enumerate(
-        np.random.choice(train_idxes, size=len(train_idxes), replace=False)
-    ):
-        # if i > 1:
-        #     break
-        batch_idx += 1
-        # The initial shape is (batch_size, 900, 4)
-        X = h5f[f"X{train_idx}"]
-        # Need to rearrange to (batch_size, 4, 900)
-        X = rearrange(X[:], "b c l -> b l c")
-        # This has shape (1, batch_size, 900, 2)
-        Y = h5f[f"Y{train_idx}"]
-        # Just keep the first dimension.
-        # Final shape is (batch_size, 900, 2)
-        Y = Y[0, ...]
-
-        dataset = TensorDataset(
-            torch.from_numpy(X).float(), torch.from_numpy(Y).float()
-        )
-        loader = DataLoader(
-            dataset,
-            batch_size=batch_size,
-            shuffle=True,
-            num_workers=8,
-            pin_memory=True,
-            drop_last=True,
-        )
-
-        bar = tqdm.tqdm(loader, desc=f"Shard {i}/{len(train_idxes)}", leave=False)
-
-        for batch in bar:
-            X = batch[0].cuda()
+def train(model, train_loader, test_loader, epochs, batch_size, criterion, optimizer):
+    
+    test_loss_list = []
+    for epoch in range(epochs):
+        model.eval()
+        test_loss = []
+        Y_psi_list = []
+        output_psi_list = []
+        for batch in test_loader:
+            X = batch[0].float().cuda()
+            Y = batch[1].cuda()
+            output = model(X)
+            output_psi = output.squeeze()
+            Y_psi = Y[:, 1] / (Y[:, 0] + Y[:, 1])
+            loss = criterion(output_psi, Y_psi)
+            test_loss.append(loss.item())
+        print("Epoch: ", epoch, "Test loss: ", np.mean(test_loss))
+        test_loss_list.append(np.mean(test_loss))
+        torch.cuda.empty_cache()
+        
+        model.train()
+        for i, batch in enumerate(train_loader):
+            
+            X = batch[0].float().cuda()
             Y = batch[1].cuda()
 
             optimizer.zero_grad()
@@ -125,118 +111,47 @@ def train(model, h5f, train_idxes, batch_size, criterion, optimizer):
             # gene_latent = GeneExp(output)
             # output = torch.cat((gene_latent, output), dim=1)
             # latent = Merge(output)
-
             # The order is [skipped_count, included_count]. PSI is % inclusion.
-            # ouput_psi = output[:, :, 1] / (output[:, :, 0] + output[:, :, 1])
-            output_psi = output
-            # print(ouput_psi.cpu().detach().numpy())
-            Y_psi = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
+            output_psi = output.squeeze()
+            Y_psi = Y[:, 1] / (Y[:, 0] + Y[:, 1])
 
             loss = criterion(output_psi, Y_psi)
             loss.backward()
             optimizer.step()
+            if i % 100 == 0:
+                print("epoch: ", epoch, "batch: ", i, "loss: ", loss.item())
 
-            running_output.append(output.detach().cpu())
-            running_label.append(Y.detach().cpu())
+    return test_loss_list
 
-            if batch_idx % 20 == 0:
-                running_output = torch.cat(running_output, dim=0)
-                running_label = torch.cat(running_label, dim=0)
-                running_output_psi = running_output
-                running_label_psi = running_label[:, :, 1] / (
-                    running_label[:, :, 0] + running_label[:, :, 1]
-                )
-
-                running_loss = criterion(running_output_psi, running_label_psi)
-                wandb.log(
-                    {
-                        "train_loss": running_loss.item(),
-                    }
-                )
-
-                running_output, running_label = [], []
-
-
-def test(model, h5f, test_shard_ids, batch_size, criterion):
+def test(model, test_loader, batch_size):
     model.eval()
-    out, label = [], []
-    for shard_idx in test_shard_ids:
-        X = h5f[f"X{shard_idx}"]
-        # Need to rearrange to (batch_size, 4, 900)
-        X = rearrange(X[:], "b c l -> b l c")
-        # This has shape (1, batch_size, 900, 2)
-        Y = h5f[f"Y{shard_idx}"]
-        # Just keep the first dimension.
-        # Final shape is (batch_size, 900, 2)
-        Y = Y[0, ...]
+    output_psi_list = []
+    for batch in test_loader:
+        X = batch[0].float().cuda()
+        Y = batch[1].cuda()
+        output = model(X)
+        output_psi = output.squeeze()
+        Y_psi = Y[:, 1] / (Y[:, 0] + Y[:, 1])   
+        output_psi_list.append(output_psi.cpu().detach())
+    output_psi = torch.cat(output_psi_list, dim=0)
+    return output_psi
 
-        dataset = TensorDataset(
-            torch.from_numpy(X).float(), torch.from_numpy(Y).float()
-        )
-        loader = DataLoader(
-            dataset,
-            batch_size=batch_size,
-            shuffle=False,
-            num_workers=8,
-            pin_memory=True,
-        )
-        bar = tqdm.tqdm(loader, leave=False, total=len(loader))
-        for batch in bar:
-            X = batch[0].cuda()
-            Y = batch[1].cuda()
-            _out = model(X).detach().cpu()
-            _label = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
-            _label = _label.detach().cpu()
-            out.append(_out)
-            label.append(_label)
-    out = torch.cat(out, dim=0)
-    label = torch.cat(label, dim=0)
-    loss = criterion(out, label)
-    print("Test loss: ", loss.item())
-    wandb.log({"test_loss": loss.item()})
-    return loss.item()
-
-
-def validate(model, h5f, val_shard_ids, batch_size, criterion):
-    model.eval()
-    out, label = [], []
-    for shard_idx in val_shard_ids:
-        X = h5f[f"X{shard_idx}"]
-        # Need to rearrange to (batch_size, 4, 900)
-        X = rearrange(X[:], "b c l -> b l c")
-        # This has shape (1, batch_size, 900, 2)
-        Y = h5f[f"Y{shard_idx}"]
-        # Just keep the first dimension.
-        # Final shape is (batch_size, 900, 2)
-        Y = Y[0, ...]
-
-        dataset = TensorDataset(
-            torch.from_numpy(X).float(), torch.from_numpy(Y).float()
-        )
-        loader = DataLoader(
-            dataset,
-            batch_size=batch_size,
-            shuffle=False,
-            num_workers=8,
-            pin_memory=True,
-        )
-        bar = tqdm.tqdm(loader, leave=False, total=len(loader))
-        for batch in bar:
-            X = batch[0].cuda()
-            Y = batch[1].cuda()
-            _out = model(X).detach().cpu()
-            _label = Y[:, :, 1] / (Y[:, :, 0] + Y[:, :, 1])
-            _label = _label.detach().cpu()
-            out.append(_out)
-            label.append(_label)
-    out = torch.cat(out, dim=0)
-    label = torch.cat(label, dim=0)
-    loss = criterion(out, label)
-    print("Validation loss: ", loss.item())
-    wandb.log({"val_loss": loss.item()})
-    return loss.item()
-
-
+def process_h5py(data):
+    shards_idx = np.arange(len(data.keys()) // 2)
+    X_list = []
+    for idx in shards_idx:
+        X = data[f"X{idx}"]
+        X_list.append(X)
+    X = torch.from_numpy(np.concatenate(X_list, axis=0))
+    Y_list = []
+    for idx in shards_idx:
+        Y = data[f"Y{idx}"]
+        Y = Y[0, ...].squeeze()
+        Y_list.append(Y)
+    Y = torch.from_numpy(np.concatenate(Y_list, axis=0))
+    X = X.transpose(1, 2)
+    return X, Y
+    
 if __name__ == "__main__":
     args = parse_args()
     set_seed_for_all(args.seed)
@@ -258,37 +173,41 @@ if __name__ == "__main__":
 
     train_data = h5py.File(args.train_h5, "r")
     test_data = h5py.File(args.test_h5, "r")
-    # train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=True)
-    # test_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=True)
-
+    
     # Divide by 2 because the dataset has both X and Y. (e.g. X0, Y0, X1, Y1, ... Xn, Yn)
     # So it really just have half the number of sample batches.
-    num_shards = len(train_data.keys()) // 2
-    shards_idx = np.random.permutation(num_shards)
-    train_idx = shards_idx[: int(num_shards * 0.9)]
-    val_idx = shards_idx[int(num_shards * 0.9) :]
+    X_train, Y_train = process_h5py(train_data)
+    X_test, Y_test = process_h5py(test_data)
+    
+    train_data = TensorDataset(X_train, Y_train)
+    test_data = TensorDataset(X_test, Y_test)    
+    
+    train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=True)
+    test_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=False)
 
-    test_shards_idx = np.arange(len(test_data.keys()) // 2)
-
-    # Initialize model.
+    print("Train data shape: ", X_train.shape)
+    print("Test data shape: ", X_test.shape)
+    
+    # # # Initialize model.
     model = Melange()
     # GeneExp = GeneExp()
     # Merge = Merge()
     model.cuda()
 
     # Criterion and optimizer.
-    # criterion = nn.CrossEntropyLoss()
+    # criterion = nn.BCEWithLogitsLoss()
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(model.parameters(), lr=1e-3)
-    scheduler = optim.lr_scheduler.MultiStepLR(
-        optimizer, milestones=[6, 7, 8, 9], gamma=0.5
-    )
+    optimizer = optim.Adam(model.parameters(), lr=1e-4, weight_decay=args.weight_decay)
 
-    for epoch in range(args.epochs):
-        train(model, train_data, train_idx, args.batch_size, criterion, optimizer)
-        validate(model, train_data, val_idx, args.batch_size, criterion)
-        test(model, test_data, test_shards_idx, args.batch_size, criterion)
-
-        scheduler.step()
-
-    torch.save(model.state_dict(), args.output)
+    test_loss = train(model, train_loader, test_loader, args.epochs, args.batch_size, criterion, optimizer)
+    torch.cuda.empty_cache()
+    # model.load_state_dict(torch.load(args.model_path))
+    output_psi = test(model, test_loader, args.batch_size)
+    Y_psi = Y_test[:, 1] / (Y_test[:, 0] + Y_test[:, 1])
+    print("Output: ", output_psi[0:10])
+    print("Y: ", Y_psi[0:10])
+    print("Test loss: ", test_loss[0:10])
+    np.savetxt("output_psi.txt", output_psi.cpu().detach().numpy())
+    np.savetxt("Y_psi.txt", Y_psi.cpu().detach().numpy())
+    np.savetxt("test_loss.txt", test_loss)
+    torch.save(model.state_dict(), args.model_path)

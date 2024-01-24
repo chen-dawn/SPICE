@@ -77,7 +77,8 @@ for i in range(SEQ.shape[0]//CHUNK_SIZE):
         # print("Included count:", INCLUDED_COUNT[idx])
         for t in range(1):
             Y_batch[t].extend([Y])
-        Z_batch.extend(celltype)
+        Z_batch.extend([celltype])
+        # print(Z_batch)
         # print(np.array(Y_batch).shape)
 
     X_batch = np.array(X_batch)
