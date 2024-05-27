@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#############################
+### Default UGER Requests ###
+#############################
+
+# This section specifies uger requests.
+# This is good for jobs you need to run multiple times so you don't forget what it needs.
+
+# Memory request for 4G
+#$ -l h_vmem=30G
+
+# Cores
+#$ -pe smp 1
+#$ -binding linear:1
+
+# I like single output files
+#$ -j y
+
+# Not sure what this flag does
+#$ -R y
+
+# Runtime request.  Usually 30 minutes is plenty for me and helps me get backfilled into reserved slots.
+#$ -l h_rt=24:00:00
+
+# I don't like the top level of my homedir filling up.
+#$ -o $HOME/outputs/
+
+# Job name
+#$ -N MatchBarcodeToElement
+
+######################
+### Dotkit section ###
+######################
+
+# This is required to use dotkits inside scripts
+source /broad/software/scripts/useuse
+source $HOME/.bioinfo
+source activate python3.8
+
+##################
+### Run script ###
+##################
+
+
+# Run like:
+# for filename in *_merged_R1_001.fastq.gz; do
+#     echo $filename
+#     qsub -v FILENAME=$filename /broad/dawnccle/melange/process_fastq/missplicing/run_barcode_match_to_element.sh
+# done
+
+# cd /broad/thechenlab/Dawn/Helicase/221215ExomeSeq
+
+
+cd /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs
+
+echo $FILENAME
+BASENAME=${FILENAME%_merged_R1_001.fastq.gz}
+FQ1=${BASENAME}_merged_R1_001.fastq.gz
+FQ2=${BASENAME}_merged_R2_001.fastq.gz
+
+
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R1_bc_extracted.fastq.gz \
+    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R2_bc_extracted.fastq.gz \
+    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
+    -o /broad/dawnccle/processed_data/missplicing_test
