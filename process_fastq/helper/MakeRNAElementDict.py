@@ -159,8 +159,6 @@ def make_RNA_splicing_reference(guide_dict, skipped_exon_dict, dict_type=MEDIUM)
 
     return ref
 
-def
-
 if __name__ == "__main__":
     # Read guide dict and make reference
     reference_dir = "/broad/dawnccle/melange/data/guide_library/"
