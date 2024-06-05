@@ -11,6 +11,22 @@ python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRN
     -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
     -o /broad/dawnccle/processed_data/missplicing_test
 
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/test/DLST_K700E_R1_clean.fastq.gz \
+    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R2_bc_extracted.fastq.gz \
+    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -r /broad/dawnccle/melange/data/guide_library_cleaned/WEAK_47k_reference_no_adapter_filtered.fasta \
+    -o /broad/dawnccle/processed_data/missplicing_K700E
+
+
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/HEK-rep1_R1_bc_extracted.fastq.gz \
+    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R2_bc_extracted.fastq.gz \
+    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
+    -o /broad/dawnccle/processed_data/missplicing_test
+    
+
 """
 
 import os
@@ -70,8 +86,8 @@ def parse_args():
         "-2",
         "--fq2",
         type=str,
-        required=True,
         help="Reverse fastq. Assume that the umi and cell barcode are already in the header.",
+        default=None
     )
 
     parser.add_argument(
@@ -258,10 +274,31 @@ def get_identity_from_fq(
     upstream_intron_fasta = read_guide_fasta(upstream_intron_fasta_path)
     downstream_intron_fasta = read_guide_fasta(downstream_intron_fasta_path)
     guide_fasta = read_guide_fasta(guide_fasta_path)
+    
     # Create an aligner.
+    """
+    Class mappy.Alignment
+    This class describes an alignment. An object of this class has the following properties:
+
+    ctg: name of the reference sequence the query is mapped to
+    ctg_len: total length of the reference sequence
+    r_st and r_en: start and end positions on the reference
+    q_st and q_en: start and end positions on the query
+    strand: +1 if on the forward strand; -1 if on the reverse strand
+    mapq: mapping quality
+    blen: length of the alignment, including both alignment matches and gaps but excluding ambiguous bases.
+    mlen: length of the matching bases in the alignment, excluding ambiguous base matches.
+    NM: number of mismatches, gaps and ambiguous positions in the alignment
+    trans_strand: transcript strand. +1 if on the forward strand; -1 if on the reverse strand; 0 if unknown
+    is_primary: if the alignment is primary (typically the best and the first to generate)
+    read_num: read number that the alignment corresponds to; 1 for the first read and 2 for the second read
+    cigar_str: CIGAR string
+    cigar: CIGAR returned as an array of shape (n_cigar,2). The two numbers give the length and the operator of each CIGAR operation.
+    MD: the MD tag as in the SAM format. It is an empty string unless the MD argument is applied when calling mappy.Aligner.map().
+    cs: the cs tag.
+    """
     aln = mp.Aligner(
-        fn_idx_in=guide_fasta_path, preset="sr"
-    )  # ,best_n=3,k=9,w=2,min_chain_score=24)
+        fn_idx_in=guide_fasta_path, preset="sr", best_n=3,k=9,w=1,min_chain_score=20)
     total_reads = 0
     aligned_reads = 0
     bc_not_found = 0
@@ -274,24 +311,21 @@ def get_identity_from_fq(
     unspliced_counter = 0
     minor_splice_counter = 0
     no_primary_alignment = 0
+    no_primary_alignment_but_mapped = 0
     multiple_primary_alignment = 0
     included_mapped_reads_but_low_quality = 0
     no_downstream_constant_exon = 0
     has_downstream_exon_offset = 0
     no_mapped_back_exon = 0
+    perfect_middle_exon = 0
     everything_passed_with_middle_exon = 0
     logging.info("Parsing fastq files.")
 
     # Create a new dictionary to store the counts with splice information.
     element_cb_umi_dict = {}
-
-    # Create counters for UNSPLICED, INCLUDED, and SKIPPED.
-    unspliced_counter_dict = {}
-    included_counter_dict = {}
-    skipped_counter_dict = {}
-    minor_splice_counter_dict = {}
-    missplice_counter_dict = {}
-    umi_dedup_counter_dict = {}
+    
+    # Hits to merge. Seems to be some that has no primary alignment but are still mapped perfectly. 
+    hits_to_merge_dict = {}
 
     # Parse the fastq. We only need to look at R1 since we already have the barcode and UMI.
     unzipped_file1 = gzip.open(fq1_file, "rt")
@@ -301,17 +335,13 @@ def get_identity_from_fq(
         header = fq1.id
         read_name = header.split()[0]
         id, cb, umi = read_name.split("_")
-        # If cb is not in the dictionary, then create an entry.
-        # The order in the dict is going to be, UNSPLICED, INCLUDED, SKIPPED, MINOR_SPICE, MISSPLICE.
-        if cb not in umi_dedup_counter_dict:
-            umi_dedup_counter_dict[cb] = [{}, {}, {}, {}, {}]
 
         total_reads += 1
         if total_reads % 10000 == 0:
             logging.info("Already processed reads: {}.".format(total_reads))
 
-        # if total_reads >= 10000:
-        #     break
+        if total_reads >= 100000:
+            break
         # Extract read and aligned region.
         guide_bc = cb
         cb_umi = cb + "_" + umi
@@ -319,9 +349,11 @@ def get_identity_from_fq(
 
         # We don't need to check anymore because the cell barcode is from the header whitelist.
         if guide_bc not in bc_lib_dict:
-            print(guide_bc, id, cb, umi)
-            raise Exception("The barcode should exist in the whitelist.")
-
+            bc_not_found += 1
+            # print(guide_bc, id, cb, umi)
+            # raise Exception("The barcode should exist in the whitelist.")
+            continue
+        
         element_id = bc_lib_dict[guide_bc]
 
         # Find the start and end of the "upstream exon" and "downstream exon" in the library sequence.
@@ -345,6 +377,12 @@ def get_identity_from_fq(
             library_seq_first_20 = library_seq_upstream_exon_trimmed
         else:
             library_seq_first_20 = library_seq_upstream_exon_trimmed[:20]
+            
+        # Also get library_seq_first_40
+        if len(library_seq_upstream_exon_trimmed) < 40:
+            library_seq_first_40 = library_seq_upstream_exon_trimmed
+        else:
+            library_seq_first_40 = library_seq_upstream_exon_trimmed[:40]
 
         ########################################
         # Check out unspliced reads.
@@ -390,19 +428,32 @@ def get_identity_from_fq(
         # Check out included reads.
         ########################################
         # Now we map.
-        primary_detected = False
         # First check how many primary alignments there are.
         num_primary = 0
-        for al in aln.map(library_seq_upstream_exon_trimmed):
+        # We will just map the first 40 bp because if it's too long it stops working?
+        # for al in aln.map(library_seq_upstream_exon_trimmed):
+        
+        # print(library_seq_first_40)
+        for al in aln.map(library_seq_first_40):
             if al.is_primary and al.mapq > 0:
+                print(al)
                 num_primary += 1
                 mapped_element = al.ctg
+                
+        # If there are no primary alignments, we check the alignment and give it to the alphabetically first element.
         if num_primary == 0:
             no_primary_alignment += 1
             continue
+        
         if num_primary > 1:
             multiple_primary_alignment += 1
+            # Print the multiple primary alignments.
+            print("##############################################")
+            for al in aln.map(library_seq_first_40):
+                if al.is_primary and al.mapq > 0:
+                    print(al)
             continue
+        
 
         # Now we can process the primary alignment.
         aligned_reads += 1
@@ -410,7 +461,6 @@ def get_identity_from_fq(
         included_reads_pre_chimera += 1
         if mapped_element != element_id:
             chimera_reads += 1
-
         mapped_guide_seq = guide_fasta[mapped_element]
         mapped_upstream_intron_seq = upstream_intron_fasta[mapped_element]
         mapped_downstream_intron_seq = downstream_intron_fasta[mapped_element]
@@ -485,6 +535,8 @@ def get_identity_from_fq(
         # Construct the name of the element.
         temp_ID = f"{mapped_element}_INCLUDED_{start_guide_pos_adjusted}:{end_guide_pos_adjusted}:{downstream_exon_offset}"
         element_cb_umi_dict = add_cb_umi_to_dict(element_cb_umi_dict, temp_ID, cb_umi)
+        if start_guide_pos_adjusted == 0 and end_guide_pos_adjusted == 0:
+            perfect_middle_exon += 1
         everything_passed_with_middle_exon += 1
 
     # print(element_cb_umi_dict)
@@ -542,6 +594,7 @@ def get_identity_from_fq(
     logging.info("Unspliced: {}".format(unspliced_counter))
     logging.info("Minor splice: {}".format(minor_splice_counter))
     logging.info("No primary alignment: {}".format(no_primary_alignment))
+    logging.info("No primary alignment but mapped: {}".format(no_primary_alignment_but_mapped))
     logging.info("Multiple primary alignment: {}".format(multiple_primary_alignment))
     logging.info(
         "Included mapped reads but low quality: {}".format(
@@ -551,6 +604,7 @@ def get_identity_from_fq(
     logging.info("No downstream constant exon: {}".format(no_downstream_constant_exon))
     logging.info("Has downstream exon offset: {}".format(has_downstream_exon_offset))
     logging.info("No mapped back exon: {}".format(no_mapped_back_exon))
+    logging.info("Perfect middle exon: {}".format(perfect_middle_exon))
     logging.info(
         "Everything passed with middle exon: {}".format(
             everything_passed_with_middle_exon
@@ -572,6 +626,7 @@ def get_identity_from_fq(
     stats_log.append(f"unspliced_counter,{unspliced_counter}\n")
     stats_log.append(f"minor_splice_counter,{minor_splice_counter}\n")
     stats_log.append(f"no_primary_alignment,{no_primary_alignment}\n")
+    stats_log.append(f"no_primary_alignment_but_mapped,{no_primary_alignment_but_mapped}\n")
     stats_log.append(f"multiple_primary_alignment,{multiple_primary_alignment}\n")
     stats_log.append(
         f"included_mapped_reads_but_low_quality,{included_mapped_reads_but_low_quality}\n"
@@ -579,6 +634,7 @@ def get_identity_from_fq(
     stats_log.append(f"no_downstream_constant_exon,{no_downstream_constant_exon}\n")
     stats_log.append(f"has_downstream_exon_offset,{has_downstream_exon_offset}\n")
     stats_log.append(f"no_mapped_back_exon,{no_mapped_back_exon}\n")
+    stats_log.append(f"perfect_middle_exon,{perfect_middle_exon}\n")
     stats_log.append(
         f"everything_passed_with_middle_exon,{everything_passed_with_middle_exon}\n"
     )
@@ -597,24 +653,24 @@ def read_barcode_to_lib_table(table_path):
         id, barcode, barcode_rev_comp = line.strip().split(",")
         # print(id, barcode, barcode_rev_comp)
         # print(barcode_rev_comp)
-        if barcode_rev_comp == "GCTTCCGTGCTTGT":
-            print("found it")
+        # if barcode_rev_comp == "GCTTCCGTGCTTGT":
+        #     print("found it")
         d[barcode_rev_comp.strip('"')] = id.strip('"')
     return d
 
 
 if __name__ == "__main__":
     guide_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library/PRISM_47k_twist.fasta"
+        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_guides_filtered.fasta"
     )
     middle_exon_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library/PRISM_47k_skipped_exon.fasta"
+        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_skipped_exon_filtered.fasta"
     )
     upstream_intron_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library/PRISM_47k_upstream_intron.fasta"
+        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_upstream_intron_filtered.fasta"
     )
     downstream_intron_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library/PRISM_47k_downstream_intron.fasta"
+        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_downstream_intron_filtered.fasta"
     )
     args = parse_args()
 
