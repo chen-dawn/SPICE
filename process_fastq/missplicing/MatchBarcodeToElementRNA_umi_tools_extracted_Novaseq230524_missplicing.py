@@ -1,30 +1,27 @@
 """
-Matching sequenced RNA library to fine grained unspliced, included, and skipped.
+Matching sequenced RNA library. Now I am 
+
 Dawn Chen
 
 Usage:
 
+K562 K700E test file.
 python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R1_bc_extracted.fastq.gz \
-    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R2_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
-    -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
-    -o /broad/dawnccle/processed_data/missplicing_test
+    -o /broad/dawnccle/processed_data/missplicing_debug
 
+Small DLST test file.
 python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/test/DLST_K700E_R1_clean.fastq.gz \
-    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R2_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
-    -r /broad/dawnccle/melange/data/guide_library_cleaned/WEAK_47k_reference_no_adapter_filtered.fasta \
-    -o /broad/dawnccle/processed_data/missplicing_K700E
+    -o /broad/dawnccle/processed_data/missplicing_debug
 
-
+HEK test file for debugging.
 python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/HEK-rep1_R1_bc_extracted.fastq.gz \
-    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R2_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
-    -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
-    -o /broad/dawnccle/processed_data/missplicing_test
+    -o /broad/dawnccle/processed_data/missplicing_debug
     
 
 """
@@ -111,7 +108,7 @@ def parse_args():
         "--reference",
         type=str,
         help="Where the reference is located. Generate using the script MakeRNAElementDict.py",
-        default="/broad/thechenlab/Dawn/splicing/library_sequencing_V2/RNA_ref/MEDIUM_reference.fasta",
+        default="/broad/dawnccle/melange/data/guide_library_cleaned/WEAK_47k_reference_no_adapter_filtered.fasta",
     )
 
     parser.add_argument(
@@ -263,7 +260,6 @@ def add_cb_umi_to_dict(d, element, cb_umi):
 def get_identity_from_fq(
     fq1_file,
     fq2_file,
-    spliced_reference,
     bc_lib_dict,
     guide_fasta_path,
     middle_exon_fasta_path,
@@ -298,7 +294,7 @@ def get_identity_from_fq(
     cs: the cs tag.
     """
     aln = mp.Aligner(
-        fn_idx_in=guide_fasta_path, preset="sr", best_n=3,k=9,w=1,min_chain_score=20)
+        fn_idx_in=guide_fasta_path, preset="sr", best_n=3,k=10,w=2,min_chain_score=24)
     total_reads = 0
     aligned_reads = 0
     bc_not_found = 0
@@ -323,15 +319,10 @@ def get_identity_from_fq(
 
     # Create a new dictionary to store the counts with splice information.
     element_cb_umi_dict = {}
-    
-    # Hits to merge. Seems to be some that has no primary alignment but are still mapped perfectly. 
-    hits_to_merge_dict = {}
 
     # Parse the fastq. We only need to look at R1 since we already have the barcode and UMI.
     unzipped_file1 = gzip.open(fq1_file, "rt")
-    # unzipped_file2 = gzip.open(fq2_file,"rt")
     for fq1 in SeqIO.parse(unzipped_file1, "fastq"):
-        # print(fq1.seq)
         header = fq1.id
         read_name = header.split()[0]
         id, cb, umi = read_name.split("_")
@@ -340,8 +331,9 @@ def get_identity_from_fq(
         if total_reads % 10000 == 0:
             logging.info("Already processed reads: {}.".format(total_reads))
 
-        if total_reads >= 100000:
-            break
+        # if total_reads >= 100000:
+        #     break
+
         # Extract read and aligned region.
         guide_bc = cb
         cb_umi = cb + "_" + umi
@@ -430,13 +422,8 @@ def get_identity_from_fq(
         # Now we map.
         # First check how many primary alignments there are.
         num_primary = 0
-        # We will just map the first 40 bp because if it's too long it stops working?
-        # for al in aln.map(library_seq_upstream_exon_trimmed):
-        
-        # print(library_seq_first_40)
         for al in aln.map(library_seq_first_40):
             if al.is_primary and al.mapq > 0:
-                print(al)
                 num_primary += 1
                 mapped_element = al.ctg
                 
@@ -447,13 +434,7 @@ def get_identity_from_fq(
         
         if num_primary > 1:
             multiple_primary_alignment += 1
-            # Print the multiple primary alignments.
-            print("##############################################")
-            for al in aln.map(library_seq_first_40):
-                if al.is_primary and al.mapq > 0:
-                    print(al)
             continue
-        
 
         # Now we can process the primary alignment.
         aligned_reads += 1
@@ -466,6 +447,9 @@ def get_identity_from_fq(
         mapped_downstream_intron_seq = downstream_intron_fasta[mapped_element]
         mapped_middle_exon_seq = middle_exon_fasta[mapped_element]
 
+        ##############################################
+        # Find the start coodinate of the middle exon
+        ##############################################
         # Get the start and end of library_seq_first_20 in the mapped guide sequence.
         start_guide, end_guide = find_substring_with_mismatches(
             UPSTREAM_INTRON_LAST_40 + mapped_guide_seq, library_seq_first_20, 3
@@ -481,56 +465,63 @@ def get_identity_from_fq(
             start_guide - len(mapped_upstream_intron_seq) - len(UPSTREAM_INTRON_LAST_40)
         )
 
+        ##############################################
+        # Find the end coodinate of the middle exon
+        ##############################################
         # Now we try to find the end of the downstream exon.
         last_20_bp_before_constant = None
         downstream_exon_offset = 0
         start_downstream, end_downstream = find_substring_with_mismatches(
             library_seq, DOWNSTREAM_EXON_FIRST_20, 2
         )
-        if start_downstream is None:
-            # Try to find the seq with 3 bp offset.
-            start_downstream_w_3bp_offset, end_downstream_w_3bp_offset = (
-                find_substring_with_mismatches(
-                    library_seq, DOWNSTREAM_EXON_FIRST_20_3BP_OFFSET, 2
-                )
-            )
-
-            if start_downstream_w_3bp_offset is not None:
-                has_downstream_exon_offset += 1
-                last_20_bp_before_constant = library_seq[
-                    start_downstream_w_3bp_offset - 20 : start_downstream_w_3bp_offset
-                ]
-                downstream_exon_offset = 3
-        else:
+        if start_downstream is not None:
             last_20_bp_before_constant = library_seq[
                 start_downstream - 20 : start_downstream
             ]
-
-        # If we can't find the downstream exon, then we can't do anything.
-        if last_20_bp_before_constant is None:
-            no_downstream_constant_exon += 1
-            continue
+        else:
+            # We will try to iteratively find where the guide seq ends in the libseq.
+            middle_exon_start_pos = start_guide - len(UPSTREAM_INTRON_LAST_40)
+            for i in range(middle_exon_start_pos, len(mapped_guide_seq) - 20):
+                temp_substring = mapped_guide_seq[i : i + 20]
+                tmp_start, _ = find_substring_with_mismatches(
+                    library_seq, temp_substring, 2
+                )
+                if tmp_start is None:
+                    break
+                last_20_bp_before_constant = library_seq[tmp_start : tmp_start+20]
 
         # Now we try to map the last 20 bp before the constant exon to the downstream intron.
         # Increasing the error tolerance here since the read is worse quality around here now.
-        start_downstream_exon, end_downstream_exon = find_substring_with_mismatches(
+        _, end_middle_exon = find_substring_with_mismatches(
             UPSTREAM_INTRON_LAST_40 + mapped_guide_seq + DOWNSTREAM_INTRON,
             last_20_bp_before_constant,
             3,
         )
 
-        if start_downstream_exon is None:
+        if end_middle_exon is None:
             no_mapped_back_exon += 1
             continue
 
         # Get the coordinate of the end of the downstream exon.
         end_guide_pos_adjusted = (
-            end_downstream_exon
+            end_middle_exon
             - len(UPSTREAM_INTRON_LAST_40)
             - len(mapped_upstream_intron_seq)
             - len(mapped_middle_exon_seq)
         )
-        # print(start_guide_pos_adjusted, end_guide_pos_adjusted)
+        
+        ##############################################
+        # Now find the start of the back exon.
+        ##############################################
+        lib_start_of_end_middle, lib_end_of_end_middle = find_substring_with_mismatches(
+            library_seq, last_20_bp_before_constant, 2
+        )
+        if start_downstream is not None:
+            downstream_exon_offset = start_downstream - lib_end_of_end_middle
+        else:
+            # Set to arbituary large number.
+            no_downstream_constant_exon += 1
+            downstream_exon_offset = 999
 
         # Construct the name of the element.
         temp_ID = f"{mapped_element}_INCLUDED_{start_guide_pos_adjusted}:{end_guide_pos_adjusted}:{downstream_exon_offset}"
@@ -539,7 +530,6 @@ def get_identity_from_fq(
             perfect_middle_exon += 1
         everything_passed_with_middle_exon += 1
 
-    # print(element_cb_umi_dict)
     # Make a new dictionary that's the unnested element_cb_umi_dict.
     element_cb_umi_dict_unnested = {}
     for element in element_cb_umi_dict:
@@ -689,22 +679,17 @@ if __name__ == "__main__":
         os.makedirs(out_dir)
         logging.info("'{}' doesnt exist, create dir.".format(out_dir))
 
-    logging.info("################# Starting on file: {}".format(Path(fq1_path)))
+    logging.info("################# Starting on file: {} #################".format(Path(fq1_path)))
 
     # Read barcode to element matching.
     library_bc_path = args.library_bc_path
     logging.info("Reading barcode from library table: {}".format(library_bc_path))
     barcode_lib_dict = read_barcode_to_lib_table(library_bc_path)
-    # print("barcode dict")
-    # print(barcode_lib_dict)
-    # Read guide reference dict.
-    library_reference_dir = args.reference
 
     # This is the processed dataframe that's important.
     identity_df, umi_dedup_df, stats_log = get_identity_from_fq(
         fq1_path,
         fq2_path,
-        library_reference_dir,
         barcode_lib_dict,
         guide_fasta_path,
         middle_exon_fasta_path,

@@ -91,6 +91,7 @@ already_considered = set()
 definitely_unique_dict = {}
 multi_mapped_to_include_dict = {}
 multi_mapped_to_discard_dict = {}
+alt_ref_dict = {}
 not_mapped_count = 0
 for i, (middle_exon_id, middle_exon_seq) in enumerate(middle_exon_list):
     if middle_exon_id in already_considered:
@@ -125,6 +126,7 @@ for i, (middle_exon_id, middle_exon_seq) in enumerate(middle_exon_list):
                 # We are only interested in the multi-mapped guides that are perfect matches at the most length.
                 if al.mlen == len(middle_exon_seq) and al.NM == 0:
                     multi_mapped_to_discard_dict[mapped_guide_id] = multi_mapped_to_discard_dict.get(mapped_guide_id, 0) + 1
+                    alt_ref_dict[mapped_guide_id] = middle_exon_id
                     already_considered.add(mapped_guide_id)
             
     else:
@@ -139,14 +141,19 @@ print(f"Number of multi-mapped guides to discard: {len(multi_mapped_to_discard_d
 print(f"Number of not mapped middle exons: {not_mapped_count}")
 
 # Write to file.
-f = open("/broad/dawnccle/ref_test_definitely_unique_middle_exons.tsv", "w")
+f = open("/broad/dawnccle/melange/data/guide_library_cleaned/ref_test_definitely_unique_middle_exons.tsv", "w")
 for k, v in definitely_unique_dict.items():
     f.write(f"{k}\t{v}\n")
     
-f = open("/broad/dawnccle/ref_test_multi_mapped_middle_exons_to_include.tsv", "w")
+f = open("/broad/dawnccle/melange/data/guide_library_cleaned/ref_test_multi_mapped_middle_exons_to_include.tsv", "w")
 for k, v in multi_mapped_to_include_dict.items():
     f.write(f"{k}\t{v}\n")
     
-f = open("/broad/dawnccle/ref_test_multi_mapped_guides_to_discard.tsv", "w")
+f = open("/broad/dawnccle/melange/data/guide_library_cleaned/ref_test_multi_mapped_guides_to_discard.tsv", "w")
 for k, v in multi_mapped_to_discard_dict.items():
+    f.write(f"{k}\t{v}\n")
+    
+f = open("/broad/dawnccle/melange/data/guide_library_cleaned/ref_test_alt_ref_dict.tsv", "w")
+f.write("alt\tref\n")
+for k, v in alt_ref_dict.items():
     f.write(f"{k}\t{v}\n")
