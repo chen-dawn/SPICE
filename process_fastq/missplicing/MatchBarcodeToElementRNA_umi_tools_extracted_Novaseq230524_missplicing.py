@@ -11,6 +11,12 @@ python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRN
     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
 
+K562 WT.
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_WT-H01_S259_R1_bc_extracted.fastq.gz\
+    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -o /broad/dawnccle/processed_data/missplicing_debug
+    
 Small DLST test file.
 python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/test/DLST_K700E_R1_clean.fastq.gz \
@@ -490,6 +496,8 @@ def get_identity_from_fq(
                     break
                 last_20_bp_before_constant = library_seq[tmp_start : tmp_start+20]
 
+        if last_20_bp_before_constant is None:
+            continue
         # Now we try to map the last 20 bp before the constant exon to the downstream intron.
         # Increasing the error tolerance here since the read is worse quality around here now.
         _, end_middle_exon = find_substring_with_mismatches(
@@ -519,9 +527,24 @@ def get_identity_from_fq(
         if start_downstream is not None:
             downstream_exon_offset = start_downstream - lib_end_of_end_middle
         else:
-            # Set to arbituary large number.
-            no_downstream_constant_exon += 1
-            downstream_exon_offset = 999
+            downstream_exon_found = False
+            full_downstream_seq = DOWNSTREAM_INTRON + DOWNSTREAM_EXON
+            
+            # We check the sequence.
+            for i in range(len(full_downstream_seq)-20):
+                temp_substring = full_downstream_seq[i : i + 20]
+                tmp_start, _ = find_substring_with_mismatches(
+                    library_seq, temp_substring, 2
+                )
+                if tmp_start is not None:
+                    downstream_exon_offset = i - len(DOWNSTREAM_INTRON)
+                    downstream_exon_found = True
+                    break
+            
+            if not downstream_exon_found:
+                # Set to arbituary large number.
+                no_downstream_constant_exon += 1
+                downstream_exon_offset = 9999
 
         # Construct the name of the element.
         temp_ID = f"{mapped_element}_INCLUDED_{start_guide_pos_adjusted}:{end_guide_pos_adjusted}:{downstream_exon_offset}"

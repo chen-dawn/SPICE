@@ -21,13 +21,13 @@
 #$ -R y
 
 # Runtime request.  Usually 30 minutes is plenty for me and helps me get backfilled into reserved slots.
-#$ -l h_rt=12:00:00
+#$ -l h_rt=24:00:00
 
 # I don't like the top level of my homedir filling up.
 #$ -o $HOME/outputs/
 
 # Job name
-#$ -N V3MatchBarcodeToElement
+#$ -N V3K562MatchBarcodeToElement
 
 ######################
 ### Dotkit section ###
@@ -44,17 +44,17 @@ source activate python3.8
 
 
 # Run like:
-# cd /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs
-# for filename in *_R1_bc_extracted.fastq.gz; do
+# cd /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq
+# for filename in K562_W*_R1_bc_extracted.fastq.gz; do
 #     echo $filename
-#     qsub -v FILENAME=$filename /broad/dawnccle/melange/process_fastq/missplicing/run_barcode_match_to_element.sh
+#     qsub -v FILENAME=$filename /broad/dawnccle/melange/process_fastq/missplicing/run_barcode_match_to_element_K562.sh
 # done
 
 # cd /broad/thechenlab/Dawn/Helicase/221215ExomeSeq
 
 
 cd /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs
-# cd /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq
+cd /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq
 
 echo $FILENAME
 BASENAME=${FILENAME%_merged_R1_001.fastq.gz}
@@ -67,16 +67,16 @@ FQ2=${BASENAME}_R2_bc_extracted.fastq.gz
 
 
 
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
-    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R1_bc_extracted.fastq.gz \
-    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R2_bc_extracted.fastq.gz \
-    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
-    -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
-    -o /broad/dawnccle/processed_data/missplicing_test_v3
-
 # python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
-#     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/${FQ1} \
-#     -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/${FQ2} \
+#     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R1_bc_extracted.fastq.gz \
+#     -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R2_bc_extracted.fastq.gz \
 #     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
 #     -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
 #     -o /broad/dawnccle/processed_data/missplicing_test_v3
+
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/${FQ1} \
+    -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/${FQ2} \
+    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
+    -o /broad/dawnccle/processed_data/missplicing_test_v3
