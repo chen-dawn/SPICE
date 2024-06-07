@@ -90,7 +90,7 @@ def parse_args():
         "--fq2",
         type=str,
         help="Reverse fastq. Assume that the umi and cell barcode are already in the header.",
-        default=None
+        default=None,
     )
 
     parser.add_argument(
@@ -481,10 +481,18 @@ def get_identity_from_fq(
             library_seq, DOWNSTREAM_EXON_FIRST_20, 2
         )
         if start_downstream is not None:
-            last_20_bp_before_constant = library_seq[
+            possible_seq = library_seq[
                 start_downstream - 20 : start_downstream
             ]
-        else:
+            _, end_middle_exon = find_substring_with_mismatches(
+                mapped_guide_seq,
+                possible_seq,
+                2,
+            )
+            if end_middle_exon is not None:
+                last_20_bp_before_constant = possible_seq
+    
+        if last_20_bp_before_constant is None:
             # We will try to iteratively find where the guide seq ends in the libseq.
             middle_exon_start_pos = start_guide - len(UPSTREAM_INTRON_LAST_40)
             for i in range(middle_exon_start_pos, len(mapped_guide_seq) - 20):
@@ -499,11 +507,10 @@ def get_identity_from_fq(
         if last_20_bp_before_constant is None:
             continue
         # Now we try to map the last 20 bp before the constant exon to the downstream intron.
-        # Increasing the error tolerance here since the read is worse quality around here now.
         _, end_middle_exon = find_substring_with_mismatches(
             UPSTREAM_INTRON_LAST_40 + mapped_guide_seq + DOWNSTREAM_INTRON,
             last_20_bp_before_constant,
-            3,
+            2,
         )
 
         if end_middle_exon is None:
@@ -521,7 +528,7 @@ def get_identity_from_fq(
         ##############################################
         # Now find the start of the back exon.
         ##############################################
-        lib_start_of_end_middle, lib_end_of_end_middle = find_substring_with_mismatches(
+        _, lib_end_of_end_middle = find_substring_with_mismatches(
             library_seq, last_20_bp_before_constant, 2
         )
         if start_downstream is not None:
@@ -530,16 +537,31 @@ def get_identity_from_fq(
             downstream_exon_found = False
             full_downstream_seq = DOWNSTREAM_INTRON + DOWNSTREAM_EXON
             
-            # We check the sequence.
-            for i in range(len(full_downstream_seq)-20):
-                temp_substring = full_downstream_seq[i : i + 20]
-                tmp_start, _ = find_substring_with_mismatches(
-                    library_seq, temp_substring, 2
-                )
-                if tmp_start is not None:
-                    downstream_exon_offset = i - len(DOWNSTREAM_INTRON)
-                    downstream_exon_found = True
-                    break
+            # We just check the next 20 bp? 
+            if len(library_seq) < lib_end_of_end_middle + 20:
+                continue
+            
+            first_20bp_after_middle = library_seq[lib_end_of_end_middle : lib_end_of_end_middle + 20]
+            start_of_start_downstream_exon, _ = find_substring_with_mismatches(
+                full_downstream_seq,
+                first_20bp_after_middle,
+                2,
+            )
+            
+            if start_of_start_downstream_exon is not None:
+                downstream_exon_offset = start_of_start_downstream_exon - len(DOWNSTREAM_INTRON)
+                downstream_exon_found = True
+            
+            # # We check the sequence.
+            # for i in range(len(full_downstream_seq)-20):
+            #     temp_substring = full_downstream_seq[i : i + 20]
+            #     tmp_start, _ = find_substring_with_mismatches(
+            #         library_seq, temp_substring, 2
+            #     )
+            #     if tmp_start is not None:
+            #         downstream_exon_offset = i - len(DOWNSTREAM_INTRON)
+            #         downstream_exon_found = True
+            #         break
             
             if not downstream_exon_found:
                 # Set to arbituary large number.
@@ -673,18 +695,10 @@ def read_barcode_to_lib_table(table_path):
 
 
 if __name__ == "__main__":
-    guide_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_guides_filtered.fasta"
-    )
-    middle_exon_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_skipped_exon_filtered.fasta"
-    )
-    upstream_intron_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_upstream_intron_filtered.fasta"
-    )
-    downstream_intron_fasta_path = (
-        "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_downstream_intron_filtered.fasta"
-    )
+    guide_fasta_path = "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_guides_filtered.fasta"
+    middle_exon_fasta_path = "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_skipped_exon_filtered.fasta"
+    upstream_intron_fasta_path = "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_upstream_intron_filtered.fasta"
+    downstream_intron_fasta_path = "/broad/dawnccle/melange/data/guide_library_cleaned/PRISM_47k_downstream_intron_filtered.fasta"
     args = parse_args()
 
     # sample_name = args.sample_name
@@ -702,7 +716,11 @@ if __name__ == "__main__":
         os.makedirs(out_dir)
         logging.info("'{}' doesnt exist, create dir.".format(out_dir))
 
-    logging.info("################# Starting on file: {} #################".format(Path(fq1_path)))
+    logging.info(
+        "################# Starting on file: {} #################".format(
+            Path(fq1_path)
+        )
+    )
 
     # Read barcode to element matching.
     library_bc_path = args.library_bc_path
