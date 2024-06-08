@@ -306,7 +306,7 @@ def get_identity_from_fq(
     bc_not_found = 0
     included_reads_pre_chimera = 0
     chimera_reads = 0
-    chimera_reads_assigned = 0
+    included_chimera_skipped = 0
 
     perfect_skipped = 0
     imperfect_skipped = 0
@@ -448,6 +448,8 @@ def get_identity_from_fq(
         included_reads_pre_chimera += 1
         if mapped_element != element_id:
             chimera_reads += 1
+            # This is V5 change, I just skip the chimera reads for included too.
+            continue
         mapped_guide_seq = guide_fasta[mapped_element]
         mapped_upstream_intron_seq = upstream_intron_fasta[mapped_element]
         mapped_downstream_intron_seq = downstream_intron_fasta[mapped_element]

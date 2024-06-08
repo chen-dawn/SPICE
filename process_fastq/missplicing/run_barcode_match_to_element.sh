@@ -27,7 +27,7 @@
 #$ -o $HOME/outputs/
 
 # Job name
-#$ -N V3MatchBarcodeToElement
+#$ -N V5MatchBarcodeToElement
 
 ######################
 ### Dotkit section ###
@@ -72,7 +72,7 @@ python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRN
     -2 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/${BASENAME}_R2_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
     -r /broad/dawnccle/melange/data/guide_library/WEAK_47k_reference_no_adapter.fasta \
-    -o /broad/dawnccle/processed_data/missplicing_test_v3
+    -o /broad/dawnccle/processed_data/missplicing_test_v5
 
 # python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
 #     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/${FQ1} \
