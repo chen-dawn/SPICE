@@ -22,25 +22,26 @@ def extract_reads_from_fq(fq1_file, barcode_dict, output_dir):
     """
     Extract reads from a fastq file that match the barcodes in the provided dictionary.
     """
-    num_reads = {barcode: 0 for barcode in barcode_dict}
+    num_reads = {barcode: {} for barcode in barcode_dict}
     total_reads = 0
     reads_dict = {barcode: [] for barcode in barcode_dict}
     print(f"Extracting reads for {len(barcode_dict)} barcodes.")
     unzipped_file1 = gzip.open(fq1_file, "rt")
     for fq1 in SeqIO.parse(unzipped_file1, "fastq"):
         total_reads += 1
-        if total_reads % 10000 == 0:
+        if total_reads % 100000 == 0:
             print(f"Processed {total_reads} reads.")
-        if total_reads >= 20000000:
-            break
+        # if total_reads >= 20000000:
+        #     break
 
         header = fq1.id
         read_name = header.split()[0]
         id, cb, umi = read_name.split("_")
         if cb in barcode_dict:
-            if num_reads[cb] < 100:
-                num_reads[cb] += 1
-                reads_dict[cb].append(fq1.format("fastq"))
+            if umi not in num_reads[cb]:
+                num_reads[cb][umi] = 1
+                if len(reads_dict[cb]) < 200:
+                    reads_dict[cb].append(fq1.format("fastq"))
 
     for barcode, reads in reads_dict.items():
         output_file = os.path.join(output_dir, f"{barcode_dict[barcode]}.fastq")
@@ -50,10 +51,13 @@ def extract_reads_from_fq(fq1_file, barcode_dict, output_dir):
 
 shortlist_path = "/broad/dawnccle/processed_data/KMRC1_shortlist/high_KMRC1_shortlisted_elements.csv"
 output_dir = "/broad/dawnccle/processed_data/KMRC1_shortlist/"
+shortlist_path = "/broad/dawnccle/processed_data/KMRC1_shortlist/high_KMRC1_shortlisted_elements_tau.csv"
+output_dir = "/broad/dawnccle/processed_data/KMRC1_shortlist_rep3/"
+
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
-fastq_file = "/broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/KMRC1-rep1_R1_bc_extracted.fastq.gz"
+fastq_file = "/broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/KMRC1-rep3_R1_bc_extracted.fastq.gz"
 # Read the shortlist.
 shortlist = pd.read_csv(shortlist_path)
 # Get the index and barcodeRevcomp columns.

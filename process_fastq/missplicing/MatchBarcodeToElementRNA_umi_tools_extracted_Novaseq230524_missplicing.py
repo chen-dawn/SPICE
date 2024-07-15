@@ -29,7 +29,12 @@ python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRN
     -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
     
-
+This is supposed to be high in MEWO. need to debug:
+ENSG00000163947.12;ARHGEF3;chr3−56975761−56975820−56958822−56958889−56977275−56977375
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+    -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/COLO783-rep2_R1_bc_extracted.fastq.gz \
+    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -o /broad/dawnccle/processed_data/missplicing_debug
 """
 
 import os
@@ -353,7 +358,6 @@ def get_identity_from_fq(
             continue
         
         element_id = bc_lib_dict[guide_bc]
-
         # Find the start and end of the "upstream exon" and "downstream exon" in the library sequence.
         # We will use this to determine if the read is spliced or not.
         start_upstream, end_upstream = find_substring_with_mismatches(
