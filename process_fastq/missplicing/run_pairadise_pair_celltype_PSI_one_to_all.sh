@@ -46,8 +46,8 @@ reuse R-4.1
 # celltype2=HCC38
 
 echo $celltype1
-output_dir=/broad/dawnccle/processed_data/missplicing_processed_df/V5/pairadise_out_PSI_indiv/$celltype1
-output_file=/broad/dawnccle/processed_data/missplicing_processed_df/V5/pairadise_out_PSI_indiv/$celltype1/$celltype1\_formatted_df.tsv
+output_dir=/broad/dawnccle/processed_data/missplicing_processed_df/V6/pairadise_out_PSI_indiv/$celltype1
+output_file=/broad/dawnccle/processed_data/missplicing_processed_df/V6/pairadise_out_PSI_indiv/$celltype1/$celltype1\_formatted_df.tsv
 
 mkdir -p $output_dir
 Rscript /broad/dawnccle/melange/process_fastq/missplicing/pairadise_PSI_celltype_one_to_all.R $celltype1 $output_file

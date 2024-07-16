@@ -6,34 +6,34 @@ Dawn Chen
 Usage:
 
 K562 K700E test file.
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_FINAL_VERSION_V5_240715.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_K700E-H04_S262_R1_bc_extracted.fastq.gz \
-    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
 
 K562 WT.
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_FINAL_VERSION_V5_240715.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/old_fastq/K562_WT-H01_S259_R1_bc_extracted.fastq.gz\
-    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
     
 Small DLST test file.
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_FINAL_VERSION_V5_240715.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/test/DLST_K700E_R1_clean.fastq.gz \
-    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
 
 HEK test file for debugging.
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_FINAL_VERSION_V5_240715.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/HEK-rep1_R1_bc_extracted.fastq.gz \
-    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
     
 This is supposed to be high in MEWO. need to debug:
 ENSG00000163947.12;ARHGEF3;chr3−56975761−56975820−56958822−56958889−56977275−56977375
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_umi_tools_extracted_Novaseq230524_missplicing.py \
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_FINAL_VERSION_V5_240715.py \
     -1 /broad/dawnccle/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/COLO783-rep2_R1_bc_extracted.fastq.gz \
-    -l /broad/dawnccle/melange/data/guide_library/20230130_twist_library_v3_ID_barcode_ROUT.csv \
+    -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
 """
 
@@ -50,11 +50,6 @@ import gzip
 from collections import Counter
 import logging
 import edlib
-
-# Types of library.
-WEAK = "WEAK"
-MEDIUM = "MEDIUM"
-STRONG = "STRONG"
 
 UPSTREAM_EXON_LAST_20 = "ATGATGTGGACCTGGAACAG"  # last 20 bp
 DOWNSTREAM_EXON_FIRST_20 = "GTGCGGCAGCTGGTGCCTCG"  # first 20 bp
@@ -330,7 +325,7 @@ def get_identity_from_fq(
 
     # Create a new dictionary to store the counts with splice information.
     element_cb_umi_dict = {}
-    chimera_reads_dict = {}
+
     # Parse the fastq. We only need to look at R1 since we already have the barcode and UMI.
     unzipped_file1 = gzip.open(fq1_file, "rt")
     for fq1 in SeqIO.parse(unzipped_file1, "fastq"):
@@ -452,11 +447,6 @@ def get_identity_from_fq(
         included_reads_pre_chimera += 1
         if mapped_element != element_id:
             chimera_reads += 1
-            # Add to the chimera reads dict.
-            ref_alt = f"{element_id}_{mapped_element}"
-            if ref_alt not in chimera_reads_dict:
-                chimera_reads_dict[ref_alt] = 0
-            chimera_reads_dict[ref_alt] += 1
             # This is V5 change, I just skip the chimera reads for included too.
             continue
         mapped_guide_seq = guide_fasta[mapped_element]
@@ -621,15 +611,6 @@ def get_identity_from_fq(
     # Sort by element and cb_umi.
     element_cb_umi_df = element_cb_umi_df.sort_values(by=["element", "cb_umi"])
     
-    # Chimera reads dict.
-    chimera_reads_df = pd.DataFrame.from_dict(chimera_reads_dict, orient="index")
-    # Set the column name.
-    chimera_reads_df.columns = ["count"]
-    # Set the index as a column.
-    chimera_reads_df.reset_index(level=0, inplace=True)
-    # Sort by count.
-    chimera_reads_df = chimera_reads_df.sort_values(by="count", ascending=False)
-
     logging.info("Total reads: {}".format(total_reads))
     logging.info("Total aligned reads: {}".format(aligned_reads))
     logging.info("Barcode not found reads: {}".format(bc_not_found))
@@ -694,7 +675,7 @@ def get_identity_from_fq(
         f"everything_passed_with_middle_exon,{everything_passed_with_middle_exon}\n"
     )
 
-    return (element_cb_umi_df, umi_dedup_df, stats_log, chimera_reads_df)
+    return (element_cb_umi_df, umi_dedup_df, stats_log)
 
 
 def read_barcode_to_lib_table(table_path):
@@ -706,10 +687,6 @@ def read_barcode_to_lib_table(table_path):
         if "barcodeRevcomp" in line:
             continue
         id, barcode, barcode_rev_comp = line.strip().split(",")
-        # print(id, barcode, barcode_rev_comp)
-        # print(barcode_rev_comp)
-        # if barcode_rev_comp == "GCTTCCGTGCTTGT":
-        #     print("found it")
         d[barcode_rev_comp.strip('"')] = id.strip('"')
     return d
 
@@ -748,7 +725,7 @@ if __name__ == "__main__":
     barcode_lib_dict = read_barcode_to_lib_table(library_bc_path)
 
     # This is the processed dataframe that's important.
-    identity_df, umi_dedup_df, stats_log, chimeric_reads_df = get_identity_from_fq(
+    identity_df, umi_dedup_df, stats_log = get_identity_from_fq(
         fq1_path,
         fq2_path,
         barcode_lib_dict,
@@ -781,10 +758,3 @@ if __name__ == "__main__":
     for line in stats_log:
         f.write(line)
     f.close()
-    
-    # Write chimeric reads.
-    chimeric_outfile_path = os.path.join(
-        out_dir, the_basename + "chimeric_reads.csv"
-    )
-    logging.info("Writing chimeric reads table to: {}".format(chimeric_outfile_path))
-    chimeric_reads_df.to_csv(chimeric_outfile_path, index=False)

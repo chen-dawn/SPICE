@@ -1,4 +1,4 @@
-# How the refernece is generated
+# How the reference is generated
 
 ## Map the duplicate regions to a reference region
 First I ran the script `/Volumes/broad_dawnccle/melange/process_fastq/missplicing/cleanup_reference.py` which finds the sequences that are definitely unique. And for the sequences that are not unique, we keep the shortest one and discard the longer ones. This generates a list of mapping tables:
