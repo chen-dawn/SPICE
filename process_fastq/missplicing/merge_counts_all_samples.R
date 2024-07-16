@@ -1,91 +1,159 @@
 library(tidyverse)
 library(vroom)
 library(data.table)
+library(Biostrings)
+
+reverse_complement <- function(dna_seq) {
+  complement <- c("A" = "T", "T" = "A", "C" = "G", "G" = "C")
+  nucleotides <- unlist(strsplit(dna_seq, ""))
+  complement_nucleotides <- complement[nucleotides]
+  reverse_complement_seq <- paste(rev(complement_nucleotides), collapse = "")
+  return(reverse_complement_seq)
+}
 
 # OKAY I SHOULD BE MORE SYSTEMATIC. AIYO.
-out_dir <- "~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/"
+
+# ##### Uncomment to process files again. This takes a while. #####
+# cellline_filenames <- list.files(path = input_dir, pattern = "fine_grained_idx_formatted.tsv$", full.names = TRUE)
+# 
+# all_files <- vroom(cellline_filenames, id = "filename")
+# # fwrite(all_files, file.path(out_dir, "umi_count_all_celltypes.csv"))
+# all_files_df <- all_files %>%  mutate(sample = str_extract(basename(filename), ".+(?=_umi_dedup)")) %>%
+#   mutate(condition = str_extract(sample, "^.+(?=-rep\\d)")) %>%
+#   select(-filename)
+# fwrite(all_files_df, file.path(out_dir, "umi_count_all_celltypes_formatted.csv"))
+# 
+# #### This is processing for K700E samples only. ####
+# input_dir <- "/Volumes/broad_dawnccle/processed_data/missplicing_test/K700E/"
+# cellline_filenames <- list.files(path = input_dir, pattern = "fine_grained_idx_formatted.tsv$", full.names = TRUE)
+# 
+# all_files <- vroom(cellline_filenames, id = "filename")
+# # fwrite(all_files, file.path(out_dir, "K700E_umi_count_all_celltypes.csv"))
+# all_files_df <- all_files %>%  mutate(sample = str_extract(basename(filename), ".+(?=_umi_dedup)")) %>%
+#   mutate(condition = str_extract(sample, "^.+(?=-H\\d)")) %>%
+#   dplyr::select(-filename)
+# fwrite(all_files_df, file.path(out_dir, "K700E_umi_count_all_celltypes_formatted.csv"))
+# ##### End processing for K700E samples only. ####
+
+# Read in the data.
+out_dir <- "~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V2_results/"
 # Create outdir.
 dir.create(out_dir, showWarnings = FALSE)
 input_dir <- "/Volumes/broad_dawnccle/processed_data/missplicing_test/"
+all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V2_results/umi_count_all_celltypes_formatted.csv")
+K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V2_results/K700E_umi_count_all_celltypes_formatted.csv")
+alt_ref_file <- read_tsv("~/melange/data/guide_library_cleaned/ref_test_alt_ref_dict.tsv")
+barcodes <- read_csv("/Users/dawnxi/melange/data/guide_library/20230130_twist_library_v3.csv") %>%
+  mutate(barcodeRevcomp = sapply(barcode, reverse_complement))
 
-##### Uncomment to process files again. This takes a while. #####
-cellline_filenames <- list.files(path = input_dir, pattern = "fine_grained_idx_formatted.tsv$", full.names = TRUE)
+replace_exact_match <- function(index_str, alt_ref_df) {
+  alt_to_ref <- setNames(alt_ref_df$ref, alt_ref_df$alt)
+  return(ifelse(index_str %in% names(alt_to_ref), alt_to_ref[index_str], index_str))
+}
 
-all_files <- vroom(cellline_filenames, id = "filename")
-fwrite(all_files, file.path(out_dir, "umi_count_all_celltypes.csv"))
-all_files_df <- all_files %>%  mutate(sample = str_extract(basename(filename), ".+(?=_umi_dedup)")) %>%
-  mutate(condition = str_extract(sample, "^.+(?=-rep\\d)")) %>%
-  select(-filename)
-fwrite(all_files_df, file.path(out_dir, "umi_count_all_celltypes_formatted.csv"))
+# Apply the function to the "index" column of K700E_df
+K700E_df_to_ref <- K700E_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
+fwrite(K700E_df_to_ref, file.path(out_dir, "K700E_umi_count_merged_to_ref_normalized.csv"))
 
-#### This is processing for K700E samples only. ####
-input_dir <- "/Volumes/broad_dawnccle/processed_data/missplicing_test_v3/K700E/"
-cellline_filenames <- list.files(path = input_dir, pattern = "fine_grained_idx_formatted.tsv$", full.names = TRUE)
+# Also apply it to the all_files_df
+all_files_df_to_ref <- all_files_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
+fwrite(all_files_df_to_ref, file.path(out_dir, "umi_count_merged_to_ref_normalized.csv"))
 
-all_files <- vroom(cellline_filenames, id = "filename")
-fwrite(all_files, file.path(out_dir, "K700E_umi_count_all_celltypes.csv"))
-all_files_df <- all_files %>%  mutate(sample = str_extract(basename(filename), ".+(?=_umi_dedup)")) %>%
-  mutate(condition = str_extract(sample, "^.+(?=-H\\d)")) %>%
-  dplyr::select(-filename)
-fwrite(all_files_df, file.path(out_dir, "K7000E_umi_count_all_celltypes_formatted.csv"))
-##### End processing for K700E samples only. ####
+############# Also process the V3 files ##################
+out_dir <- "~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V3_results/"
+all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V3_results/umi_count_all_celltypes_formatted.csv")
+K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V3_results/K700E_umi_count_all_celltypes_formatted.csv")
+alt_ref_file <- read_tsv("~/melange/data/guide_library_cleaned/ref_test_alt_ref_dict.tsv")
+barcodes <- read_csv("/Users/dawnxi/melange/data/guide_library/20230130_twist_library_v3.csv") %>%
+  mutate(barcodeRevcomp = sapply(barcode, reverse_complement))
 
-# Read in the data.
-all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V3umi_count_all_celltypes_formatted.csv")
-K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/K7000E_umi_count_all_celltypes_formatted.csv")
+replace_exact_match <- function(index_str, alt_ref_df) {
+  alt_to_ref <- setNames(alt_ref_df$ref, alt_ref_df$alt)
+  return(ifelse(index_str %in% names(alt_to_ref), alt_to_ref[index_str], index_str))
+}
 
-##### Let's just check out the K700E samples first #####
-unspliced <- K700E_df %>% filter(mode == "UNSPLICED") %>% mutate(offset = as.integer(offset))
-ggplot(unspliced, aes(offset, count)) + geom_point() + facet_wrap(~sample, scales = "free_y")
+# Apply the function to the "index" column of K700E_df
+K700E_df_to_ref <- K700E_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
+fwrite(K700E_df_to_ref, file.path(out_dir, "K700E_umi_count_merged_to_ref_normalized.csv"))
 
-# For every index take the average of the unsplice counts for condition.
-unspliced_avg <- unspliced %>% 
-  group_by(index, condition, offset) %>% 
-  summarise(avg_count = mean(count)) %>% 
-  ungroup() %>% 
-  pivot_wider(names_from = condition, values_from = avg_count, values_fill = 0) 
+# Also apply it to the all_files_df
+all_files_df_to_ref <- all_files_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
+fwrite(all_files_df_to_ref, file.path(out_dir, "umi_count_merged_to_ref_normalized.csv"), nThread = 12)
 
-ggplot(unspliced_avg, aes(K562_WT, K562_K700E)) + geom_point()
+############# Also process the V4 files ##################
+out_dir <- "~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V4_results/"
+all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V4_results/umi_count_all_celltypes_formatted.csv")
+K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V4_results/K700E_umi_count_all_celltypes_formatted.csv")
+alt_ref_file <- read_tsv("~/melange/data/guide_library_cleaned/ref_test_alt_ref_dict.tsv")
+barcodes <- read_csv("/Users/dawnxi/melange/data/guide_library/20230130_twist_library_v3.csv") %>%
+  mutate(barcodeRevcomp = sapply(barcode, reverse_complement))
 
+replace_exact_match <- function(index_str, alt_ref_df) {
+  alt_to_ref <- setNames(alt_ref_df$ref, alt_ref_df$alt)
+  return(ifelse(index_str %in% names(alt_to_ref), alt_to_ref[index_str], index_str))
+}
 
+# Apply the function to the "index" column of K700E_df
+K700E_df_to_ref <- K700E_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
+fwrite(K700E_df_to_ref, file.path(out_dir, "K700E_umi_count_merged_to_ref_normalized.csv"))
 
-# Get included reads only.
-included_reads <- K700E_df %>% filter(mode == "INCLUDED")
+# Also apply it to the all_files_df
+all_files_df_to_ref <- all_files_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
+fwrite(all_files_df_to_ref, file.path(out_dir, "umi_count_merged_to_ref_normalized.csv"), nThread = 12)
 
-# For every offset calculate the fraction of included reads.
-included_reads <- K700E_df %>% filter(mode == "INCLUDED") %>% 
-  group_by(sample, index) %>% 
-  mutate(total_sum = sum(count)) %>% 
-  filter(total_sum > 30) %>% 
-  ungroup() %>% 
-  mutate(fraction = count / total_sum) %>% 
-  # Average by condition.
-  group_by(condition, index, offset) %>%
-  summarise(fraction = mean(fraction)) 
+############# Also process the V5 files ##################
+out_dir <- "~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V5_results/"
+all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V5_results/umi_count_all_celltypes_formatted.csv")
+K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V5_results/K700E_umi_count_all_celltypes_formatted.csv")
+alt_ref_file <- read_tsv("~/melange/data/guide_library_cleaned/ref_test_alt_ref_dict.tsv")
+barcodes <- read_csv("/Users/dawnxi/melange/data/guide_library/20230130_twist_library_v3.csv") %>%
+  mutate(barcodeRevcomp = sapply(barcode, reverse_complement))
 
-# Pivot wider by count. 
-included_reads_wide <- included_reads %>% 
-  pivot_wider(names_from = condition, values_from = fraction, values_fill = NA) %>% 
-  mutate(diff = K562_K700E - K562_WT)
+replace_exact_match <- function(index_str, alt_ref_df) {
+  alt_to_ref <- setNames(alt_ref_df$ref, alt_ref_df$alt)
+  return(ifelse(index_str %in% names(alt_to_ref), alt_to_ref[index_str], index_str))
+}
 
-high_in_K700E <- included_reads_wide %>% 
-  filter(offset == "0:0:0") %>% 
-  filter(diff < -0.3 & K562_WT > 0.9) %>% 
-  arrange(diff)
+# Apply the function to the "index" column of K700E_df
+K700E_df_to_ref <- K700E_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
 
-# Get the ones that are high in K700E and check the entire counts.
-shortlisted_elements <- included_reads_wide %>% 
-  filter(index %in% high_in_K700E$index) %>%
-  pivot_longer(cols = c(K562_WT, K562_K700E), names_to = "condition", values_to = "fraction") 
+fwrite(K700E_df_to_ref, file.path(out_dir, "K700E_umi_count_merged_to_ref_normalized.csv"))
 
-ggplot(shortlisted_elements, aes(offset, fraction, fill = condition)) + 
-  geom_bar(stat = "identity", position = "dodge") + 
-  facet_wrap(~index, scales = "free_x") + 
-  ggtitle("High in K700E, low in WT") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+# Also apply it to the all_files_df
+all_files_df_to_ref <- all_files_df %>%
+  mutate(index = sapply(index, replace_exact_match, alt_ref_file)) %>%
+  group_by(sample, condition, index, mode, offset) %>% 
+  summarise(count = sum(count)) %>% 
+  ungroup()
 
-test <-shortlisted_elements %>% group_by(index, condition) %>% summarise(total = sum(fraction, na.rm = T))
+fwrite(all_files_df_to_ref, file.path(out_dir, "umi_count_merged_to_ref_normalized.csv"), nThread = 12)
 
-
-
-# K700E old and new
+  
