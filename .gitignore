@@ -3,6 +3,7 @@ data/*.csv
 *.h5
 *.torchfile
 melange_pytorch/wandb/
+*.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
