@@ -24,10 +24,10 @@
 #$ -l h_rt=24:00:00
 
 # I don't like the top level of my homedir filling up.
-#$ -o $HOME/ccle/outputs
+#$ -o $HOME/outputs/
 
 # Job name
-#$ -N PSI_RMATS_STAT_FINAL
+#$ -N RMATS_STAT_FINAL
 
 ######################
 ### Dotkit section ###
@@ -46,11 +46,11 @@ reuse R-4.1
 # celltype2=HCC38
 
 echo $celltype1
-output_dir=/broad/dawnccle/processed_data/latest/rmats_stat_out_indiv_es/$celltype1
-output_file=/broad/dawnccle/processed_data/latest/rmats_stat_out_indiv_es/$celltype1/$celltype1\_formatted_df.tsv
+output_dir=/broad/dawnccle/processed_data/latest/rmats_stat_out_indiv_5ss/$celltype1
+output_file=/broad/dawnccle/processed_data/latest/rmats_stat_out_indiv_5ss/$celltype1/$celltype1\_formatted_df.tsv
 
 mkdir -p $output_dir
-Rscript /broad/dawnccle/melange/process_fastq/missplicing/pairadise_PSI_celltype_one_to_all.R $celltype1 $output_file
+Rscript /broad/dawnccle/melange/process_fastq/missplicing/pairadise_indiv_reps_one_to_all.R $celltype1 $output_file
 
 source activate rmats2.7
 

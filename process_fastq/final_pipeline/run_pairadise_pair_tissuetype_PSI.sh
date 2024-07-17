@@ -24,10 +24,10 @@
 #$ -l h_rt=24:00:00
 
 # I don't like the top level of my homedir filling up.
-#$ -o $HOME/ccle/outputs
+#$ -o $HOME/ccle/outputs/
 
 # Job name
-#$ -N PSI_RMATS_STAT_FINAL
+#$ -N TISSUE_RMATS_STAT_PSI
 
 ######################
 ### Dotkit section ###
@@ -44,15 +44,17 @@ reuse R-4.1
 
 # celltype1=KMRC1
 # celltype2=HCC38
+# celltype1=$1
+# celltype2=$2
 
-echo $celltype1
-output_dir=/broad/dawnccle/processed_data/latest/rmats_stat_out_indiv_es/$celltype1
-output_file=/broad/dawnccle/processed_data/latest/rmats_stat_out_indiv_es/$celltype1/$celltype1\_formatted_df.tsv
+echo $celltype1 $celltype2
+output_dir=/broad/dawnccle/processed_data/latest/rmats_tissue_type_PSI/$celltype1\_$celltype2
+output_file=/broad/dawnccle/processed_data/latest/rmats_tissue_type_PSI/$celltype1\_$celltype2/$celltype1\_$celltype2\_formatted_df_lineage.tsv
 
 mkdir -p $output_dir
-Rscript /broad/dawnccle/melange/process_fastq/missplicing/pairadise_PSI_celltype_one_to_all.R $celltype1 $output_file
+Rscript /broad/dawnccle/melange/process_fastq/final_pipeline/pairadise_tissuetype_PSI.R $celltype1 $celltype2 $output_file
 
 source activate rmats2.7
 
-python /broad/dawnccle/rMATS-STAT/rMATS_unpaired.py $output_file $output_dir 8 0.1
-python /broad/dawnccle/rMATS-STAT/FDR.py $output_dir/rMATS_Result_P.txt $output_dir/$celltype1\_rMATS_Result_P.FDR.txt
+python /broad/dawnccle/rMATS-STAT/rMATS_unpaired.py $output_file $output_dir 8 0.2
+python /broad/dawnccle/rMATS-STAT/FDR.py $output_dir/rMATS_Result_P.txt $output_dir/$celltype1\_$celltype2\_rMATS_Result_lineage_P.FDR.txt
