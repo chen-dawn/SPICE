@@ -2,10 +2,10 @@
 
 **The most current latest version for all processed files is always saved in the `/broad/dawnccle/processed_data/latest` folder.**
 
-## Use UMI_tools to extract the element barcode from R2
+## Use UMI-tools to extract the element barcode from R2
 Our sequencing is such that R1 contains the information for the reporter sequence and splice junctions, and R2 contains the element barcode. First I run umi tools using the barcode whitelist like so to extract the barcode from R2. This only allows for perfect string matching with no error tolerance, but the Illumina sequencing error rate is low enough such that it doesn't lead to a major decrease in mapping rates.
 
-This is the file `/Volumes/broad_dawnccle/melange/process_fastq/V1_original_pipeline/run_umi_tools_demux.sh`. 
+The file to run is `/Volumes/broad_dawnccle/melange/process_fastq/V1_original_pipeline/run_umi_tools_demux.sh`. 
 
 The driver function within the file is:
 ```
@@ -97,6 +97,12 @@ Here are the paths of where the latest files are stored:
 ## Merge all the files together
 Run the script `/broad/dawnccle/melange/process_fastq/final_pipeline/01_merge_counts_all_samples_workstation.R`. This merges all the individual files and saves them to the directory.
 
+The main files that should be used are:
+```
+/broad/dawnccle/processed_data/latest/umi_count_merged_to_ref_normalized.csv
+/broad/dawnccle/processed_data/latest/K700E_umi_count_merged_to_ref_normalized.csv
+```
+
 This also makes the files that have some minor filtering which are:
 ```
 # This one is for PSI calculations, where only the reads that are perfectly skipped or included (as according to the reference file) are kept.
@@ -105,7 +111,7 @@ This also makes the files that have some minor filtering which are:
 /broad/dawnccle/processed_data/latest/all_sample_reps_5ss.csv
 ```
 
-# Statistics of differential splicing using rMATS-STAT pipeline.
+# Statistics of differential splicing using the rMATS-STAT pipeline
 
 Here we use the [rMATS-STAT](https://github.com/Xinglab/rMATS-STAT) pipeline to calculate the differential splicing statistics. I made some changes to this script to remove most of the print statements. Some of the files are named with "Pairiadise" but that's incorrect, just ignore - we are really running the standalone rMATS-STAT package and I just didn't change the name of the scripts. 
 
@@ -171,7 +177,8 @@ done
 ```
 
 ## Combine the files for all the individual comparisons
-# Run the following for each of the comparison folders. 
+
+Run the following for each of the comparison folders:
 ```
 output_file="rmats_one_vs_all_combined_output_PSI.tsv"
 # output_file="rmats_one_vs_all_combined_output_5ss.tsv"
