@@ -60,7 +60,7 @@ fwrite(all_files_df_to_ref, file.path(out_dir, "umi_count_merged_to_ref_normaliz
 ####### Make the all_samples file that's cleaned. ########
 all_files_df <- fread(file.path(out_dir, "umi_count_merged_to_ref_normalized.csv"))
 # Look at sample replicates for 5ss
-all_sample_reps_5ss <- all_files_df %>%
+all_sample_reps_3ss <- all_files_df %>%
   filter(mode == "INCLUDED") %>%
   filter(!condition %in% c("OSRC2", "Kelly_old", "SKNAS_Nuc", "A172")) %>%
   separate(offset, c("offset_mid_start", "offset_mid_end", "offset_down_start"), sep = ":", convert = T, remove = F) %>%
@@ -69,7 +69,7 @@ all_sample_reps_5ss <- all_files_df %>%
   mutate(total_sum = sum(count)) %>%
   ungroup() %>%
   mutate(other_splice = total_sum - count)
-fwrite(all_sample_reps_5ss, file = file.path(out_dir, "all_sample_reps_5ss.csv"))
+fwrite(all_sample_reps_5ss, file = file.path(out_dir, "all_sample_reps_3ss.csv"))
 
 # Look at sample replicates for exon skipping PSI
 all_sample_reps_PSI <- all_files_df %>%

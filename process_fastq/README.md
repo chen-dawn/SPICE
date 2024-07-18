@@ -108,18 +108,18 @@ This also makes the files that have some minor filtering which are:
 # This one is for PSI calculations, where only the reads that are perfectly skipped or included (as according to the reference file) are kept.
 /broad/dawnccle/processed_data/latest/all_sample_reps_PSI.csv
 # This one is for alternative 5'ss calculations.
-/broad/dawnccle/processed_data/latest/all_sample_reps_5ss.csv
+/broad/dawnccle/processed_data/latest/all_sample_reps_3ss.csv
 ```
 
 # Statistics of differential splicing using the rMATS-STAT pipeline
 
 Here we use the [rMATS-STAT](https://github.com/Xinglab/rMATS-STAT) pipeline to calculate the differential splicing statistics. I made some changes to this script to remove most of the print statements. Some of the files are named with "Pairiadise" but that's incorrect, just ignore - we are really running the standalone rMATS-STAT package and I just didn't change the name of the scripts. 
 
-## Comparing one cell type against all cell types
+## Comparing one cell type against all other cell types
 The scripts we are running are:
 ```
 /Volumes/broad_dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_PSI_one_to_all.sh
-/Volumes/broad_dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_5ss_one_to_all.sh
+/Volumes/broad_dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_3ss_one_to_all.sh
 ```
 
 I am running it as follows:
@@ -130,9 +130,9 @@ readarray -t celltypes </broad/dawnccle/melange/process_fastq/missplicing/unique
 # Loop over each pair of cell types
 for ((i = 0; i < ${#celltypes[@]}; i++)); do
     celltype1=${celltypes[i]}
-    # Write the qsub command to the output file
+    echo "Running for cell type: $celltype1"
     qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_PSI_one_to_all.sh
-    qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_5ss_one_to_all.sh
+    qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_3ss_one_to_all.sh
 done
 ```
 
@@ -171,7 +171,7 @@ for ((i = 0; i < ${#celltypes[@]}; i++)); do
 
         echo "Running for pair: $celltype1 and $celltype2"
         qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_tissuetype_PSI.sh
-        qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_tissuetype_5ss.sh
+        qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_tissuetype_3ss.sh
     done
 done
 ```
@@ -181,9 +181,9 @@ done
 Run the following for each of the comparison folders:
 ```
 output_file="rmats_one_vs_all_combined_output_PSI.tsv"
-# output_file="rmats_one_vs_all_combined_output_5ss.tsv"
+# output_file="rmats_one_vs_all_combined_output_3ss.tsv"
 # output_file="rmats_tissue_type_combined_output_PSI.tsv"
-# output_file="rmats_tissue_type_combined_output_5ss.tsv"
+# output_file="rmats_tissue_type_combined_output_3ss.tsv"
 first_file=true
 for folder in */; do
     folder_name="${folder%/}"
