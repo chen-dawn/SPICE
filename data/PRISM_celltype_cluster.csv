@@ -1,0 +1,1558 @@
+﻿display_name,lineage,subtype,cluster
+NUGC4,gastric,adenocarcinoma,0
+SNUC5,colorectal,adenocarcinoma,0
+SNU869,bile_duct,"cholangiocarcinoma, extrahepatic",32
+PATU8988S,pancreas,"ductal adenocarcinoma, exocrine",0
+HCC1806,breast,basal A,30
+SW837,colorectal,adenocarcinoma,0
+AGS,gastric,adenocarcinoma,0
+OE19,esophagus,squamous cell carcinoma,0
+SNU1196,bile_duct,"cholangiocarcinoma, extrahepatic",0
+SNU601,gastric,"adenocarcinoma, signet ring cell",0
+SW1417,colorectal,adenocarcinoma,0
+HUG1N,gastric,"adenocarcinoma, tubular",0
+CL11,colorectal,adenocarcinoma,0
+COLO201,colorectal,adenocarcinoma,0
+HPAC,pancreas,"ductal adenocarcinoma, exocrine",0
+SNU1033,colorectal,adenocarcinoma,0
+SNU620,gastric,adenocarcinoma,0
+COLO678,colorectal,adenocarcinoma,0
+CAPAN1,pancreas,"ductal adenocarcinoma, exocrine",0
+NCIN87,gastric,"adenocarcinoma, tubular",0
+KE39,gastric,adenocarcinoma,0
+KATOIII,gastric,"adenocarcinoma, signet ring cell",0
+NCIH1435,lung,"non-small cell lung cancer, adenocarcinoma",0
+SNU719,gastric,"adenocarcinoma, tubular",0
+TGBC11TKB,gastric,adenocarcinoma,0
+SW626,colorectal,NA,0
+KMCH1,bile_duct,cholangiocarcinoma,0
+TKKK,bile_duct,"cholangiocarcinoma, intrahepatic",0
+HSKTC,ovary,krukenberg tumor,0
+MHHCALL2,blood,"acute lymphoblastic leukemia, b-cell",1
+MHHCALL3,blood,"acute lymphoblastic leukemia, b-cell",1
+SUPB15,blood,"acute lymphoblastic leukemia, b-cell",1
+697,blood,"acute lymphoblastic leukemia, b-cell",1
+OCILY19,lymphocyte,diffuse large b-cell lymphoma,1
+NALM19,blood,"acute lymphoblastic leukemia, b-cell",1
+MHHCALL4,blood,"acute lymphoblastic leukemia, b-cell",1
+BV173,blood,"chronic myelogenous leukemia, blast crisis",1
+NALM1,blood,"chronic myelogenous leukemia, blast crisis",1
+MUTZ5,blood,"acute lymphoblastic leukemia, b-cell",1
+KASUMI2,blood,"acute lymphoblastic leukemia, b-cell",1
+SEM,blood,"acute lymphoblastic leukemia, b-cell",1
+RS411,blood,"acute lymphoblastic leukemia, b-cell",1
+RCHACV,blood,"acute lymphoblastic leukemia, b-cell",1
+NALM6,blood,"acute lymphoblastic leukemia, b-cell",1
+KOPN8,blood,"acute lymphoblastic leukemia, b-cell",1
+SEMK2,blood,"acute lymphoblastic leukemia, b-cell",1
+HB1119,blood,"acute lymphoblastic leukemia, b-cell",1
+NALM16,blood,acute lymphoblastic leukemia,1
+P30OHK,blood,acute lymphoblastic leukemia,1
+HOS,bone,osteosarcoma,2
+HOS,bone,osteosarcoma,2
+HOS,bone,osteosarcoma,2
+HOS,bone,osteosarcoma,2
+OC316,ovary,"adenocarcinoma, serous",2
+8MGBA,central_nervous_system,astrocytoma,2
+ES2,ovary,"adenocarcinoma, clear cell",2
+OVCAR8,ovary,"adenocarcinoma, high grade serous",2
+J82,urinary_tract,transitional cell carcinoma,2
+T98G,central_nervous_system,glioblastoma,2
+SKHEP1,liver,hepatocellular carcinoma,2
+HOS,bone,osteosarcoma,2
+HOS,bone,osteosarcoma,2
+HOS,bone,osteosarcoma,2
+HOS,bone,osteosarcoma,2
+LMSU,gastric,adenocarcinoma,2
+LXF289,lung,"non-small cell lung cancer, adenocarcinoma",2
+HMC18,breast,basal B,49
+LCLC103H,lung,"non-small cell lung cancer, large cell carcinoma",2
+JIMT1,breast,basal A,55
+MG63,bone,osteosarcoma,2
+MG63,bone,osteosarcoma,2
+MG63,bone,osteosarcoma,2
+MG63,bone,osteosarcoma,2
+SF539,central_nervous_system,glioma,2
+YKG1,central_nervous_system,glioblastoma,2
+U251MG,central_nervous_system,astrocytoma,2
+GI1,central_nervous_system,glioblastoma,2
+MSTO211H,lung,mesothelioma,2
+U2OS,bone,osteosarcoma,2
+U2OS,bone,osteosarcoma,2
+U2OS,bone,osteosarcoma,2
+U2OS,bone,osteosarcoma,2
+HEYA8,ovary,"adenocarcinoma, low grade serous",2
+ONS76,central_nervous_system,medulloblastoma,2
+ONS76,central_nervous_system,medulloblastoma,2
+ONS76,central_nervous_system,medulloblastoma,2
+ONS76,central_nervous_system,medulloblastoma,2
+NCIH838,lung,"non-small cell lung cancer, adenocarcinoma",2
+JMSU1,urinary_tract,adrenocortical carcinoma,2
+U2OS,bone,osteosarcoma,2
+U2OS,bone,osteosarcoma,2
+U2OS,bone,osteosarcoma,2
+U2OS,bone,osteosarcoma,2
+PATU8988T,pancreas,"ductal adenocarcinoma, exocrine",2
+T24,urinary_tract,adrenocortical carcinoma,2
+NCIH1975,lung,"non-small cell lung cancer, adenocarcinoma",2
+EFO27,ovary,"adenocarcinoma, endometrioid",2
+SF126,central_nervous_system,astrocytoma,2
+LU99,lung,"non-small cell lung cancer, large cell carcinoma",2
+H4,central_nervous_system,glioma,2
+A172,central_nervous_system,glioblastoma,2
+DAOY,central_nervous_system,medulloblastoma,2
+DAOY,central_nervous_system,medulloblastoma,2
+SNU423,liver,hepatocellular carcinoma,2
+DBTRG05MG,central_nervous_system,glioblastoma,2
+TT2609C02,thyroid,"carcinoma, follicular",2
+SJSA1,bone,osteosarcoma,2
+SJSA1,bone,osteosarcoma,2
+SJSA1,bone,osteosarcoma,2
+SJSA1,bone,osteosarcoma,2
+JHOM1,ovary,"adenocarcinoma, mucinous",2
+SF295,central_nervous_system,glioblastoma,2
+KNS60,central_nervous_system,glioblastoma,2
+CAL120,breast,basal B,2
+TM31,central_nervous_system,glioma,2
+MG63,bone,osteosarcoma,2
+MG63,bone,osteosarcoma,2
+MG63,bone,osteosarcoma,2
+MG63,bone,osteosarcoma,2
+LN229,central_nervous_system,glioblastoma,38
+JHH6,liver,hepatocellular carcinoma,2
+GAMG,central_nervous_system,glioblastoma,2
+HT29,colorectal,adenocarcinoma,0
+ONS76,central_nervous_system,medulloblastoma,2
+ONS76,central_nervous_system,medulloblastoma,2
+ONS76,central_nervous_system,medulloblastoma,2
+ONS76,central_nervous_system,medulloblastoma,2
+HCC1359,lung,"non-small cell lung cancer, large cell carcinoma",2
+CCK81,colorectal,adenocarcinoma,34
+FTC238,thyroid,"carcinoma, follicular",2
+LOXIMVI,skin,undifferentiated,2
+HCT116,colorectal,adenocarcinoma,49
+NCIH650,lung,"non-small cell lung cancer, adenocarcinoma",2
+PK45H,pancreas,"ductal adenocarcinoma, exocrine",2
+GCT,soft_tissue,pleomorphic sarcoma,2
+DAOY,central_nervous_system,medulloblastoma,2
+DAOY,central_nervous_system,medulloblastoma,2
+GB1,central_nervous_system,glioblastoma,2
+SW620,colorectal,adenocarcinoma,65
+NCIH2052,lung,mesothelioma,2
+42MGBA,central_nervous_system,astrocytoma,2
+NCIH157DM,lung,small cell lung cancer,2
+LN18,central_nervous_system,glioblastoma,2
+639V,urinary_tract,transitional cell carcinoma,2
+BECKER,central_nervous_system,glioma,2
+NCIH1792,lung,"non-small cell lung cancer, adenocarcinoma",2
+FTC133,thyroid,"carcinoma, anaplastic",2
+SW1990,pancreas,"ductal adenocarcinoma, exocrine",2
+PANC1,pancreas,"ductal adenocarcinoma, exocrine",2
+SNU685,uterus,malignant mixed mullerian tumor,2
+SJSA1,bone,osteosarcoma,2
+SJSA1,bone,osteosarcoma,2
+SJSA1,bone,osteosarcoma,2
+SJSA1,bone,osteosarcoma,2
+MPP89,lung,mesothelioma,2
+YH13,central_nervous_system,glioblastoma,2
+SW1271,lung,small cell lung cancer,2
+KNS81,central_nervous_system,glioblastoma,2
+LOUNH91,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+KALS1,central_nervous_system,glioblastoma,2
+MDAMB231,breast,basal B,2
+TCCSUP,urinary_tract,transitional cell carcinoma,2
+SNB75,central_nervous_system,glioma,2
+ACCMESO1,lung,mesothelioma,2
+8305C,thyroid,adrenocortical carcinoma,2
+BT549,breast,basal B,2
+HS729,fibroblast,soft tissue,2
+HS729,fibroblast,soft tissue,2
+ESS1,uterus,endometrial stromal sarcoma,2
+SNU46,upper_aerodigestive,"squamous cell carcinoma, laryngeal",2
+SKMES1,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+MKN1,gastric,adenocarcinoma,2
+HCC1438,lung,"non-small cell lung cancer, large cell carcinoma",2
+BCPAP,thyroid,"carcinoma, papillary",2
+CALU1,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+TE10,esophagus,squamous cell carcinoma,4
+IALM,lung,"non-small cell lung cancer, large cell carcinoma",2
+GMS10,central_nervous_system,glioblastoma,2
+MDAMB436,breast,basal B,2
+GOS3,central_nervous_system,glioblastoma,2
+SNU1105,central_nervous_system,glioblastoma,2
+CCFSTTG1,central_nervous_system,astrocytoma,2
+TE6,esophagus,squamous cell carcinoma,9
+HS729,fibroblast,soft tissue,2
+HS729,fibroblast,soft tissue,2
+TE11,esophagus,squamous cell carcinoma,14
+KYSE150,esophagus,squamous cell carcinoma,14
+CH157MN,central_nervous_system,meningioma,2
+U343,central_nervous_system,glioblastoma,2
+U118MG,central_nervous_system,astrocytoma,2
+HEKTE,kidney,NA,2
+ML1,thyroid,"carcinoma, follicular",2
+HS683,central_nervous_system,oligodendroglioma,2
+U87MG,central_nervous_system,astrocytoma,2
+G292CLONEA141B1,bone,osteosarcoma,2
+HS172T,fibroblast,bladder,2
+KG1C,central_nervous_system,oligodendroglioma,2
+SLR20,kidney,renal cell carcinoma,2
+LN319,central_nervous_system,astrocytoma,2
+SKLMS1,soft_tissue,leiomyosarcoma,2
+M059K,central_nervous_system,glioblastoma,2
+SW579,thyroid,squamous cell carcinoma,2
+HDMYZ,lymphocyte,"b-cell, hodgkins",2
+NMCG1,central_nervous_system,glioblastoma,2
+U178,central_nervous_system,glioblastoma,2
+LN382,central_nervous_system,glioblastoma,2
+DKMG,central_nervous_system,glioblastoma,2
+AM38,central_nervous_system,glioblastoma,2
+A1207,central_nervous_system,glioblastoma,2
+SLR25,kidney,renal cell carcinoma,2
+HCC2108,lung,"non-small cell lung cancer, adenocarcinoma",2
+SNU886,liver,hepatocellular carcinoma,2
+LN215,central_nervous_system,glioblastoma,2
+HCC461,lung,"non-small cell lung cancer, adenocarcinoma",2
+RPMI7951,skin,undifferentiated,2
+SNU626,central_nervous_system,glioblastoma,2
+HLF,liver,hepatocellular carcinoma,2
+SAOS2,bone,osteosarcoma,2
+SW1353,bone,chondrosarcoma,2
+SNU475,liver,hepatocellular carcinoma,2
+TYKNU,ovary,"adenocarcinoma, high grade serous",2
+NCIH1915,lung,"non-small cell lung cancer, large cell carcinoma",2
+SW1088,central_nervous_system,astrocytoma,2
+RERFLCSQ1,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+LN428,central_nervous_system,glioblastoma,2
+CAS1,central_nervous_system,glioblastoma,2
+SNU387,liver,hepatocellular carcinoma,2
+OELE,ovary,NA,2
+CAL78,bone,chondrosarcoma,2
+SNU410,pancreas,"ductal adenocarcinoma, exocrine",2
+59M,ovary,"adenocarcinoma, high grade serous",2
+UMUC3,urinary_tract,transitional cell carcinoma,2
+SNU489,central_nervous_system,glioblastoma,2
+IGR39,skin,undifferentiated,2
+HCC364,lung,"non-small cell lung cancer, adenocarcinoma",2
+JHH2,liver,hepatocellular carcinoma,2
+LN235,central_nervous_system,astrocytoma,2
+HS746T,gastric,adenocarcinoma,2
+MDAMB157,breast,basal B,2
+SNU201,central_nervous_system,glioblastoma,2
+IOMMLEE,central_nervous_system,meningioma,2
+KS1,central_nervous_system,astrocytoma,2
+LN340,central_nervous_system,glioblastoma,2
+SF268,central_nervous_system,glioma,2
+LN443,central_nervous_system,glioblastoma,2
+OV7,ovary,"adenocarcinoma, mixed",2
+RH18,soft_tissue,rhabdomyosarcoma,2
+HCC1395,breast,basal B,2
+NCIH2882,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+HCC2279,lung,"non-small cell lung cancer, adenocarcinoma",2
+NCIH196,lung,small cell lung cancer,2
+LNZ308,central_nervous_system,glioblastoma,2
+SNU738,central_nervous_system,oligodendroglioma,2
+HUH28,bile_duct,"cholangiocarcinoma, intrahepatic",2
+HOP92,lung,"non-small cell lung cancer, unspecified",2
+HCC366,lung,"non-small cell lung cancer, adenosquamous carcinoma",2
+HOP62,lung,"non-small cell lung cancer, adenocarcinoma",2
+SW1783,central_nervous_system,astrocytoma,2
+NCIH2286,lung,small cell lung cancer,2
+MDST8,colorectal,adenocarcinoma,2
+HCC2450,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+143B,bone,osteosarcoma,2
+COV504,ovary,"adenocarcinoma, high grade serous",2
+CW9019,soft_tissue,alveolar rhabdomyosarcoma,2
+HELA,cervix,adrenocortical carcinoma,2
+UW228,central_nervous_system,medulloblastoma,2
+127399,soft_tissue,synovial sarcoma,2
+SW982,soft_tissue,synovial sarcoma,2
+HA1E,kidney,NA,2
+ANGMCSS,central_nervous_system,glioblastoma,2
+GIMEN,peripheral_nervous_system,NA,2
+MB1,thyroid,"carcinoma, anaplastic",2
+RO82W1,thyroid,carcinoma,2
+SUM1315MO2,breast,ductal carcinoma,2
+SUM159PT,breast,basal B,2
+SW756,cervix,squamous cell carcinoma,2
+UMUC13,urinary_tract,transitional cell carcinoma,2
+UMUC11,urinary_tract,transitional cell carcinoma,2
+ASH3,thyroid,carcinoma,2
+BOKU,cervix,squamous cell carcinoma,2
+IHH4,thyroid,carcinoma,2
+KKU100,bile_duct,"cholangiocarcinoma, extrahepatic",2
+KMLS1,soft_tissue,NA,2
+MCC13,skin,merkel cell carcinoma,2
+MCC142,skin,merkel cell carcinoma,2
+MCC26,skin,merkel cell carcinoma,2
+MERO82,lung,mesothelioma,2
+MM127,skin,"melanoma, amelanotic",2
+NO10,central_nervous_system,glioma,2
+NOZ,bile_duct,adenocarcinoma,2
+NP2,central_nervous_system,glioma,2
+NP3,central_nervous_system,glioma,2
+NP5,central_nervous_system,glioblastoma,2
+NP8,central_nervous_system,glioblastoma,2
+ONDA7,central_nervous_system,glioma,2
+ONDA8,central_nervous_system,glioma,2
+ONDA9,central_nervous_system,glioblastoma,2
+SKN,uterus,endometrial squamous,2
+UPCISCC072,upper_aerodigestive,squamous cell carcinoma,2
+HS860T,bone,osteosarcoma,2
+CAL72,bone,osteosarcoma,2
+TTC442,soft_tissue,embryonal rhabdomyosarcoma,2
+LPS27,soft_tissue,NA,2
+93T449,soft_tissue,well-differentiated lyposarcoma,2
+94T778,soft_tissue,well-differentiated lyposarcoma,2
+95T1000,soft_tissue,well-differentiated lyposarcoma,2
+LPS141,soft_tissue,dedifferentiated liposarcoma,2
+LPS853,soft_tissue,liposarcoma,2
+LPS510,soft_tissue,well-differentiated/de-differentiated lyposarcoma,2
+LPS067,soft_tissue,liposarcoma,2
+OS252,bone,osteosarcoma,2
+ICC3,bile_duct,cholangiocarcinoma,2
+G415,bile_duct,adenocarcinoma,2
+MMNK1,bile_duct,NA,2
+SSP25,bile_duct,"cholangiocarcinoma, intrahepatic",2
+TGBC52TKB,bile_duct,cholangiocarcinoma,2
+ONE58,lung,mesothelioma,2
+A375SKINCJ2,skin,NA,2
+MEL285,eye,uveal melanoma,2
+MEL290,eye,uveal melanoma,2
+HOTHC,thyroid,carcinoma,2
+HTMMT,uterus,malignant mixed mullerian tumor,2
+HSPSS,central_nervous_system,malignant peripheral nerve sheath tumor,2
+HT144SKINFV3,skin,NA,2
+RVH421SKINFV1,skin,NA,2
+RPE1SS48,engineered,NA,2
+RPE1SS77,engineered,NA,2
+RPE1SS6,engineered,NA,2
+RPE1SS119,engineered,NA,2
+RPE1SS111,engineered,NA,2
+RPE1SS51,engineered,NA,2
+WM3211,skin,NA,2
+MFE280,uterus,endometrial adenocarcinoma,3
+COV362,ovary,"adenocarcinoma, high grade serous",3
+ONCODG1,ovary,"adenocarcinoma, high grade serous",3
+KURAMOCHI,ovary,"adenocarcinoma, high grade serous",3
+JHOS2,ovary,"adenocarcinoma, high grade serous",3
+KYSE510,esophagus,squamous cell carcinoma,14
+NIHOVCAR3,ovary,"adenocarcinoma, high grade serous",3
+CAOV4,ovary,"adenocarcinoma, high grade serous",3
+KLE,uterus,endometrial adenocarcinoma,3
+KYSE270,esophagus,squamous cell carcinoma,30
+OVKATE,ovary,"adenocarcinoma, high grade serous",3
+SNU8,ovary,"adenocarcinoma, high grade serous",3
+OVCAR4,ovary,"adenocarcinoma, high grade serous",3
+SNU119,ovary,"cystadenocarcinoma, high grade serous",3
+COV413A,ovary,adrenocortical carcinoma,3
+UWB1289,ovary,adenocarcinoma,3
+PEO1,ovary,adenocarcinoma,3
+PEO4,ovary,adenocarcinoma,3
+YD10B,upper_aerodigestive,"squamous cell carcinoma, tongue",4
+OE21,esophagus,squamous cell carcinoma,4
+KYSE520,esophagus,squamous cell carcinoma,4
+BC3C,urinary_tract,transitional cell carcinoma,4
+MKN45,gastric,adenocarcinoma,0
+CAL27,upper_aerodigestive,squamous cell carcinoma,4
+VMCUB1,urinary_tract,transitional cell carcinoma,4
+SCABER,urinary_tract,squamous cell carcinoma,4
+HSC2,upper_aerodigestive,squamous cell carcinoma,4
+CJM,skin,undifferentiated,4
+SNU1076,upper_aerodigestive,"squamous cell carcinoma, laryngeal",4
+PECAPJ41CLONED2,upper_aerodigestive,"squamous cell carcinoma, oral",4
+YD15,upper_aerodigestive,"squamous cell carcinoma, tongue",4
+PECAPJ15,upper_aerodigestive,"squamous cell carcinoma, oral",4
+SH10TC,gastric,"adenocarcinoma, mucinous",2
+BICR6,upper_aerodigestive,"squamous cell carcinoma, oral",4
+PECAPJ49,upper_aerodigestive,"squamous cell carcinoma, oral",4
+SCC25,upper_aerodigestive,squamous cell carcinoma,4
+BFTC909,kidney,transitional cell carcinoma,2
+DETROIT562,upper_aerodigestive,"squamous cell carcinoma, pharynx",4
+BICR16,upper_aerodigestive,"squamous cell carcinoma, oral",4
+COLO680N,esophagus,squamous cell carcinoma,4
+PANC0213,pancreas,"ductal adenocarcinoma, exocrine",4
+SALE,lung,NA,4
+PRECLH,prostate,NA,4
+SCC9,upper_aerodigestive,squamous cell carcinoma,4
+BICR31,upper_aerodigestive,"squamous cell carcinoma, oral",4
+SCC4,upper_aerodigestive,"squamous cell carcinoma, oral",4
+SCC15,upper_aerodigestive,squamous cell carcinoma,4
+BHY,upper_aerodigestive,"squamous cell carcinoma, oral",4
+EPLC272H,lung,"non-small cell lung cancer, squamous cell carcinoma",4
+G401,kidney,malignant rhabdoid tumor,49
+HMEL,breast,NA,4
+SNU899,upper_aerodigestive,"squamous cell carcinoma, laryngeal",4
+A253,upper_aerodigestive,"squamous cell carcinoma, salivary gland",4
+UPCISCC154,upper_aerodigestive,squamous cell carcinoma,4
+A431,skin,squamous cell carcinoma,4
+BICR78,upper_aerodigestive,"squamous cell carcinoma, oral",4
+C4I,cervix,carcinoma,4
+CASKI,cervix,squamous cell carcinoma,4
+H103,upper_aerodigestive,"squamous cell carcinoma, buccal mucosa",4
+H157,upper_aerodigestive,squamous cell carcinoma,4
+SUM229PE,breast,basal,4
+UMUC6,urinary_tract,transitional cell carcinoma,4
+A388,skin,squamous cell carcinoma,4
+BPH1,prostate,hyperplasia,4
+H357,upper_aerodigestive,"squamous cell carcinoma, tongue",4
+H413,upper_aerodigestive,"squamous cell carcinoma, buccal mucosa",4
+HCS2,cervix,squamous cell carcinoma,4
+HKA1,skin,squamous cell carcinoma,4
+HSC1,skin,squamous cell carcinoma,4
+HT3,cervix,carcinoma,4
+KKU213,bile_duct,"cholangiocarcinoma, intrahepatic",4
+KON,upper_aerodigestive,squamous cell carcinoma,4
+KOSC2,upper_aerodigestive,"squamous cell carcinoma, oral",4
+OSC19,upper_aerodigestive,squamous cell carcinoma,4
+OSC20,upper_aerodigestive,squamous cell carcinoma,4
+P4E6,prostate,adenocarcinoma,4
+SAT,upper_aerodigestive,squamous cell carcinoma,4
+SHMAC5,prostate,adenocarcinoma,4
+UPCISCC026,upper_aerodigestive,squamous cell carcinoma,4
+UPCISCC040,upper_aerodigestive,squamous cell carcinoma,4
+UPCISCC111,upper_aerodigestive,squamous cell carcinoma,4
+UPCISCC116,upper_aerodigestive,squamous cell carcinoma,4
+UPCISCC131,upper_aerodigestive,squamous cell carcinoma,4
+HOKUG,cervix,glassy cell carcinoma,4
+SAS,upper_aerodigestive,squamous cell carcinoma,4
+T3M5,thyroid,squamous cell carcinoma,4
+T47D,breast,luminal,5
+BT474,breast,HER2 amp,5
+MCF7,breast,luminal,5
+ZR751,breast,luminal,5
+HCC1428,breast,luminal,5
+KPL1,breast,luminal,5
+MDAMB134VI,breast,luminal,5
+EFM19,breast,luminal,5
+HCC1500,breast,luminal,5
+HCC2218,breast,HER2 amp,5
+CAMA1,breast,luminal,5
+BT483,breast,luminal,5
+CAL148,breast,luminal HER2 amp,5
+MDAMB453,breast,HER2 amp,5
+RCM1,colorectal,adenocarcinoma,6
+LS1034,colorectal,adenocarcinoma,6
+HT55,colorectal,adenocarcinoma,6
+HCC56,colorectal,adenocarcinoma,6
+LS513,colorectal,adenocarcinoma,6
+NCIH684,colorectal,adenocarcinoma,6
+CL14,colorectal,adenocarcinoma,6
+NCIH508,colorectal,caecum adenocarcinoma,6
+SW1463,colorectal,adenocarcinoma,6
+SW1116,colorectal,adenocarcinoma,6
+SW948,colorectal,adenocarcinoma,6
+SNU283,colorectal,adenocarcinoma,6
+SNUC1,colorectal,adenocarcinoma,6
+SW403,colorectal,adenocarcinoma,6
+HCC1588,lung,"non-small cell lung cancer, squamous cell carcinoma",6
+GP5D,colorectal,adenocarcinoma,6
+C125PM,colorectal,adenocarcinoma,6
+C75,colorectal,adenocarcinoma,6
+C80,colorectal,adenocarcinoma,6
+C84,colorectal,adenocarcinoma,6
+C99,colorectal,adenocarcinoma,6
+ESO26,esophagus,adenocarcinoma,6
+ESO51,esophagus,adenocarcinoma,6
+ACH-002022,colorectal,adenocarcinoma,6
+TT1TKB,colorectal,adenocarcinoma,6
+HCC78,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH2009,lung,"non-small cell lung cancer, adenocarcinoma",7
+T3M10,lung,"non-small cell lung cancer, large cell carcinoma",7
+NCIH2087,lung,"non-small cell lung cancer, adenocarcinoma",7
+HUPT3,pancreas,"ductal adenocarcinoma, exocrine",7
+HCC827,lung,"non-small cell lung cancer, adenocarcinoma",7
+G401,kidney,malignant rhabdoid tumor,49
+NCIH2347,lung,"non-small cell lung cancer, adenocarcinoma",7
+HCC4006,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH2170,lung,"non-small cell lung cancer, squamous cell carcinoma",7
+NCIH358,lung,"non-small cell lung cancer, adenocarcinoma",7
+JHH7,liver,hepatocellular carcinoma,20
+SQ1,lung,"non-small cell lung cancer, squamous cell carcinoma",7
+NCIH1373,lung,"non-small cell lung cancer, adenocarcinoma",7
+EBC1,lung,"non-small cell lung cancer, squamous cell carcinoma",7
+NCIH2228,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH1838,lung,"non-small cell lung cancer, adenocarcinoma",7
+SW900,lung,"non-small cell lung cancer, squamous cell carcinoma",7
+NCIH1693,lung,"non-small cell lung cancer, adenocarcinoma",7
+HCC827GR5,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH3255,lung,"non-small cell lung cancer, adenocarcinoma",7
+HCC2935,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH3122,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH1781,lung,"non-small cell lung cancer, adenocarcinoma",7
+HCC1171,lung,"non-small cell lung cancer, adenocarcinoma",7
+LCLC97TM1,lung,"non-small cell lung cancer, large cell carcinoma",7
+NCIH441,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH1734,lung,"non-small cell lung cancer, adenocarcinoma",7
+NCIH2291,lung,"non-small cell lung cancer, adenocarcinoma",7
+RERFLCAD1,lung,"non-small cell lung cancer, adenocarcinoma",7
+HCC1195,lung,"non-small cell lung cancer, adenosquamous carcinoma",
+NCIH1869,lung,"non-small cell lung cancer, squamous cell carcinoma",7
+SNU324,pancreas,"ductal adenocarcinoma, exocrine",7
+C10,colorectal,adenocarcinoma,7
+COLO783,skin,NA,8
+HEP3B217,liver,hepatocellular carcinoma,20
+MEWO,skin,melanocytic,8
+MELHO,skin,melanocytic,8
+IGR37,skin,melanocytic,8
+RVH421,skin,NA,8
+SH4,skin,melanocytic,8
+UACC257,skin,melanocytic,8
+SKMEL5,skin,melanocytic,8
+MALME3M,skin,melanocytic,8
+COLO792,skin,melanocytic,8
+SKMEL30,skin,melanocytic,8
+K029AX,skin,melanocytic,8
+SKMEL3,skin,melanocytic,8
+SKMEL1,skin,NA,8
+G361,skin,melanocytic,8
+COLO741,skin,melanocytic,8
+SKMEL28,skin,melanocytic,8
+LN464,central_nervous_system,glioblastoma,8
+HS936T,skin,melanocytic,8
+IGR1,skin,melanocytic,8
+CHL1DM,lung,"non-small cell lung cancer, adenocarcinoma",8
+HMY1,skin,NA,8
+MM370,skin,NA,8
+MM386,skin,NA,8
+MM415,skin,NA,8
+MM426,skin,NA,8
+MM253,skin,NA,8
+MM466,skin,NA,8
+MM485,skin,NA,8
+UACC62SKINCJ1,skin,NA,8
+SKMEL19,skin,NA,8
+MMAC,skin,NA,8
+M040416,skin,NA,8
+MM160113,skin,NA,8
+KYSE180,esophagus,squamous cell carcinoma,9
+TDOTT,esophagus,squamous cell carcinoma,9
+HARA,lung,"non-small cell lung cancer, squamous cell carcinoma",9
+KYSE70,esophagus,squamous cell carcinoma,9
+KYSE140,esophagus,squamous cell carcinoma,9
+RERFLCAI,lung,"non-small cell lung cancer, squamous cell carcinoma",2
+HCC95,lung,"non-small cell lung cancer, squamous cell carcinoma",9
+LUDLU1,lung,"non-small cell lung cancer, squamous cell carcinoma",9
+LC1SQSF,lung,"non-small cell lung cancer, unspecified",9
+SNU503,colorectal,adenocarcinoma,9
+HCC2814,lung,"non-small cell lung cancer, squamous cell carcinoma",9
+LC1F,lung,"non-small cell lung cancer, squamous cell carcinoma",9
+TE14,esophagus,squamous cell carcinoma,9
+KYSE450,esophagus,squamous cell carcinoma,9
+UPCISCC152,upper_aerodigestive,"squamous cell carcinoma, oral",9
+HO1U1,upper_aerodigestive,squamous cell carcinoma,9
+KNS42,central_nervous_system,glioblastoma,10
+HL60,blood,acute myeloid leukemia,12
+PLB985,blood,acute myeloid leukemia,12
+GDM1,blood,acute myeloid leukemia,12
+MUTZ3,blood,acute myeloid leukemia,12
+KASUMI6,blood,acute myeloid leukemia,12
+KASUMI1,blood,acute myeloid leukemia,12
+HNT34,blood,acute myeloid leukemia,12
+MOLM6,blood,"chronic myelogenous leukemia, blast crisis",12
+KG1,blood,acute myeloid leukemia,12
+ME1,blood,acute myeloid leukemia,12
+KO52,blood,acute myeloid leukemia,12
+KCL22,blood,"chronic myelogenous leukemia, blast crisis",12
+MOLM1,blood,chronic myelogenous leukemia,12
+MUTZ8,blood,acute myeloid leukemia,12
+OCIAML4,blood,acute myeloid leukemia,12
+SHI1,blood,acute myeloid leukemia,12
+SKNO1,blood,acute myeloid leukemia,12
+A704,kidney,renal cell carcinoma,13
+SW1573,lung,"non-small cell lung cancer, adenocarcinoma",2
+NCIH1648,lung,"non-small cell lung cancer, adenocarcinoma",14
+NCIH841,lung,small cell lung cancer,49
+NCIH292,lung,"non-small cell lung cancer, mucoepidermoid carcinoma",55
+BFTC905,urinary_tract,transitional cell carcinoma,14
+FADU,upper_aerodigestive,squamous cell carcinoma,14
+SNU1066,upper_aerodigestive,squamous cell carcinoma,14
+ECGI10,esophagus,squamous cell carcinoma,14
+BICR56,upper_aerodigestive,"squamous cell carcinoma, oral",14
+SNU1041,upper_aerodigestive,"squamous cell carcinoma, hypopharyngeal",14
+TE9,esophagus,squamous cell carcinoma,14
+T3M4,pancreas,"ductal adenocarcinoma, exocrine",14
+SNU308,bile_duct,adenocarcinoma,14
+TE15,esophagus,squamous cell carcinoma,14
+NCIH1666,lung,"non-small cell lung cancer, adenocarcinoma",14
+SF767,central_nervous_system,astrocytoma,14
+CAL33,upper_aerodigestive,"squamous cell carcinoma, oral",14
+BXPC3,pancreas,"ductal adenocarcinoma, exocrine",14
+BICR22,upper_aerodigestive,"squamous cell carcinoma, oral",14
+DOTC24510,cervix,adenocarcinoma,14
+WPE1NA22,prostate,adenocarcinoma,14
+UPCISCC074,upper_aerodigestive,squamous cell carcinoma,14
+ICC15,bile_duct,cholangiocarcinoma,14
+HKGZCC,bile_duct,cholangiocarcinoma,14
+CCSW1,bile_duct,"cholangiocarcinoma, intrahepatic",14
+22RV1,prostate,adenocarcinoma,15
+LNCAPCLONEFGC,prostate,adenocarcinoma,15
+EFM192A,breast,HER2 amp,16
+HCC1419,breast,HER2 amp,16
+MDAMB175VII,breast,HER2 amp,16
+ZR7530,breast,HER2 amp,16
+MFM223,breast,luminal,16
+VCAP,prostate,adenocarcinoma,17
+MDAPCA2B,prostate,adenocarcinoma,17
+HCC1143,breast,basal A,18
+HCC38,breast,basal A,18
+MDAMB468,breast,basal A,18
+HCC1187,breast,basal A,18
+HCC1599,breast,basal A,18
+HCC1937,breast,basal A,18
+HCC70,breast,basal A,18
+HCC2157,breast,basal A,18
+HCC1569,breast,basal A,18
+COLO824,breast,NA,18
+OC314,ovary,"cystadenocarcinoma, clear cell",19
+CAL51,breast,basal B,19
+NCIH1048,lung,small cell lung cancer,65
+TOV21G,ovary,"adenocarcinoma, clear cell",19
+SNGM,uterus,endometrial adenocarcinoma,19
+SKOV3,ovary,"cystadenocarcinoma, endometrioid",19
+OVTOKO,ovary,"adenocarcinoma, clear cell",19
+IGROV1,ovary,"adenocarcinoma, mixed",19
+ISHIKAWAHERAKLIO02ER,uterus,endometrial adenocarcinoma,19
+HEC59,uterus,endometrial adenocarcinoma,19
+HEC151,uterus,endometrial adenocarcinoma,19
+JHOC5,ovary,"adenocarcinoma, clear cell",19
+HEC1A,uterus,endometrial adenocarcinoma,19
+HEC1B,uterus,endometrial adenocarcinoma,19
+MFE319,uterus,NA,19
+SNU1077,uterus,mullerian carcinoma,19
+RMGI,ovary,"adenocarcinoma, clear cell",19
+HEC251,uterus,endometrial adenocarcinoma,19
+OAW42,ovary,adrenocortical carcinoma,19
+JHH1,liver,hepatocellular carcinoma,19
+HEC108,uterus,endometrial adenocarcinoma,19
+SNU1079,bile_duct,"cholangiocarcinoma, intrahepatic",19
+EFO21,ovary,"adenocarcinoma, clear cell",19
+TEN,uterus,clear cell carcinoma,19
+LK2,lung,"non-small cell lung cancer, squamous cell carcinoma",65
+OVISE,ovary,"adenocarcinoma, clear cell",19
+NCIH1819,lung,"non-small cell lung cancer, adenocarcinoma",19
+OAW28,ovary,"adenocarcinoma, high grade serous",19
+JHUEM3,uterus,endometrial adenocarcinoma,19
+EFE184,uterus,endometrial adenocarcinoma,19
+JHH4,liver,hepatocellular carcinoma,19
+JHOS4,ovary,"adenocarcinoma, high grade serous",19
+OVMANA,ovary,"adenocarcinoma, clear cell",19
+HEC50B,uterus,endometrial adenocarcinoma,19
+JHUEM1,uterus,endometrial adenocarcinoma,19
+JHUEM7,uterus,endometrial adenocarcinoma,19
+OCIC5X,ovary,"adenocarcinoma, clear cell",19
+HEC1,uterus,endometrial adenocarcinoma,19
+HEC116,uterus,endometrial adenocarcinoma,19
+PEA1,ovary,cystadenocarcinoma,19
+SNU2372,breast,ductal carcinoma,19
+HHUA,uterus,endometrial adenocarcinoma,19
+HOUAI,uterus,endometrial adenocarcinoma,19
+JHH5,liver,hepatocellular carcinoma,20
+NCIH520,lung,"non-small cell lung cancer, squamous cell carcinoma",65
+PLCPRF5,liver,hepatocellular carcinoma,20
+NCIH460,lung,"non-small cell lung cancer, large cell carcinoma",66
+HUH1,liver,"hepatocellular carcinoma, hbs-antigen carrier",20
+HUH7,liver,hepatocellular carcinoma,20
+FU97,gastric,adenocarcinoma,20
+HEPG2,liver,hepatocellular carcinoma,20
+TCGA-DD-AACH-01,liver,hepatocellular carcinoma,20
+RKO,colorectal,adenocarcinoma,22
+OPM2,plasma_cell,multiple myeloma,22
+EHEB,lymphocyte,b-cell,22
+NCIH929,plasma_cell,"multiple myeloma, plasmacytoma",22
+KARPAS299,lymphocyte,"t-cell, non-hodgkins, anaplastic large cell",22
+DOHH2,lymphocyte,diffuse large b-cell lymphoma,22
+OPM1,plasma_cell,multiple myeloma,22
+HH,lymphocyte,"t-cell, non-hodgkins, cutaneous",22
+REC1,lymphocyte,"b-cell, non-hodgkins, mantle cell",22
+HS611T,lymphocyte,"b-cell, hodgkins",22
+GRANTA519,lymphocyte,"b-cell, non-hodgkins, mantle cell",22
+MJ,lymphocyte,"t-cell, non-hodgkins, cutaneous",22
+BDCM,blood,acute myeloid leukemia,22
+JVM2,lymphocyte,"b-cell, non-hodgkins, mantle cell",22
+PFEIFFER,lymphocyte,diffuse large b-cell lymphoma,22
+JM1,blood,"acute lymphoblastic leukemia, b-cell",22
+A4FUK,lymphocyte,diffuse large b-cell lymphoma,22
+OCILY3,lymphocyte,diffuse large b-cell lymphoma,22
+GA10,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+KE97,plasma_cell,"adenocarcinoma, mucinous",22
+L363,plasma_cell,multiple myeloma,22
+KARPAS620,plasma_cell,multiple myeloma,22
+LP1,plasma_cell,multiple myeloma,22
+C8166,lymphocyte,adult t-cell leukemia,22
+MINO,lymphocyte,"b-cell, non-hodgkins, mantle cell",22
+SUPM2,lymphocyte,"t-cell, non-hodgkins, anaplastic large cell",22
+DEL,lymphocyte,"t-cell, non-hodgkins, anaplastic large cell",22
+BL41,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+HDLM2,lymphocyte,"b-cell, hodgkins",22
+SUDHL10,lymphocyte,diffuse large b-cell lymphoma,22
+TOLEDO,lymphocyte,diffuse large b-cell lymphoma,22
+NUDUL1,lymphocyte,diffuse large b-cell lymphoma,22
+KARPAS422,lymphocyte,diffuse large b-cell lymphoma,22
+DB,lymphocyte,diffuse large b-cell lymphoma,22
+SR786,lymphocyte,"t-cell, non-hodgkins, anaplastic large cell",22
+JVM3,blood,"chronic lymphoblastic leukemia, b-cell",22
+JEKO1,lymphocyte,"b-cell, non-hodgkins, mantle cell",22
+SKMM2,plasma_cell,multiple myeloma,22
+SUDHL4,lymphocyte,diffuse large b-cell lymphoma,22
+RL,lymphocyte,"b-cell, non-hodgkins",22
+KMS12BM,plasma_cell,multiple myeloma,22
+NUDHL1,lymphocyte,diffuse large b-cell lymphoma,22
+RI1,lymphocyte,"b-cell, non-hodgkins",22
+BL70,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+MEC1,blood,"chronic lymphoblastic leukemia, b-cell",22
+KMS28BM,plasma_cell,multiple myeloma,22
+OCIMY7,plasma_cell,multiple myeloma,22
+CA46,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+MOLP2,plasma_cell,multiple myeloma,22
+INA6,plasma_cell,multiple myeloma,22
+WSUDLCL2,lymphocyte,diffuse large b-cell lymphoma,22
+KMS34,plasma_cell,multiple myeloma,22
+KHM1B,plasma_cell,multiple myeloma,22
+ST486,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+KMS27,plasma_cell,multiple myeloma,22
+MC116,lymphocyte,"b-cell, non-hodgkins",22
+KMS26,plasma_cell,multiple myeloma,22
+KMS21BM,plasma_cell,multiple myeloma,22
+SUDHL6,lymphocyte,diffuse large b-cell lymphoma,22
+HUT102,lymphocyte,t-cell,22
+U266B1,plasma_cell,"multiple myeloma, plasmacytoma",22
+JJN3,plasma_cell,multiple myeloma,22
+RAJI,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+SUDHL8,lymphocyte,diffuse large b-cell lymphoma,22
+KMS18,plasma_cell,multiple myeloma,22
+SUDHL5,lymphocyte,diffuse large b-cell lymphoma,22
+SUDHL1,lymphocyte,"t-cell, non-hodgkins, anaplastic large cell",22
+CI1,lymphocyte,"b-cell, non-hodgkins",22
+A3KAW,lymphocyte,diffuse large b-cell lymphoma,22
+L1236,lymphocyte,"b-cell, hodgkins",22
+P3HR1,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+KMS11,plasma_cell,multiple myeloma,22
+MOLP8,plasma_cell,multiple myeloma,22
+L428,lymphocyte,"b-cell, hodgkins",22
+MM1S,plasma_cell,multiple myeloma,22
+KIJK,lymphocyte,"t-cell, non-hodgkins, anaplastic large cell",22
+DAUDI,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+L540,lymphocyte,"b-cell, hodgkins",22
+KMH2,lymphocyte,"b-cell, hodgkins",22
+RPMI8226,plasma_cell,"multiple myeloma, plasmacytoma",22
+EJM,plasma_cell,multiple myeloma,22
+HUNS1,plasma_cell,multiple myeloma,22
+AMO1,plasma_cell,"multiple myeloma, plasmacytoma",22
+OCIMY5,plasma_cell,multiple myeloma,22
+EB1,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+KMM1,plasma_cell,multiple myeloma,22
+HT,lymphocyte,"b-cell, non-hodgkins",22
+BCP1,lymphocyte,"b-cell, non-hodgkins",22
+NAMALWA,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+DERL2,lymphocyte,t-cell,22
+DL40,lymphocyte,t-cell,22
+FEPD,lymphocyte,t-cell,22
+KARPAS384,lymphocyte,t-cell,22
+KHYG,lymphocyte,NA,22
+L82,lymphocyte,t-cell,22
+MAC2A,lymphocyte,t-cell,22
+MTA,lymphocyte,t-cell,22
+MYLA,lymphocyte,t-cell,22
+OCILY12,lymphocyte,t-cell,22
+OCILY132,lymphocyte,t-cell,22
+SMZ1,lymphocyte,NA,22
+BL2,lymphocyte,non-hodgkin lymphoma,22
+BLUE1,lymphocyte,"b-cell, non-hodgkins, burkitts",22
+CI,blood,"b-cell, unspecified",22
+CII,blood,"b-cell, unspecified",22
+DOGUM,lymphocyte,non-hodgkin lymphoma,22
+FARAGE,lymphocyte,non-hodgkin lymphoma,22
+HG3,blood,unspecified leukemia,22
+KARPAS1718,lymphocyte,non-hodgkin lymphoma,22
+KML1,lymphocyte,non-hodgkin lymphoma,22
+KMS28PE,plasma_cell,multiple myeloma,22
+OCILY18,lymphocyte,non-hodgkin lymphoma,22
+OCILY7,lymphocyte,non-hodgkin lymphoma,22
+PGA1,blood,"chronic lymphoblastic leukemia, b-cell",22
+RAMOS,lymphocyte,non-hodgkin lymphoma,22
+RCK8,lymphocyte,b-cell,22
+SCC3,lymphocyte,"b-cell, non-hodgkins",22
+TANOUE,blood,acute lymphoblastic leukemia,22
+U2904,lymphocyte,b-cell,22
+U2940,lymphocyte,non-hodgkin lymphoma,22
+U2973,lymphocyte,"lymphoma, unspecified",22
+UHO1,lymphocyte,hodgkin lymphoma,22
+VAL,lymphocyte,non-hodgkin lymphoma,22
+WAOSEL,blood,chronic lymphocytic leukemia,22
+WSUNHL,lymphocyte,"lymphoma, unspecified",22
+SLVL,lymphocyte,"lymphoma, unspecified",22
+ACHN,kidney,renal cell carcinoma,23
+KMRC1,kidney,kidney clear cell carcinoma,23
+KMRC20,kidney,renal cell carcinoma,23
+786O,kidney,kidney clear cell carcinoma,23
+SW1710,urinary_tract,transitional cell carcinoma,23
+KMRC3,kidney,kidney clear cell carcinoma,23
+UO31,kidney,renal cell carcinoma,23
+VMRCRCZ,kidney,renal cell carcinoma,23
+769P,kidney,kidney clear cell carcinoma,23
+253JBV,urinary_tract,adrenocortical carcinoma,23
+253J,urinary_tract,adrenocortical carcinoma,23
+SNU449,liver,hepatocellular carcinoma,23
+OSRC2,kidney,renal cell carcinoma,23
+RCC10RGB,kidney,renal cell carcinoma,23
+CAKI1,kidney,kidney clear cell carcinoma,23
+VMRCRCW,kidney,renal cell carcinoma,23
+NCIH28,lung,mesothelioma,23
+CAKI2,kidney,kidney clear cell carcinoma,23
+SLR23,kidney,renal cell carcinoma,23
+UOK101,kidney,renal cell carcinoma,23
+SLR24,kidney,renal cell carcinoma,23
+TUHR14TKB,kidney,renal cell carcinoma,23
+SKRC20,kidney,renal cell carcinoma,23
+TUHR10TKB,kidney,renal cell carcinoma,23
+TUHR4TKB,kidney,renal cell carcinoma,23
+SNU1272,kidney,kidney clear cell carcinoma,23
+A498,kidney,renal cell carcinoma,23
+SLR26,kidney,renal cell carcinoma,23
+KMRC2,kidney,kidney clear cell carcinoma,23
+SNU349,kidney,kidney clear cell carcinoma,23
+SKRC31,kidney,renal cell carcinoma,23
+SW156,kidney,renal cell carcinoma,23
+UMRC3,kidney,NA,23
+UMRC7,kidney,NA,23
+VAESBJ,soft_tissue,epithelioid,23
+SNU1214,upper_aerodigestive,"squamous cell carcinoma, laryngeal",24
+SHMAC4,prostate,adenocarcinoma,24
+TE441T,soft_tissue,rhabdomyosarcoma,26
+HMCB,skin,NA,26
+CCLFPEDS0001T,kidney,renal medullary carcinoma,26
+CCLFPEDS0003T,soft_tissue,undifferentiated,26
+U251MGDM,central_nervous_system,medulloblastoma,26
+ACH-001173,central_nervous_system,medulloblastoma,26
+OCIP5X,ovary,adenocarcinoma,26
+RPMI2650,upper_aerodigestive,squamous cell carcinoma,26
+1777NRPMET,embryo,embryo carcinoma,26
+PFSK1,central_nervous_system,primitive neuroectodermal tumor,26
+LPS6,soft_tissue,NA,26
+CAL54,kidney,renal cell carcinoma,27
+SLR21,kidney,renal cell carcinoma,27
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+NB1,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+SIMA,peripheral_nervous_system,NA,28
+SIMA,peripheral_nervous_system,NA,28
+SIMA,peripheral_nervous_system,NA,28
+SIMA,peripheral_nervous_system,NA,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+KELLY,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SKNBE2,peripheral_nervous_system,MYCN amp,28
+SIMA,peripheral_nervous_system,NA,28
+SIMA,peripheral_nervous_system,NA,28
+SIMA,peripheral_nervous_system,NA,28
+SIMA,peripheral_nervous_system,NA,28
+MHHNB11,peripheral_nervous_system,MYCN amp,28
+CHP126,peripheral_nervous_system,MYCN amp,28
+NH6,peripheral_nervous_system,MYCN amp,28
+KPNYN,peripheral_nervous_system,MYCN amp,28
+IMR32,peripheral_nervous_system,MYCN amp,28
+SKNFI,peripheral_nervous_system,NA,28
+KPNRTBM1,peripheral_nervous_system,MYCN amp,28
+SKNDZ,peripheral_nervous_system,MYCN amp,28
+CHLA15,peripheral_nervous_system,NA,28
+COGN278,peripheral_nervous_system,MYCN amp,28
+COGN305,peripheral_nervous_system,MYCN amp,28
+NB1643,peripheral_nervous_system,MYCN amp,28
+LAN2,peripheral_nervous_system,MYCN amp,28
+NGP,peripheral_nervous_system,MYCN amp,28
+NMB,peripheral_nervous_system,MYCN amp,28
+NH12,peripheral_nervous_system,neuroblastoma,28
+A549,lung,"non-small cell lung cancer, adenocarcinoma",66
+NCIH1651,lung,"non-small cell lung cancer, adenocarcinoma",66
+NCIH2030,lung,"non-small cell lung cancer, adenocarcinoma",66
+CAOV3,ovary,"adenocarcinoma, high grade serous",3
+OVSAHO,ovary,"adenocarcinoma, high grade serous",3
+OV56,ovary,"adenocarcinoma, serous",19
+MCAS,ovary,"cystadenocarcinoma, mucinous",32
+A2780,ovary,"adenocarcinoma, endometrioid",49
+CHP212,peripheral_nervous_system,MYCN amp,29
+SKNSH,peripheral_nervous_system,NA,29
+KPNSI9S,peripheral_nervous_system,NA,29
+KU1919,urinary_tract,transitional cell carcinoma,30
+HS766T,pancreas,"ductal adenocarcinoma, exocrine",2
+KNS62,lung,"non-small cell lung cancer, squamous cell carcinoma",30
+DANG,pancreas,"ductal adenocarcinoma, exocrine",7
+TE5,esophagus,squamous cell carcinoma,30
+TE8,esophagus,squamous cell carcinoma,30
+HSC4,upper_aerodigestive,squamous cell carcinoma,30
+L33,pancreas,ductal adenosquamous carcinoma,30
+SUM149PT,breast,basal B,30
+H376,upper_aerodigestive,"squamous cell carcinoma, oral",30
+PANC1005,pancreas,"ductal adenocarcinoma, exocrine",7
+YAPC,pancreas,"ductal adenocarcinoma, exocrine",32
+PANC0403,pancreas,"ductal adenocarcinoma, exocrine",32
+KP4,pancreas,"ductal adenocarcinoma, exocrine",49
+RH30,soft_tissue,alveolar rhabdomyosarcoma,31
+RH30,soft_tissue,alveolar rhabdomyosarcoma,31
+PSN1,pancreas,"ductal adenocarcinoma, exocrine",66
+SUIT2,pancreas,"ductal adenocarcinoma, exocrine",66
+SKNAS,peripheral_nervous_system,NA,29
+SKNAS,peripheral_nervous_system,NA,29
+RH41,soft_tissue,alveolar rhabdomyosarcoma,31
+JR,soft_tissue,rhabdomyosarcoma,31
+SCMCRM2,soft_tissue,rhabdomyosarcoma,31
+SMSCTR,soft_tissue,embryonal rhabdomyosarcoma,31
+RH28,soft_tissue,alveolar rhabdomyosarcoma,31
+ACH-001741,soft_tissue,alveolar rhabdomyosarcoma,31
+RC2,soft_tissue,alveolar rhabdomyosarcoma,31
+RHJT,soft_tissue,alveolar rhabdomyosarcoma,31
+RH36,soft_tissue,embryonal rhabdomyosarcoma,31
+RH4,soft_tissue,alveolar rhabdomyosarcoma,31
+ACH-001790,soft_tissue,embryonal rhabdomyosarcoma,31
+RMSYM,soft_tissue,rhabdomyosarcoma,31
+CORL23,lung,"non-small cell lung cancer, large cell carcinoma",32
+OE33,esophagus,adenocarcinoma,32
+SKNAS,peripheral_nervous_system,NA,29
+SKNAS,peripheral_nervous_system,NA,29
+ASPC1,pancreas,"ductal adenocarcinoma, exocrine",32
+CFPAC1,pancreas,"ductal adenocarcinoma, exocrine",32
+PANC0327,pancreas,"ductal adenocarcinoma, exocrine",32
+HUCCT1,bile_duct,"cholangiocarcinoma, intrahepatic",32
+PANC0203,pancreas,"ductal adenocarcinoma, exocrine",32
+NCIH747,colorectal,adenocarcinoma,32
+PK59,pancreas,"ductal adenocarcinoma, exocrine",32
+SNU213,pancreas,"ductal adenocarcinoma, exocrine",32
+TCCPAN2,pancreas,"ductal adenocarcinoma, exocrine",32
+SKNAS,peripheral_nervous_system,NA,29
+CAPAN2,pancreas,"ductal adenocarcinoma, exocrine",32
+SKNAS,peripheral_nervous_system,NA,29
+PANC0813,pancreas,"ductal adenocarcinoma, exocrine",32
+PANC0504,pancreas,"ductal adenocarcinoma, exocrine",32
+HPAFII,pancreas,"ductal adenocarcinoma, exocrine",32
+SU8686,pancreas,"ductal adenocarcinoma, exocrine",32
+CALU3,lung,"non-small cell lung cancer, adenocarcinoma",32
+SNU1197,colorectal,adenocarcinoma,32
+PATU8902,pancreas,"ductal adenocarcinoma, exocrine",32
+KCIMOH1,pancreas,exocrine,32
+OVCAR5,ovary,adenocarcinoma,32
+JOPACA1,pancreas,"ductal adenocarcinoma, exocrine",32
+PACADD135,pancreas,"ductal adenocarcinoma, exocrine",32
+PACADD159,pancreas,"ductal adenocarcinoma, exocrine",32
+PACADD161,pancreas,"ductal adenocarcinoma, exocrine",32
+PACADD188,pancreas,"ductal adenocarcinoma, exocrine",32
+EGI1,bile_duct,"cholangiocarcinoma, extrahepatic",32
+ICC10,bile_duct,cholangiocarcinoma,32
+ICC108,bile_duct,"cholangiocarcinoma, intrahepatic",32
+ICC12,bile_duct,"cholangiocarcinoma, intrahepatic",32
+ICC4,bile_duct,"cholangiocarcinoma, intrahepatic",32
+ICC8,bile_duct,"cholangiocarcinoma, intrahepatic",32
+OZ,bile_duct,cholangiocarcinoma,32
+ECC2,bile_duct,cholangiocarcinoma,32
+9505BIK,pancreas,exocrine,32
+TGBC18TKB,colorectal,adenocarcinoma,32
+NCIH1437,lung,"non-small cell lung cancer, adenocarcinoma",33
+NCIH1944,lung,"non-small cell lung cancer, adenocarcinoma",33
+NCIH1573,lung,"non-small cell lung cancer, adenocarcinoma",33
+NCIH2122,lung,"non-small cell lung cancer, adenocarcinoma",33
+NCIH2110,lung,"non-small cell lung cancer, unspecified",33
+NCIH2126,lung,"non-small cell lung cancer, adenocarcinoma",33
+NCIH1395,lung,"non-small cell lung cancer, adenocarcinoma",33
+SNU478,bile_duct,"cholangiocarcinoma, extrahepatic",33
+RERFLCKJ,lung,"non-small cell lung cancer, adenocarcinoma",33
+NCIH1623,lung,"non-small cell lung cancer, adenocarcinoma",33
+MORCPR,lung,"non-small cell lung cancer, adenocarcinoma",33
+TE4,esophagus,squamous cell carcinoma,33
+HCA1,cervix,adenocarcinoma,33
+SISO,cervix,adenocarcinoma,33
+TFK1,bile_duct,"cholangiocarcinoma, extrahepatic",33
+SNUC4,colorectal,adenocarcinoma,34
+HCT15,colorectal,adenocarcinoma,34
+LS411N,colorectal,adenocarcinoma,34
+SNU245,bile_duct,"cholangiocarcinoma, extrahepatic",34
+SNU407,colorectal,adenocarcinoma,34
+GP2D,colorectal,adenocarcinoma,34
+DV90,lung,"non-small cell lung cancer, adenocarcinoma",34
+IM95,gastric,adenocarcinoma,34
+LS180,colorectal,adenocarcinoma,34
+OCUM1,gastric,adenocarcinoma,34
+JHOM2B,ovary,"adenocarcinoma, mucinous",34
+T84,colorectal,adenocarcinoma,34
+SKCO1,colorectal,adenocarcinoma,34
+GSU,gastric,adenocarcinoma,34
+SNU61,colorectal,adenocarcinoma,34
+SNU16,gastric,adenocarcinoma,34
+CL40,colorectal,adenocarcinoma,34
+CL34,colorectal,adenocarcinoma,34
+SNU520,gastric,adenocarcinoma,34
+2313287,gastric,adenocarcinoma,34
+LOVO,colorectal,adenocarcinoma,34
+SW48,colorectal,adenocarcinoma,34
+SKNAS,peripheral_nervous_system,NA,29
+KM12,colorectal,adenocarcinoma,34
+HT115,colorectal,adenocarcinoma,34
+SNU175,colorectal,"adenocarcinoma, mucinous",34
+SNU81,colorectal,adenocarcinoma,34
+CW2,colorectal,adenocarcinoma,34
+SNU1040,colorectal,adenocarcinoma,34
+DLD1,colorectal,adenocarcinoma,34
+UMUC4,urinary_tract,transitional cell carcinoma,34
+SNU1544,colorectal,adenocarcinoma,34
+KYSE30,esophagus,squamous cell carcinoma,35
+RT112,urinary_tract,transitional cell carcinoma,35
+KYSE410,esophagus,squamous cell carcinoma,35
+KMBC2,urinary_tract,adrenocortical carcinoma,35
+PK1,pancreas,"ductal adenocarcinoma, exocrine",35
+RL952,uterus,endometrial adenosquamous carcinoma,35
+HT1376,urinary_tract,adrenocortical carcinoma,35
+SW780,urinary_tract,transitional cell carcinoma,35
+CAL29,urinary_tract,transitional cell carcinoma,35
+RMUGS,ovary,"cystadenocarcinoma, mucinous",35
+NCCSTCK140,gastric,adenocarcinoma,35
+RT4,urinary_tract,transitional cell carcinoma,35
+NUGC2,gastric,adenocarcinoma,35
+UMUC1,urinary_tract,transitional cell carcinoma,35
+RT11284,urinary_tract,adrenocortical carcinoma,35
+UMUC14,urinary_tract,transitional cell carcinoma,35
+UMUC16,urinary_tract,transitional cell carcinoma,35
+UMUC5,urinary_tract,squamous cell carcinoma,35
+HSC5,skin,squamous cell carcinoma,35
+PK8,pancreas,exocrine,35
+HUO9,bone,osteosarcoma,36
+NOS1,bone,osteosarcoma,36
+HSOS1,bone,osteosarcoma,36
+SKNAS,peripheral_nervous_system,NA,29
+HS944T,skin,NA,38
+IPC298,skin,melanocytic,8
+A375,skin,neural crest-like,38
+A2058,skin,transitory,38
+WM983B,skin,transitory,38
+HS294T,skin,neural crest-like,38
+SKMEL2,skin,melanocytic,38
+COLO679,skin,NA,38
+HT144,skin,transitory,38
+MELJUSO,skin,transitory,38
+COLO800,skin,transitory,38
+HS939T,skin,NA,38
+WM793,skin,neural crest-like,38
+MDAMB435S,skin,"melanoma, amelanotic",38
+SNU466,central_nervous_system,glioblastoma,38
+UACC62,skin,transitory,38
+A101D,skin,NA,38
+WM88,skin,transitory,38
+WM1799,skin,transitory,38
+WM2664,skin,transitory,38
+HS852T,skin,NA,38
+WM115,skin,NA,38
+C32,skin,transitory,38
+SKMEL31,skin,transitory,38
+COLO829,skin,transitory,38
+HS695T,skin,"melanoma, amelanotic",38
+COLO794,skin,NA,38
+MM383,skin,NA,38
+SEKI,skin,NA,38
+A375SKINCJ1,skin,NA,38
+A375SKINCJ3,skin,NA,38
+HSSCH2,central_nervous_system,malignant peripheral nerve sheath tumor,38
+HT144SKINFV1,skin,NA,38
+HT144SKINFV2,skin,NA,38
+WM4235,skin,NA,38
+M140325,skin,NA,38
+KE37,blood,"acute lymphoblastic leukemia, t-cell",39
+LOUCY,blood,"acute lymphoblastic leukemia, t-cell",39
+ALLSIL,blood,"acute lymphoblastic leukemia, t-cell",39
+SUPT11,blood,"acute lymphoblastic leukemia, t-cell",39
+TALL1,blood,"acute lymphoblastic leukemia, t-cell",39
+P12ICHIKAWA,blood,"acute lymphoblastic leukemia, t-cell",39
+HUT78,lymphocyte,"t-cell, non-hodgkins, cutaneous",39
+PEER,blood,"acute lymphoblastic leukemia, t-cell",39
+RPMI8402,blood,"acute lymphoblastic leukemia, t-cell",39
+MOLT16,blood,"acute lymphoblastic leukemia, t-cell",39
+CMLT1,blood,"chronic myelogenous leukemia, blast crisis",39
+PF382,blood,"acute lymphoblastic leukemia, t-cell",39
+HPBALL,blood,"acute lymphoblastic leukemia, t-cell",39
+SUPT1,blood,"acute lymphoblastic leukemia, t-cell",39
+MOLT3,blood,"acute lymphoblastic leukemia, t-cell",39
+DND41,blood,"acute lymphoblastic leukemia, t-cell",39
+JURKAT,blood,"acute lymphoblastic leukemia, t-cell",39
+CTV1DM,blood,"acute lymphoblastic leukemia, t-cell",39
+DMS273,lung,small cell lung cancer,40
+NCIH446,lung,small cell lung cancer,40
+D283MED,central_nervous_system,medulloblastoma,40
+NCIH82,lung,small cell lung cancer,40
+NCIH1694,lung,small cell lung cancer,40
+NCIH1184,lung,small cell lung cancer,40
+NCIH2171,lung,small cell lung cancer,40
+NCIH2227,lung,small cell lung cancer,40
+SCLC21H,lung,small cell lung cancer,40
+NCIH524,lung,small cell lung cancer,40
+COLO684,uterus,endometrial adenocarcinoma,40
+NCIH1155,lung,"non-small cell lung cancer, large cell carcinoma",40
+Y79,eye,retinoblastoma,40
+WERIRB1,eye,retinoblastoma,40
+LU135,lung,small cell lung cancer,40
+TGW,peripheral_nervous_system,NA,40
+GOTO,peripheral_nervous_system,neuroblastoma,40
+NCIH1341,lung,small cell lung cancer,41
+LS,peripheral_nervous_system,NA,41
+HAP1,blood,chronic myelogenous leukemia,41
+NCIH1568,lung,"non-small cell lung cancer, adenocarcinoma",42
+SNUC2A,colorectal,adenocarcinoma,42
+SKBR3,breast,HER2 amp,42
+AU565,breast,HER2 amp,42
+ABC1,lung,"non-small cell lung cancer, adenocarcinoma",42
+BT20,breast,basal A,42
+UACC893,breast,HER2 amp,42
+HCC202,breast,HER2 amp,42
+HCC1954,breast,basal A,42
+CHAGOK1,lung,"non-small cell lung cancer, unspecified",42
+MDAMB361,breast,HER2 amp,42
+NCIH2342,lung,"non-small cell lung cancer, adenocarcinoma",42
+VP229,breast,ductal carcinoma,42
+HEL,blood,acute myeloid leukemia,43
+HEL9217,blood,acute myeloid leukemia,43
+MEG01,blood,chronic myelogenous leukemia,43
+KU812,blood,"chronic myelogenous leukemia, blast crisis",43
+NCO2,blood,chronic myelogenous leukemia,43
+SET2,blood,acute myeloid leukemia,43
+JK1,blood,"chronic myelogenous leukemia, blast crisis",43
+LAMA84,blood,"chronic myelogenous leukemia, blast crisis",43
+JURLMK1,blood,"chronic myelogenous leukemia, blast crisis",43
+MOLM16,blood,acute myeloid leukemia,43
+TF1,blood,acute myeloid leukemia,43
+F36P,blood,acute myeloid leukemia,43
+K562,blood,"chronic myelogenous leukemia, blast crisis",43
+M07E,blood,acute myeloid leukemia,43
+KYO1,blood,"chronic myelogenous leukemia, blast crisis",43
+CMK,blood,acute myeloid leukemia,43
+OCIM1,blood,acute myeloid leukemia,43
+CMK115,blood,acute myeloid leukemia,43
+OCIM2,blood,acute myeloid leukemia,43
+MONOMAC6,blood,acute myeloid leukemia,45
+MV411,blood,acute myeloid leukemia,45
+OCIAML5,blood,acute myeloid leukemia,45
+SIGM5,blood,acute myeloid leukemia,45
+OCIAML2,blood,acute myeloid leukemia,45
+THP1,blood,acute myeloid leukemia,45
+NOMO1,blood,acute myeloid leukemia,45
+EOL1,blood,acute myeloid leukemia,45
+PL21,blood,acute myeloid leukemia,45
+NB4,blood,acute myeloid leukemia,45
+EM2,blood,"chronic myelogenous leukemia, blast crisis",45
+OCIAML3,blood,acute myeloid leukemia,45
+MOLM13,blood,acute myeloid leukemia,45
+SKM1,blood,acute myeloid leukemia,45
+U937,blood,acute myeloid leukemia,45
+AML193,blood,acute myeloid leukemia,45
+P31FUJ,blood,acute myeloid leukemia,45
+MONOMAC1,blood,acute myeloid leukemia,45
+MOLM14,blood,acute myeloid leukemia,45
+BEN,lung,"non-small cell lung cancer, unspecified",46
+QGP1,pancreas,somatostatinoma,46
+NCIH727,lung,carcinoid,46
+NCIH660,prostate,small cell carcinoma,46
+NCIH1618,lung,small cell lung cancer,46
+CORL311,lung,small cell lung cancer,46
+ECC12,gastric,small cell carcinoma,46
+CORL279,lung,small cell lung cancer,46
+NCIH209,lung,small cell lung cancer,46
+NCIH889,lung,small cell lung cancer,46
+NCIH2029,lung,small cell lung cancer,46
+NCIH69,lung,small cell lung cancer,46
+CORL24,lung,small cell lung cancer,46
+NCIH2081,lung,small cell lung cancer,46
+NCIH2196,lung,small cell lung cancer,46
+NCIH716,colorectal,adenocarcinoma,46
+NCIH146,lung,small cell lung cancer,46
+CORL88,lung,small cell lung cancer,46
+NCIH1092,lung,small cell lung cancer,46
+HCC33,lung,small cell lung cancer,46
+NCIH1836,lung,small cell lung cancer,46
+ECC10,gastric,small cell carcinoma,46
+NCIH1876,lung,small cell lung cancer,46
+DMS153,lung,small cell lung cancer,46
+CORL47,lung,small cell lung cancer,46
+DMS53,lung,small cell lung cancer,46
+DMS79,lung,small cell lung cancer,46
+NCIH854,lung,"non-small cell lung cancer, adenocarcinoma",46
+HCC1833,lung,"non-small cell lung cancer, adenocarcinoma",46
+NCIH1963,lung,small cell lung cancer,46
+NCIH1385,lung,"non-small cell lung cancer, squamous cell carcinoma",46
+CORL95,lung,small cell lung cancer,46
+NCIH526,lung,small cell lung cancer,46
+NCIH1105,lung,small cell lung cancer,46
+NCIH810,lung,"non-small cell lung cancer, large cell carcinoma",46
+SHP77,lung,small cell lung cancer,46
+COLO668,lung,small cell lung cancer,46
+NCIH1436,lung,small cell lung cancer,46
+DMS454,lung,small cell lung cancer,46
+NCIH1930,lung,small cell lung cancer,46
+NCIH510,lung,small cell lung cancer,46
+NCIH2106,lung,"non-small cell lung cancer, large cell carcinoma",46
+TT,thyroid,squamous cell carcinoma,46
+TT,thyroid,squamous cell carcinoma,46
+SCLC22H,lung,small cell lung cancer,46
+HCSC1,cervix,carcinoma,46
+ECC4,colorectal,adenocarcinoma,46
+PA1,ovary,NA,48
+1618K,embryo,embryo carcinoma,48
+NCCIT,embryo,embryo carcinoma,48
+SUSA,embryo,testicular,48
+TERA2,embryo,embryo carcinoma,48
+SKMEL24,skin,neural crest-like,38
+HT1080,soft_tissue,fibrosarcoma,2
+SKUT1,soft_tissue,leiomyosarcoma,49
+MFE296,uterus,endometrial adenocarcinoma,49
+S117,soft_tissue,thyroid sarcoma,2
+SBC5,lung,small cell lung cancer,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+RKN,soft_tissue,leiomyosarcoma,2
+NCIH1299,lung,"non-small cell lung cancer, large cell carcinoma",49
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+JHUEM2,uterus,endometrial adenocarcinoma,49
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+ACH-000010,lung,"non-small cell lung cancer, adenocarcinoma",49
+OVK18,ovary,"adenocarcinoma, endometrioid",49
+AN3CA,uterus,endometrial adenocarcinoma,49
+TOV112D,ovary,"adenocarcinoma, endometrioid",49
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+NCIH23,lung,"non-small cell lung cancer, adenocarcinoma",49
+SNU398,liver,hepatocellular carcinoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+MESSA,soft_tissue,uterine sarcoma,49
+MIAPACA2,pancreas,"ductal adenocarcinoma, exocrine",49
+NCIH1581,lung,"non-small cell lung cancer, large cell carcinoma",49
+NCIH661,lung,"non-small cell lung cancer, large cell carcinoma",49
+NCIH1703,lung,"non-small cell lung cancer, squamous cell carcinoma",49
+G402,soft_tissue,renal leiomyoblastoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+G402,soft_tissue,renal leiomyoblastoma,49
+HEC6,uterus,endometrial adenocarcinoma,49
+NCIH522,lung,"non-small cell lung cancer, adenocarcinoma",49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TM87,soft_tissue,malignant rhabdoid tumor,49
+TE617T,soft_tissue,rhabdomyosarcoma,49
+COV434,ovary,"adenocarcinoma, endometrioid",49
+BT12,soft_tissue,atypical teratoid/rhabdoid tumor,49
+A204,soft_tissue,malignant rhabdoid tumor,49
+COLO320,colorectal,adenocarcinoma,49
+DMS114,lung,small cell lung cancer,49
+NCIH2004RT,soft_tissue,malignant rhabdoid tumor,49
+HUTU80,gastric,duodenal adenocarcinoma,49
+TTC709,soft_tissue,malignant rhabdoid tumor,49
+KYM1,soft_tissue,malignant rhabdoid tumor,49
+A427,lung,"non-small cell lung cancer, adenocarcinoma",49
+SNU1,gastric,adenocarcinoma,49
+EN,uterus,endometrial adenocarcinoma,49
+BT16,soft_tissue,atypical teratoid/rhabdoid tumor,49
+CHLA06ATRT,soft_tissue,atypical teratoid/rhabdoid tumor,49
+CHLA266,soft_tissue,atypical teratoid/rhabdoid tumor,49
+CHLA57,bone,ewing sarcoma,49
+DL,soft_tissue,malignant rhabdoid tumor,49
+F5,central_nervous_system,meningioma,49
+KD,soft_tissue,malignant rhabdoid tumor,49
+KPMRTRY,soft_tissue,malignant rhabdoid tumor,49
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+STM9101,soft_tissue,malignant rhabdoid tumor,49
+TTC1240,soft_tissue,malignant rhabdoid tumor,49
+TTC549,soft_tissue,malignant rhabdoid tumor,49
+TTC642,soft_tissue,malignant rhabdoid tumor,49
+BIN67,ovary,small cell carcinoma of the ovary hypercalcemic type,49
+SCCOHT1,ovary,small cell carcinoma of the ovary hypercalcemic type,49
+COGAR359,soft_tissue,atypical teratoid/rhabdoid tumor,49
+ACH-001316,kidney,renal medullary carcinoma,49
+C33A,cervix,adrenocortical carcinoma,49
+OACM51,esophagus,adenocarcinoma,49
+SW13,adrenal,adrenocortical carcinoma,49
+CCLFPEDS0008T,soft_tissue,epithelioid,49
+FLO1,esophagus,adenocarcinoma,49
+HEMCSS,bone,chondrosarcoma,49
+JMURTK2,kidney,malignant rhabdoid tumor,49
+KKU055,bile_duct,cholangiocarcinoma,49
+TY82,thymus,thymic carcinoma,49
+CCLP1,bile_duct,"cholangiocarcinoma, intrahepatic",49
+921,eye,uveal melanoma,50
+MEL202,eye,uveal melanoma,50
+MP41,eye,uveal melanoma,50
+MP46,eye,uveal melanoma,50
+MEL270,eye,uveal melanoma,50
+OMM1,eye,uveal melanoma,50
+OMM25,eye,uveal melanoma,50
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+MHHES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+SKES1,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+CADOES1,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+A673,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+EWS502,bone,ewing sarcoma,51
+SKNMC,bone,ewing sarcoma,51
+RDES,bone,ewing sarcoma,51
+TC71,bone,ewing sarcoma,51
+EW8,bone,ewing sarcoma,51
+CBAGPN,bone,ewing sarcoma,51
+CHLA10,bone,ewing sarcoma,51
+CHLA218,bone,ewing sarcoma,51
+CHLA32,bone,ewing sarcoma,51
+CHLA9,bone,ewing sarcoma,51
+CHLA99,bone,ewing sarcoma,51
+COGE352,bone,ewing sarcoma,51
+SKNEP1,bone,ewing sarcoma,51
+SKNEP1,bone,ewing sarcoma,51
+SKPNDW,bone,ewing sarcoma,51
+TC106,bone,ewing sarcoma,51
+CCLFPEDS0009T,bone,ewing sarcoma,51
+TC138,bone,ewing sarcoma,51
+TC205,bone,ewing sarcoma,51
+TASK1,peripheral_nervous_system,primitive neuroectodermal tumor,51
+NCIH1563,lung,"non-small cell lung cancer, adenocarcinoma",53
+NCIH226,lung,"non-small cell lung cancer, squamous cell carcinoma",53
+NCIH2452,lung,mesothelioma,53
+ISTMES2,lung,mesothelioma,53
+SNU182,liver,hepatocellular carcinoma,53
+SIHA,cervix,adrenocortical carcinoma,53
+ISTMES1,lung,mesothelioma,53
+JL1,lung,mesothelioma,53
+LO68,lung,mesothelioma,53
+MERO14,lung,mesothelioma,53
+MERO25,lung,mesothelioma,53
+MERO41,lung,mesothelioma,53
+MERO48A,lung,mesothelioma,53
+MERO83,lung,mesothelioma,53
+MERO84,lung,mesothelioma,53
+MERO95,lung,mesothelioma,53
+HGC27,gastric,adenocarcinoma,54
+SYO1,soft_tissue,synovial sarcoma,54
+YAMATO,soft_tissue,synovial sarcoma,54
+SCS214,soft_tissue,synovial sarcoma,54
+CME1,soft_tissue,synovial sarcoma,54
+SNU840,ovary,"carcinoma, brenner",55
+647V,urinary_tract,adrenocortical carcinoma,55
+PC14,lung,"non-small cell lung cancer, adenocarcinoma",55
+NUGC3,gastric,adenocarcinoma,55
+SW480,colorectal,adenocarcinoma,55
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+MKN7,gastric,"adenocarcinoma, tubular",55
+5637,urinary_tract,NA,55
+CAL12T,lung,"non-small cell lung cancer, unspecified",55
+NCIH1650,lung,"non-small cell lung cancer, adenocarcinoma",55
+HDQP1,breast,basal A,55
+MKN74,gastric,adenocarcinoma,55
+NCIH322,lung,"non-small cell lung cancer, adenocarcinoma",55
+PC3,prostate,adenocarcinoma,55
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+TE1,esophagus,squamous cell carcinoma,55
+NCIH2444,lung,"non-small cell lung cancer, unspecified",55
+RERFLCAD2,lung,"non-small cell lung cancer, adenocarcinoma",55
+KP2,pancreas,"ductal adenocarcinoma, exocrine",55
+UBLC1,urinary_tract,transitional cell carcinoma,55
+HUPT4,pancreas,"ductal adenocarcinoma, exocrine",55
+JHESOAD1,esophagus,adenocarcinoma,55
+NCIH2085,lung,"non-small cell lung cancer, adenocarcinoma",55
+SNU216,gastric,"adenocarcinoma, tubular",55
+LS123,colorectal,adenocarcinoma,55
+HT1197,urinary_tract,adrenocortical carcinoma,55
+COV644,ovary,"adenocarcinoma, mucinous",55
+NCIH596,lung,"non-small cell lung cancer, adenosquamous carcinoma",55
+PC9,lung,"non-small cell lung cancer, adenocarcinoma",55
+CAL851,breast,basal A,55
+SF172,central_nervous_system,glioblastoma,55
+C4II,cervix,adrenocortical carcinoma,55
+MS751,cervix,squamous cell carcinoma,55
+PACADD119,pancreas,"ductal adenocarcinoma, exocrine",55
+UMUC10,urinary_tract,transitional cell carcinoma,55
+SKGI,uterus,endometrial squamous cell carcinoma,55
+SKGII,uterus,endometrial squamous,55
+SKGT2,gastric,adenocarcinoma,55
+SKGT4,esophagus,adenocarcinoma,55
+ICC2,bile_duct,"cholangiocarcinoma, intrahepatic",55
+ICC9,bile_duct,"cholangiocarcinoma, intrahepatic",55
+TGBC1TKB,bile_duct,adenocarcinoma,55
+UMUC7,urinary_tract,transitional cell carcinoma,56
+UMUC9,urinary_tract,transitional cell carcinoma,56
+YSCCC,bile_duct,"cholangiocarcinoma, intrahepatic",56
+SNU761,liver,hepatocellular carcinoma,57
+LI7,liver,NA,57
+SNU878,liver,hepatocellular carcinoma,57
+PACADD137,pancreas,"ductal adenocarcinoma, exocrine",57
+PACADD165,pancreas,"ductal adenocarcinoma, exocrine",57
+ICC106,bile_duct,"cholangiocarcinoma, intrahepatic",57
+ICC137,bile_duct,cholangiocarcinoma,57
+ICC5,bile_duct,"cholangiocarcinoma, intrahepatic",57
+ICC6,bile_duct,cholangiocarcinoma,57
+ICC7,bile_duct,cholangiocarcinoma,57
+RBE,bile_duct,"cholangiocarcinoma, intrahepatic",57
+SG231,bile_duct,"cholangiocarcinoma, intrahepatic",57
+GB2,bile_duct,gallbladder adenocarcinoma,57
+D341,central_nervous_system,medulloblastoma,59
+D425,central_nervous_system,medulloblastoma,59
+D458,central_nervous_system,medulloblastoma,59
+SUMB002,central_nervous_system,medulloblastoma,59
+HDMB03,central_nervous_system,medulloblastoma,59
+MDAMB415,breast,HER2 amp,60
+REH,blood,"acute lymphoblastic leukemia, b-cell",62
+UACC812,breast,luminal,63
+SUM185PE,breast,luminal,63
+SUM44PE,breast,carcinoma,63
+SUM52PE,breast,luminal,63
+OUMS23,colorectal,adenocarcinoma,64
+CACO2,colorectal,adenocarcinoma,64
+C2BBE1,colorectal,adenocarcinoma,64
+RERFGC1B,gastric,adenocarcinoma,64
+OV90,ovary,"adenocarcinoma, high grade serous",64
+HUH6,liver,hepatoblastoma,64
+JAR,uterus,choriocarcinoma,64
+JEG3,uterus,choriocarcinoma,64
+T3M3,uterus,choriocarcinoma,64
+RD,soft_tissue,embryonal rhabdomyosarcoma,31
+MON,soft_tissue,malignant rhabdoid tumor,49
+MON,soft_tissue,malignant rhabdoid tumor,49
+CAL62,thyroid,"carcinoma, anaplastic",2
+HCC2429,lung,"non-small cell lung cancer, unspecified",65
+DU4475,breast,luminal HER2 amp,65
+NCIH211,lung,small cell lung cancer,65
+GSS,gastric,adenocarcinoma,65
+NZOV9,ovary,adenocarcinoma,65
+HSQ89,upper_aerodigestive,squamous cell carcinoma,65
+8505C,thyroid,adrenocortical carcinoma,2
+BHT101,thyroid,"carcinoma, papillary",66
+HCC44,lung,"non-small cell lung cancer, adenocarcinoma",66
+YD8,upper_aerodigestive,"squamous cell carcinoma, tongue",2
+KP3,pancreas,"ductal adenosquamous carcinoma, exocrine",66
+NCIH2172,lung,"non-small cell lung cancer, unspecified",66
+YD38,upper_aerodigestive,squamous cell carcinoma,4
+HCC15,lung,"non-small cell lung cancer, squamous cell carcinoma",66
+RERFLCMS,lung,"non-small cell lung cancer, adenocarcinoma",66
+NCIH1793,lung,"non-small cell lung cancer, adenocarcinoma",66
+HSC3,upper_aerodigestive,squamous cell carcinoma,4
+NCIH1355,lung,"non-small cell lung cancer, adenocarcinoma",66
+NCIH2023,lung,"non-small cell lung cancer, adenocarcinoma",66
+PECAPJ34CLONEC12,upper_aerodigestive,"squamous cell carcinoma, basaloid",4
+CALU6,lung,"non-small cell lung cancer, unspecified",66
+SNU668,gastric,adenocarcinoma,66
+CORL105,lung,"non-small cell lung cancer, adenocarcinoma",66
+NCIH2405,lung,"non-small cell lung cancer, adenocarcinoma",66
+NCIH2887,lung,"non-small cell lung cancer, unspecified",66
+NCIH1755,lung,"non-small cell lung cancer, adenocarcinoma",66
+SNU5,gastric,adenocarcinoma,66
+NCIH647,lung,"non-small cell lung cancer, adenosquamous carcinoma",66
+LU65,lung,"non-small cell lung cancer, large cell carcinoma",66
+HEC265,uterus,endometrial adenocarcinoma,19
+NCIH2073,lung,"non-small cell lung cancer, adenocarcinoma",66
+EKVX,lung,"non-small cell lung cancer, adenocarcinoma",66
+HCC515,lung,"non-small cell lung cancer, adenocarcinoma",66
+OCUG1,bile_duct,adenocarcinoma,66
+SNU638,gastric,adenocarcinoma,66
+CCLFUPGI0005T,gastric,adenocarcinoma,66
+COV318,ovary,"adenocarcinoma, high grade serous",68
+FUOV1,ovary,"adenocarcinoma, high grade serous",68
+OV17R,ovary,adenocarcinoma,68
+TO14,ovary,cystadenocarcinoma,68
+EMTOKA,uterus,carcinosarcoma,68
+OCIC4P,ovary,adenocarcinoma,68
+HS895T,fibroblast,skin,69
+HS616T,fibroblast,lymphoma,69
+HS706T,fibroblast,bone,69
+TE125T,fibroblast,soft tissue,69
+HS281T,fibroblast,breast,69
+HS863T,fibroblast,bone,69
+TO175T,fibroblast,lymphoma,69
+HS229T,fibroblast,lung,69
+HS274T,fibroblast,breast,69
+HS940T,fibroblast,skin,69
+HS578T,breast,basal B,69
+HS888T,fibroblast,bone,69
+HS751T,fibroblast,lymphoma,69
+TE159T,fibroblast,soft tissue,69
+HS839T,fibroblast,skin,69
+HS343T,fibroblast,breast,69
+HS737T,fibroblast,bone,69
+HS934T,fibroblast,skin,69
+HS255T,fibroblast,colorectal,69
+HS675T,fibroblast,colorectal,69
+HS819T,fibroblast,bone,69
+HS822T,fibroblast,bone,69
+HS742T,fibroblast,breast,69
+HS600T,fibroblast,skin,69
+HS834T,fibroblast,skin,69
+HS840T,fibroblast,upper aerodigestive,69
+HS688AT,fibroblast,skin,69
+HS870T,fibroblast,bone,69
+HS739T,fibroblast,breast,69
+HS821T,fibroblast,bone,69
+T173,fibroblast,bone,69
+RS5,fibroblast,lung,69
+HS618T,fibroblast,lung,69
+HS606T,fibroblast,breast,69
+DM3,fibroblast,lung,69
+HLFA,fibroblast,lung,69
+HS698T,fibroblast,colorectal,69
+NHAHTDD,central_nervous_system,NA,69
+TIG3TD,fibroblast,lung,69
+C396,bone,osteosarcoma,69
+SUM102PT,breast,carcinoma,70
+SW954,cervix,squamous cell carcinoma,70
