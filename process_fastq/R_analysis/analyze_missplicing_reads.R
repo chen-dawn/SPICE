@@ -18,7 +18,7 @@ barcodes <- read_csv("~/melange/data/guide_library/20230130_twist_library_v3.csv
 all_sample_reps <- fread("/Volumes/broad_dawnccle/processed_data/missplicing_processed_df/V5/all_sample_reps_PSI.csv")
 
 
-all_samples_wide <- all_sample_reps %>% 
+all_samples_wide <- all_sample_reps %>%
   mutate(PSI = count/(count + skipped)) %>% 
   filter((count + skipped) > 30) %>%
   select(-count, -skipped, - mode, -offset, -condition) %>%
@@ -178,7 +178,8 @@ write.csv(andrea_sequences_subset, file = "~/Downloads/Andrea_Sequences_PSI.csv"
 
 # Sequences: 
 seq_shortlist <- c("ENSG00000156860.16;FBRS;chr16-30661179-30661215-30660262-30660442-30661303-30661333", 
-                   "ENSG00000138821.14;SLC39A8;chr4-102285948-102285973-102267871-102268079-102304316-102304481")
+                   "ENSG00000138821.14;SLC39A8;chr4-102285948-102285973-102267871-102268079-102304316-102304481", 
+                   "ENSG00000135365.16;PHF21A;chr11-45946075-45946098-45938156-45938312-45948885-45948946")
 
 # Get the barcoderevcomp for the sequences
 seq_shortlist_barcodes <- barcodes %>% 

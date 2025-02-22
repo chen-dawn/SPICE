@@ -615,3 +615,17 @@ for (i in 1:nrow(top_correlations)) {
 # 
 # # Heatmap of cca_result$xcoef
 # pheatmap(cca_result$xcoef, cluster_rows = T, cluster_cols = T, show_rownames = T, show_colnames = T, fontsize = 6)
+
+gene_vector <- c("ANG", "AZGP1", "BOLL", "CELF3", "CSDC2", "DAZ1", "DAZ4", "DNMT3B", 
+                 "ELAVL2", "ELAVL3", "EXO1", "EZH2", "IFIH1", "IGF2BP1", "IGF2BP3", 
+                 "ISG20", "LIN28B", "MEX3A", "MEX3B", "NANOS1", "NOVA1", "NOVA2", 
+                 "NSUN7", "RBFOX1", "RBFOX2", "RBFOX3", "RBM20", "RBPMS2", "RDM1", 
+                 "RPP25", "SAMD4A", "SMAD9", "TDRD3", "TDRD5", "TERT")
+
+# Get these genes in the gex_mat_aligned. 
+gex_mat_aligned_RBP <- gex_mat_aligned[, gene_vector]
+
+# Get max of each column and the name of the column
+max_values <- apply(gex_mat_aligned_RBP, 2, max)
+max_cellline <- apply(gex_mat_aligned_RBP, 2, function(x) names(x)[which.max(x)])
+RBP_max_df <- data.frame(cellline = max_cellline, max_value = max_values)

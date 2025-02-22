@@ -178,7 +178,7 @@ done
 
 ## Combine the files for all the individual comparisons
 
-Run the following for each of the comparison folders:
+Run the following for each of the comparison folders. This only filters for values that have <0.01 FDR.
 ```
 output_file="rmats_one_vs_all_combined_output_PSI.tsv"
 # output_file="rmats_one_vs_all_combined_output_3ss.tsv"

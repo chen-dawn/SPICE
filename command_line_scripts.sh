@@ -130,7 +130,7 @@ for ((i = 0; i < ${#celltypes[@]}; i++)); do
         processed_pairs[$pair_key]=1
 
         echo "Running for pair: $celltype1 and $celltype2"
-        qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/missplicing/run_pairadise_pair_tissuetype_PSI.sh
+        qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_tissuetype_PSI.sh
         # sh /broad/dawnccle/melange/process_fastq/missplicing/run_pairadise_pair_tissuetype.sh $celltype1 $celltype2
     done
 done
@@ -180,7 +180,7 @@ for folder in */; do
 done
 
 # Merge all output files.
-output_file="PSI_indiv_combined_output.tsv"
+output_file="NovaseqPSI_indiv_combined_output.tsv"
 first_file=true
 
 for folder in */; do
@@ -235,8 +235,8 @@ for ((i = 0; i < ${#celltypes[@]}; i++)); do
     celltype1=${celltypes[i]}
     # Write the qsub command to the output file
     # echo "qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/missplicing/run_pairadise_pair_celltype_one_to_all.sh" >>"$output_file"
-    qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_celltype_one_to_all.sh
-    qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_celltype_PSI_one_to_all.sh
+    qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_3ss_one_to_all.sh
+    qsub -v celltype1=$celltype1 /broad/dawnccle/melange/process_fastq/final_pipeline/run_pairadise_pair_indiv_PSI_one_to_all.sh
 done
 
 
@@ -330,4 +330,131 @@ for FILENAME in *rep*_R1_001.fastq.gz; do
         -1 ${BASENAME}_R1_bc_extracted.fastq.gz \
         -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
         -o /broad/thechenlab/Dawn/NextSeq/240706_VL00297_10_AAFW7M2M5/Data/Intensities/BaseCalls/splicing_out_new
+done
+
+######################
+# This is for celltype pairs Novaseq 240826
+######################
+# Read the cell types into an array
+readarray -t celltypes </broad/dawnccle/melange/process_fastq/novaseq240826_pipeline/nova240826_celllines.txt
+
+# Create a set to track processed pairs
+declare -A processed_pairs
+processed_pairs=()
+
+# Specify the output file for the qsub commands
+output_file="qsub_commands_PSI.txt"
+
+# Ensure the output file is empty at the start
+>"$output_file"
+
+# Loop over each pair of cell types
+for ((i = 0; i < ${#celltypes[@]}; i++)); do
+    for ((j = i + 1; j < ${#celltypes[@]}; j++)); do
+        celltype1=${celltypes[i]}
+        celltype2=${celltypes[j]}
+
+        # Skip if celltype1 is the same as celltype2
+        if [[ "$celltype1" == "$celltype2" ]]; then
+            continue
+        fi
+
+        # Create a sorted key to ensure pairs are unique
+        pair_key=$(echo "$celltype1 $celltype2" | tr " " "\n" | sort | tr "\n" "_")
+
+        # Skip if the pair has already been processed
+        if [[ -n "${processed_pairs[$pair_key]}" ]]; then
+            continue
+        fi
+
+        # Mark the pair as processed
+        processed_pairs[$pair_key]=1
+
+        echo "Running for pair: $celltype1 and $celltype2"
+        # Write the qsub command to the output file
+        echo "qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/novaseq240826_pipeline/run_pairadise_pair_celltype_PSI.sh" >>"$output_file"
+    done
+done
+
+# Merge the sequences for FDR
+output_file="Nova240826_PSI_combined_output_indiv.tsv"
+first_file=true
+
+for folder in */; do
+    folder_name="${folder%/}"
+    for file in "$folder"/*FDR.txt; do
+        echo -e "\n####################"
+        echo "$file"
+        echo -e "####################\n"
+
+        if $first_file; then
+            awk 'NR==1 {print $0 "\tFolder"} NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+            first_file=false
+        else
+            awk 'NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+        fi
+    done
+done
+
+output_file="Nova240826_3ss_combined_output_indiv.tsv"
+first_file=true
+
+for folder in */; do
+    folder_name="${folder%/}"
+    for file in "$folder"/*FDR.txt; do
+        echo -e "\n####################"
+        echo "$file"
+        echo -e "####################\n"
+
+        if $first_file; then
+            awk 'NR==1 {print $0 "\tFolder"} NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+            first_file=false
+        else
+            awk 'NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+        fi
+    done
+done
+
+######################
+# This is for celltype pairs Novaseq 241106
+######################
+# Read the cell types into an array
+readarray -t celltypes </broad/dawnccle/melange/process_fastq/novaseq240826_pipeline/nova241106_RBP_celllines.txt
+
+# Create a set to track processed pairs
+declare -A processed_pairs
+processed_pairs=()
+
+# Specify the output file for the qsub commands
+output_file="qsub_commands_PSI.txt"
+
+# Ensure the output file is empty at the start
+>"$output_file"
+
+# Loop over each pair of cell types
+for ((i = 0; i < ${#celltypes[@]}; i++)); do
+    for ((j = i + 1; j < ${#celltypes[@]}; j++)); do
+        celltype1=${celltypes[i]}
+        celltype2=${celltypes[j]}
+
+        # Skip if celltype1 is the same as celltype2
+        if [[ "$celltype1" == "$celltype2" ]]; then
+            continue
+        fi
+
+        # Create a sorted key to ensure pairs are unique
+        pair_key=$(echo "$celltype1 $celltype2" | tr " " "\n" | sort | tr "\n" "_")
+
+        # Skip if the pair has already been processed
+        if [[ -n "${processed_pairs[$pair_key]}" ]]; then
+            continue
+        fi
+
+        # Mark the pair as processed
+        processed_pairs[$pair_key]=1
+
+        echo "Running for pair: $celltype1 and $celltype2"
+        # Write the qsub command to the output file
+        echo "qsub -v celltype1=$celltype1,celltype2=$celltype2 /broad/dawnccle/melange/process_fastq/novaseq241106_pipeline/run_pairadise_pair_celltype_PSI.sh" >>"$output_file"
+    done
 done
