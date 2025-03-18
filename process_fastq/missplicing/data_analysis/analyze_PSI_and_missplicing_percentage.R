@@ -15,8 +15,9 @@ reverse_complement <- function(dna_seq) {
 
 out_dir <- "~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/data_analysis/"
 dir.create(out_dir, showWarnings = FALSE)
-all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V5_results/umi_count_merged_to_ref_normalized.csv")
-K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/library_47k_missplicing/V5_results/K700E_umi_count_merged_to_ref_normalized.csv")
+all_files_df <- fread("~/Dropbox (Harvard University)/02Splicing/latest/umi_count_merged_to_ref_normalized.csv")
+K700E_df <- fread("~/Dropbox (Harvard University)/02Splicing/latest/K700E_umi_count_merged_to_ref_normalized.csv")
+# nova240826_df <- fread("~/Dropbox (Harvard University)/02Splicing/latest/Nova240826_umi_count_merged_to_ref_normalized.csv")
 alt_ref_file <- read_tsv("~/melange/data/guide_library_cleaned/ref_test_alt_ref_dict.tsv")
 barcodes <- read_csv("~/melange/data/guide_library/20230130_twist_library_v3.csv") %>%
   mutate(barcodeRevcomp = sapply(barcode, reverse_complement))
@@ -63,7 +64,7 @@ included_reads <- K700E_df %>% filter(mode == "INCLUDED") %>%
   group_by(sample, index) %>% 
   mutate(total_sum = sum(count)) %>% 
   ungroup() %>%
-  filter(total_sum > 20) %>%
+  filter(total_sum > 30) %>%
   mutate(fraction = count / total_sum) %>%
   group_by(condition, index, offset_mid_start, offset_mid_end, offset_down_start, offset) %>%
   summarise(fraction = mean(fraction)) 
@@ -72,12 +73,17 @@ included_reads <- K700E_df %>% filter(mode == "INCLUDED") %>%
 # Pivot wider by count. 
 included_reads_wide <- included_reads %>% 
   pivot_wider(names_from = condition, values_from = fraction, values_fill = NA) %>% 
-  mutate(diff = K562_K700E - K562_WT)
+  mutate(diff = K562_K700E - K562_WT) %>% 
+  mutate(log_ratio = log2(K562_K700E / K562_WT))
 
 high_in_K700E <- included_reads_wide %>% 
-  filter(offset_mid_start ==0 & offset_mid_end == 0 & offset_down_start == 0) %>% 
-  filter(diff < -0.3 & K562_WT > 0.9) %>% 
-  arrange(diff)
+  # filter(offset_mid_start ==0 & offset_mid_end == 0 & offset_down_start == 0) %>% 
+  # filter(diff < -0.3 & K562_WT > 0.9) %>% 
+  # arrange(diff)
+  filter(offset != "0:0:0") %>% 
+  # filter(offset_mid_start == 0 & offset_mid_end == 0 & offset_down_start == 0) %>% 
+  filter(abs(diff) > 0.1 & abs(log_ratio) > 2) %>% 
+  arrange(desc(log_ratio))
 
 # Get the ones that are high in K700E and check the entire counts.
 shortlisted_elements <- included_reads_wide %>% 
