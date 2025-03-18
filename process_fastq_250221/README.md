@@ -1,8 +1,8 @@
-# Process FASTQ files to generate count matrix
+# Process and normalize FASTQ files
 
-**The most current latest version for all processed files is always saved in the `/broad/dawnccle/processed_data/latest` folder.**
+## 1. Convert raw FASTQ files to counts table
 
-## Use UMI-tools to extract the element barcode from R2
+### Use UMI-tools to extract the element barcode from R2
 Our sequencing is such that R1 contains the information for the reporter sequence and splice junctions, and R2 contains the element barcode. First I run umi tools using the barcode whitelist like so to extract the barcode from R2. This only allows for perfect string matching with no error tolerance, but the Illumina sequencing error rate is low enough such that it doesn't lead to a major decrease in mapping rates.
 
 The file to run is `/Volumes/broad_dawnccle/melange/process_fastq_250221/01_raw_fastq_to_counts/run_umi_tools_demux.sh`. 
@@ -31,7 +31,7 @@ umi_tools extract --stdin $FQ1 --read2-in=${FQ2}  \
     --filtered-out ${BASENAME}_R1_bc_extracted_failed.fastq.gz --filtered-out2 ${BASENAME}_R2_bc_extracted_failed.fastq.gz
 ```
 
-## Get the splicing information from R1 and R2
+### Get the splicing information from R1 and R2
 I run the following scripts to call splicing information from each read.
 
 ```
@@ -74,53 +74,34 @@ T47D-rep1_stats_log_fine_grained_idx.txt
 # This is the file that is used for downstream analysis.
 T47D-rep1_umi_dedup_fine_grained_idx.csv
 ```
+** The most recent set of files are saved in `/broad/dawnccle/processed_data/reprocess_250221/` **
 
-I also pretty clean the data using the following script (it's not really necessary, but I happen to be using this "cleaned" file for downstream processing):
-```
-# To pretty clean the files.
-for file in *umi_dedup_fine_grained_idx.csv; do
-    echo $file
-    awk -F',' 'NR==1 {print "index\tmode\toffset\tcount"} 
-               NR>1 {
-                   split($1, id_parts, "_")
-                   name=""
-                   for (i=1; i<=length(id_parts)-2; i++) {
-                       name = (i == 1) ? id_parts[i] : name "_" id_parts[i]
-                   }
-                   mode = id_parts[length(id_parts)-1]
-                   offset = id_parts[length(id_parts)]
-                   print name"\t"mode"\t"offset"\t"$2
-               }' $file >${file%.csv}_formatted.tsv
-done
-```
 
-**The most current latest version is always saved in the `/broad/dawnccle/processed_data/latest` folder.**
-Here are the paths of where the latest files are stored:
+## 2. Merge and normalize the counts table
 
-```
-# All samples (same as file in V5/V6 processed files)
-/broad/dawnccle/processed_data/latest/raw_47celltype
+### Refer to the README in the `02_merge_and_normalize_counts` folder for more details.
 
-# K562 WT vs K700E (same as files in V6 processed files, accidentially deleted one of the V5 files)
-/broad/dawnccle/processed_data/latest/raw_K700E
-```
+## 3. Convert to PSI
 
-## Merge all the files together
-Run the script `/broad/dawnccle/melange/process_fastq/final_pipeline/01_merge_counts_all_samples_workstation.R`. This merges all the individual files and saves them to the directory.
+### Refer to the README in the `03_convert_to_PSI` folder for more details.
 
-The main files that should be used are:
-```
-/broad/dawnccle/processed_data/latest/umi_count_merged_to_ref_normalized.csv
-/broad/dawnccle/processed_data/latest/K700E_umi_count_merged_to_ref_normalized.csv
-```
 
-This also makes the files that have some minor filtering which are:
-```
-# This one is for PSI calculations, where only the reads that are perfectly skipped or included (as according to the reference file) are kept.
-/broad/dawnccle/processed_data/latest/all_sample_reps_PSI.csv
-# This one is for alternative 5'ss calculations.
-/broad/dawnccle/processed_data/latest/all_sample_reps_3ss.csv
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Statistics of differential splicing using the rMATS-STAT pipeline
 

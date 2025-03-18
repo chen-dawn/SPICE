@@ -27,8 +27,8 @@ Dawn Chen
 Usage:
 
 HEK test file for debugging.
-python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_20250220.py \
-    -1 /broad/dawnccle/sequencing/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/HEK-rep1_R1_bc_extracted.fastq.gz \
+python /broad/dawnccle/melange/process_fastq_250221/01_raw_fastq_to_counts/MatchBarcodeToElementRNA_20250220.py \
+    -1 /broad/dawnccle/sequencing/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/T47D-rep1_R1_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
 
@@ -297,8 +297,8 @@ def get_identity_from_fq(
         id, cb, umi = read_name.split("_")
 
         total_reads += 1
-        if total_reads % 10000 == 0:
-            logging.info("Already processed reads: {}.".format(total_reads))
+        # if total_reads % 10000 == 0:
+        #     logging.info("Already processed reads: {}.".format(total_reads))
 
         # if total_reads >= 100000:
         #     break
@@ -314,6 +314,9 @@ def get_identity_from_fq(
             continue
         
         element_id = bc_lib_dict[guide_bc]
+        if element_id != "ENSG00000170832.13;USP32;chr17-60207020-60207132-60205446-60205658-60208058-60208210":
+            continue
+        
         # Find the start and end of the "upstream exon" and "downstream exon" in the library sequence.
         # We will use this to determine if the read is spliced or not.
         start_upstream, end_upstream = find_substring_with_mismatches(
@@ -433,6 +436,8 @@ def get_identity_from_fq(
         end_guide_pos_adjusted = end_middle_included_sequence - len(ref_included_upstream_intron) - len(ref_included_middle_exon)
         
         temp_ID = f"{element_id}__INCLUDED__{start_guide_pos_adjusted}:{end_guide_pos_adjusted}:{ref_downstream_exon_start}__{len(middle_included_sequence)}"
+        # if start_guide_pos_adjusted != 0 and end_guide_pos_adjusted != 0:
+        print(f"{temp_ID},{middle_included_sequence},{library_seq}")
         element_cb_umi_dict = add_cb_umi_to_dict(element_cb_umi_dict, temp_ID, cb_umi)
         
         if start_guide_pos_adjusted == 0 and end_guide_pos_adjusted == 0:
