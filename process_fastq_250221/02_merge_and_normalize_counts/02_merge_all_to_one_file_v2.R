@@ -40,6 +40,9 @@ input_output_mapping <- list(
   
   list(input_dir = "U:/processed_data/reprocess_250221/count_normalized_chimeric_rate/OEx", 
        sample_type = "OEx", 
+       out_dir = "U:/processed_data/reprocess_250221/count_normalized_chimeric_rate/"),
+  list(input_dir = "U:/processed_data/reprocess_250221/count_normalized_chimeric_rate/MUT2", 
+       sample_type = "MUT2", 
        out_dir = "U:/processed_data/reprocess_250221/count_normalized_chimeric_rate/")
 )
 
