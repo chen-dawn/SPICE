@@ -66,7 +66,7 @@ BASENAME=${FILENAME%_R1_bc_extracted.fastq.gz}
 FQ1=${BASENAME}_R1_bc_extracted.fastq.gz
 FQ2=${BASENAME}_R2_bc_extracted.fastq.gz
 
-python /broad/dawnccle/melange/process_fastq_250221/01_raw_fastq_to_counts/MatchBarcodeToElementRNA_20250220.py \
+python /broad/dawnccle/melange/process_fastq_250221/01_raw_fastq_to_counts/MatchBarcodeToElementRNA_20250220_original.py \
     -1 ${indir}/${BASENAME}_R1_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o $outdir

@@ -55,7 +55,7 @@ final_psi_table_filtered <- final_psi_table_filtered %>%
   filter(!(condition %in% c("K562WT", "K562K700E"))) %>% 
   filter(!(condition %in% c("JHOM1", "RVH421", "KNS60", "OVTOKO"))) %>% 
   mutate(total_count = included_count + skipped_count) %>%
-  filter(total_count >= 20) %>%
+  filter(total_count >= 30) %>%
   mutate(index_offset = paste(index, offset, sep = "__")) %>% 
   separate(offset, into = c("upstream_offset", "downstream_offset", "const_offset"), sep = ":") %>% 
   mutate(upstream_offset = as.integer(upstream_offset)) %>% 
@@ -189,28 +189,41 @@ cell_specific_score_shortlist <- cell_specific_score %>%
 # shortlist psi_table_mat
 psi_table_mat_high_upsilon <- psi_table_mat[rownames(psi_table_mat) %in% cell_specific_score_shortlist$index_offset, ]
 # Heatmap
-heatmap_colors <- colorRampPalette(c("#2166AC", "white", "#B2182B"))(100)  # Better Blue-White-Red
+library(viridis)
+heatmap_colors <- viridis(100)  # Use viridis for better color perception
+# heatmap_colors <- colorRampPalette(c("#2166AC", "white", "#B2182B"))(100)  # Better Blue-White-Red
 
 p1 <- pheatmap(psi_table_mat_high_upsilon, 
          color = heatmap_colors, 
          cluster_rows = T,   # Allow clustering for better visualization
-         cluster_cols = F,   # Allow clustering for better visualization
+         cluster_cols = T,   # Allow clustering for better visualization
          fontsize = 8,         # Increased font size for readability
          border_color = "grey90", # Subtle grid lines
          main = "PSI Heatmap for High Upsilon Values",
          treeheight_row = 10,  # Reduce tree height for better spacing
          treeheight_col = 10,
-         show_rownames = FALSE,
+         show_rownames = TRUE,
          angle_col = 45)       # Tilt column labels for readability
-ggsave(filename = paste0(output_filepath, "/PSI_heatmap_high_upsilon.pdf"), 
-       plot = p1, 
-       width = 12, height = 8, dpi = 300)
+ggsave(filename = paste0(output_filepath, "/PSI_heatmap_high_upsilon_big.pdf"),
+       plot = p1,
+       width = 24, height = 16, dpi = 300)
+# ggsave(filename = paste0(output_filepath, "/PSI_heatmap_high_upsilon.pdf"), 
+#        plot = p1, 
+#        width = 12, height = 8, dpi = 300)
 
-## Get number of cell types in ecah group
+## Get number of cell types in each group
 num_cell_type_high_tau <- cell_specific_score_shortlist %>% 
   mutate(target_cell_type = ifelse(upsilon > 0.5, max_sample, min_sample)) %>% 
   group_by(target_cell_type) %>%
   summarise(num_cell_type = n()) 
+
+num_cell_type_high_tau_to_save <- cell_specific_score_shortlist %>% 
+  mutate(target_cell_type = ifelse(upsilon > 0.5, max_sample, min_sample))
+write_csv(num_cell_type_high_tau_to_save, 
+         file = paste0(output_filepath, "/num_cell_type_high_tau.csv"))
+# Save the psi_table_mat_high_upsilon
+write_csv(as.data.frame(psi_table_mat_high_upsilon), 
+         file = paste0(output_filepath, "/psi_table_mat_high_upsilon.csv"))
 
 theme_publication <- theme_classic(base_size = 9) + 
   theme(

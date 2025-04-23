@@ -1,0 +1,61 @@
+#!/bin/bash
+
+#############################
+### Default UGER Requests ###
+#############################
+
+# This section specifies uger requests.
+# This is good for jobs you need to run multiple times so you don't forget what it needs.
+
+# Memory request for 4G
+#$ -l h_vmem=4G
+
+# Cores
+#$ -pe smp 8
+#$ -binding linear:8
+
+# I like single output files
+#$ -j y
+
+# Not sure what this flag does
+#$ -R y
+
+# Runtime request.  Usually 30 minutes is plenty for me and helps me get backfilled into reserved slots.
+#$ -l h_rt=24:00:00
+
+# I don't like the top level of my homedir filling up.
+#$ -o $HOME/ccle/outputs
+
+# Job name
+#$ -N PSI_MUT2_RMATS_STAT
+
+######################
+### Dotkit section ###
+######################
+
+# This is required to use dotkits inside scripts
+# source /broad/software/scripts/useuse
+# source $HOME/.bioinfo
+# reuse R-4.1
+
+##################
+### Run script ###
+##################
+
+# celltype1=KMRC1
+# celltype2=HCC38
+
+echo $celltype1 $celltype2
+output_dir=/mnt/dawnccle2/processed_data/reprocess_250221/pairadise_indiv_PSI/MUT2_$celltype1\_$celltype2
+output_file=/mnt/dawnccle2/processed_data/reprocess_250221/pairadise_indiv_PSI/MUT2_$celltype1\_$celltype2/$celltype1\_$celltype2\_formatted_df.tsv
+
+mkdir -p $output_dir
+conda init
+conda activate r_env
+Rscript /mnt/dawnccle2/melange/process_fastq_250221/04_run_pairadise/pairadise_PSI_MUT2_workstation.R $celltype1 $celltype2 $output_file
+conda deactivate
+
+conda activate rmats2.7
+python /mnt/dawnccle2/rMATS-STAT/rMATS_unpaired.py $output_file $output_dir 32 0.1
+python /mnt/dawnccle2/rMATS-STAT/FDR.py $output_dir/rMATS_Result_P.txt $output_dir/$celltype1\_$celltype2\_rMATS_Result_P.FDR.txt
+conda deactivate

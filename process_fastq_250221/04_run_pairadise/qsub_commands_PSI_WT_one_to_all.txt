@@ -29,6 +29,7 @@ qsub -v celltype1=KMRC20,celltype2=all /broad/dawnccle/melange/process_fastq_250
 qsub -v celltype1=KNS60,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=MCF7,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=MDAMB231,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
+qsub -v celltype1=MEL202,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=MELHO,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=MeWo,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=OC314,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
@@ -46,3 +47,4 @@ qsub -v celltype1=T47D,celltype2=all /broad/dawnccle/melange/process_fastq_25022
 qsub -v celltype1=TOV21G,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=U251MG,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
 qsub -v celltype1=VMRCRCZ,celltype2=all /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh
+qsub -v celltype1=K562WT,celltype2=K562K700E /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_WT_PSI.sh

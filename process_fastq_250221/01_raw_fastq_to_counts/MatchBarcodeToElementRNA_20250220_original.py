@@ -339,7 +339,7 @@ def get_identity_from_fq(
         
         # Try to map to the unspliced reference.
         unsplice_start, _ = find_substring_with_mismatches(
-            UNSPLICED_INTRON, library_seq_first_20, 1
+            UNSPLICED_INTRON, library_seq_first_20, 0
         )
         if unsplice_start is not None:
             aligned_reads += 1
@@ -417,9 +417,10 @@ def get_identity_from_fq(
             start_middle_included_sequence, end_middle_included_sequence = find_substring_with_mismatches(
                 ref_included_sequence, middle_included_sequence, 1
             )
+        # If >40, we still allow only 1 mismatches.
         else:
             start_middle_included_sequence, end_middle_included_sequence = find_substring_with_mismatches(
-                ref_included_sequence, middle_included_sequence, 2
+                ref_included_sequence, middle_included_sequence, 1
             )
         # Now we can find the coordinate of the included sequence.
         aligned_reads += 1
@@ -452,6 +453,8 @@ def get_identity_from_fq(
     umi_dedup_df.reset_index(level=0, inplace=True)
     # Sort by index.
     umi_dedup_df = umi_dedup_df.sort_values(by="index")
+    
+    total_umi_count = umi_dedup_df["count"].sum()
 
     # Convert element_cb_umi_dict to a dataframe. This is a nested dictionary of dictionaries so we unnest it.
     names_list = []
@@ -480,6 +483,8 @@ def get_identity_from_fq(
     stats = {
         "total_reads": total_reads,
         "total_aligned_reads": aligned_reads, 
+        "total_umi_count": total_umi_count,
+        "duplication_rate": total_umi_count / float(aligned_reads),
         "bc_not_found": bc_not_found,
         "perc_bc_not_found": bc_not_found / float(total_reads),
         "skipped_reads": skipped_reads,

@@ -31,6 +31,11 @@ all_sample_reps <- fread("/broad/dawnccle/processed_data/reprocess_250221/count_
 all_sample_reps <- all_sample_reps %>% 
   filter(condition != "K562WT" & condition != "K562K700E") %>%
   mutate(index_offset = paste0(index, "__", offset)) 
+
+all_sample_reps <- all_sample_reps %>% 
+  group_by(index_offset, condition) %>% 
+  summarise(included_count = sum(included_count), skipped_count = sum(skipped_count), .groups = "drop")
+
 print("Finished reading data")
 
 get_paradise_output <- function(df, condition1, condition2) {
@@ -39,7 +44,7 @@ get_paradise_output <- function(df, condition1, condition2) {
   condition2_df <- df %>% filter(condition %in% condition2)
   
   # Create a list of the first 10 unique indices
-  unique_indices <- unique(condition1_df$index)
+  unique_indices <- unique(condition1_df$index_offset)
   
   # Function to pad vectors with zeros
   pad_with_zeros <- function(vec, target_len = 3) {
@@ -52,8 +57,8 @@ get_paradise_output <- function(df, condition1, condition2) {
   
   # Create the paradise data frame using dplyr operations and future.apply for parallel processing
   paradise_df <- lapply(unique_indices, function(idx) {
-    condition1_index_df <- condition1_df %>% filter(index == idx) %>% arrange(sample)
-    condition2_index_df <- condition2_df %>% filter(index == idx) %>% arrange(sample)
+    condition1_index_df <- condition1_df %>% filter(index_offset == idx) %>% arrange(condition)
+    condition2_index_df <- condition2_df %>% filter(index_offset == idx) %>% arrange(condition)
     
     I1 <- pad_with_zeros(condition1_index_df$included_count)
     S1 <- pad_with_zeros(condition1_index_df$skipped_count)

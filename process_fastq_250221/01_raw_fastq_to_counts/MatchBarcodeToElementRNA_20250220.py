@@ -27,8 +27,8 @@ Dawn Chen
 Usage:
 
 HEK test file for debugging.
-python /broad/dawnccle/melange/process_fastq_250221/01_raw_fastq_to_counts/MatchBarcodeToElementRNA_20250220.py \
-    -1 /broad/dawnccle/sequencing/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/T47D-rep1_R1_bc_extracted.fastq.gz \
+python /broad/dawnccle/melange/process_fastq/missplicing/MatchBarcodeToElementRNA_20250220.py \
+    -1 /broad/dawnccle/sequencing/230516_SL-EXC_0008_B2235L7LT3/Data/Intensities/BaseCalls/merged_fastqs/HEK-rep1_R1_bc_extracted.fastq.gz \
     -l /broad/dawnccle/melange/data/guide_library_cleaned/20240605_twist_library_v3_ID_barcode_ROUT_filtered.csv \
     -o /broad/dawnccle/processed_data/missplicing_debug
 
@@ -297,8 +297,8 @@ def get_identity_from_fq(
         id, cb, umi = read_name.split("_")
 
         total_reads += 1
-        # if total_reads % 10000 == 0:
-        #     logging.info("Already processed reads: {}.".format(total_reads))
+        if total_reads % 10000 == 0:
+            logging.info("Already processed reads: {}.".format(total_reads))
 
         # if total_reads >= 100000:
         #     break
@@ -314,9 +314,6 @@ def get_identity_from_fq(
             continue
         
         element_id = bc_lib_dict[guide_bc]
-        if element_id != "ENSG00000170832.13;USP32;chr17-60207020-60207132-60205446-60205658-60208058-60208210":
-            continue
-        
         # Find the start and end of the "upstream exon" and "downstream exon" in the library sequence.
         # We will use this to determine if the read is spliced or not.
         start_upstream, end_upstream = find_substring_with_mismatches(
@@ -342,7 +339,7 @@ def get_identity_from_fq(
         
         # Try to map to the unspliced reference.
         unsplice_start, _ = find_substring_with_mismatches(
-            UNSPLICED_INTRON, library_seq_first_20, 1
+            UNSPLICED_INTRON, library_seq_first_20, 0
         )
         if unsplice_start is not None:
             aligned_reads += 1
@@ -420,9 +417,10 @@ def get_identity_from_fq(
             start_middle_included_sequence, end_middle_included_sequence = find_substring_with_mismatches(
                 ref_included_sequence, middle_included_sequence, 1
             )
+        # If >40, we still allow only 1 mismatches.
         else:
             start_middle_included_sequence, end_middle_included_sequence = find_substring_with_mismatches(
-                ref_included_sequence, middle_included_sequence, 2
+                ref_included_sequence, middle_included_sequence, 1
             )
         # Now we can find the coordinate of the included sequence.
         aligned_reads += 1
@@ -436,8 +434,6 @@ def get_identity_from_fq(
         end_guide_pos_adjusted = end_middle_included_sequence - len(ref_included_upstream_intron) - len(ref_included_middle_exon)
         
         temp_ID = f"{element_id}__INCLUDED__{start_guide_pos_adjusted}:{end_guide_pos_adjusted}:{ref_downstream_exon_start}__{len(middle_included_sequence)}"
-        # if start_guide_pos_adjusted != 0 and end_guide_pos_adjusted != 0:
-        print(f"{temp_ID},{middle_included_sequence},{library_seq}")
         element_cb_umi_dict = add_cb_umi_to_dict(element_cb_umi_dict, temp_ID, cb_umi)
         
         if start_guide_pos_adjusted == 0 and end_guide_pos_adjusted == 0:
@@ -457,6 +453,8 @@ def get_identity_from_fq(
     umi_dedup_df.reset_index(level=0, inplace=True)
     # Sort by index.
     umi_dedup_df = umi_dedup_df.sort_values(by="index")
+    
+    total_umi_count = umi_dedup_df["count"].sum()
 
     # Convert element_cb_umi_dict to a dataframe. This is a nested dictionary of dictionaries so we unnest it.
     names_list = []
@@ -485,6 +483,8 @@ def get_identity_from_fq(
     stats = {
         "total_reads": total_reads,
         "total_aligned_reads": aligned_reads, 
+        "total_umi_count": total_umi_count,
+        "duplication_rate": total_umi_count / float(aligned_reads),
         "bc_not_found": bc_not_found,
         "perc_bc_not_found": bc_not_found / float(total_reads),
         "skipped_reads": skipped_reads,

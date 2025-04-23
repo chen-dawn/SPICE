@@ -45,6 +45,7 @@ source activate python3.8
 ##################
 
 # Run like
+# cd /broad/dawnccle/sequencing/250313_Novaseq
 # for filename in *splicelib*_R1_001.fastq.gz; do
 #     echo $filename
 #     qsub -v FILENAME=$filename /broad/dawnccle/melange/process_fastq_250221/01_raw_fastq_to_counts/run_umi_tools_demux_nova250313.sh

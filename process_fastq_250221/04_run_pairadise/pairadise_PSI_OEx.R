@@ -30,7 +30,7 @@ output_filename <- args[3]
 print(paste("Celltype 1: ", celltype1))
 print(paste("Celltype 2: ", celltype2))
 print(paste("Output filename: ", output_filename))
-all_sample_reps <- fread("/broad/dawnccle/processed_data/reprocess_250221/count_normalized_chimeric_rate_considering_included/OEx_all_samples_PSI_count_table.csv")
+all_sample_reps <- fread("/broad/dawnccle/processed_data/reprocess_250221/count_normalized_v4_merged/OEx_all_samples_PSI_count_table.csv")
 all_sample_reps <- all_sample_reps %>% 
   mutate(index_offset = paste0(index, "__", offset)) 
 print("Finished reading data")
@@ -38,14 +38,25 @@ print("Finished reading data")
 
 get_paradise_output <- function(df, condition1, condition2) {
   # Filter data frames based on conditions
-  condition1_df <- df %>% filter(condition == condition1) # %>% filter(offset == "0:0:0")
-  condition2_df <- df %>% filter(condition == condition2) # %>% filter(offset == "0:0:0")
+  condition1_df <- df %>% filter(condition == condition1) %>% mutate(PSI = included_count / (included_count + skipped_count))
+  condition2_df <- df %>% filter(condition == condition2) %>% mutate(PSI = included_count / (included_count + skipped_count))
   
+  condition1_df_PSI <- condition1_df %>% group_by(index_offset) %>% 
+    summarise(PSI_1 = mean(PSI,na.rm=T))
+
+  condition2_df_PSI <- condition2_df %>% group_by(index_offset) %>% 
+    summarise(PSI_2 = mean(PSI, na.rm = T))
+
+  # Merge the 2 dataframe.
+  # Also filter out the indices with PSI difference less than 0.1 so that we don't have to run calculations for them.
+  condition1_2_merged <- merge(condition1_df_PSI, condition2_df_PSI, by = "index_offset")  %>% 
+                            mutate(PSI_diff = abs(PSI_1 - PSI_2)) %>% filter(PSI_diff >= 0.1)
+
   # Create a list of all unique indices.
-  unique_indices <- unique(condition1_df$index_offset)
+  unique_indices <- unique(condition1_2_merged$index_offset)
   
   # Function to pad vectors with zeros
-  pad_with_zeros <- function(vec, target_len = 3) {
+  pad_with_zeros <- function(vec, target_len = 2) {
     if (length(vec) < target_len) {
       vec <- c(vec, rep(0, target_len - length(vec)))
     }
