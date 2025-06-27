@@ -1,0 +1,5 @@
+qsub -v celltype1=CH3-1_,celltype2=FUBP1_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_MUT_PSI_scPairs.sh
+qsub -v celltype1=CH3-1_,celltype2=RBM10_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_MUT_PSI_scPairs.sh
+qsub -v celltype1=CH3-1_,celltype2=RBM5_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_MUT_PSI_scPairs.sh
+qsub -v celltype1=CH3-1_,celltype2=ZRSR2_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_MUT_PSI_scPairs.sh
+

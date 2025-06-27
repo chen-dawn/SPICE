@@ -213,6 +213,30 @@ for folder in */; do
     done
 done
 
+
+
+######################
+# Merge the sequences for FDR for scPairs
+######################
+output_file="scPairs_PSI_combined_output_indiv.tsv"
+first_file=true
+
+for folder in scPairs_*/; do
+    folder_name="${folder%/}"
+    for file in "$folder"/*FDR.txt; do
+        echo -e "\n####################"
+        echo "$file"
+        echo -e "####################\n"
+
+        if $first_file; then
+            awk 'NR==1 {print $0 "\tFolder"} NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+            first_file=false
+        else
+            awk 'NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+        fi
+    done
+done
+
 ######################
 # This is for WT pairs altSS one to all
 ######################
@@ -359,3 +383,24 @@ for folder in WT_transcriptomic_group_*/; do
     done
 done
 
+######################
+# Merge the sequences for FDR for scPairs altSS
+######################
+output_file="scPairs_altSS_combined_output_indiv.tsv"
+first_file=true
+
+for folder in scPairs_*/; do
+    folder_name="${folder%/}"
+    for file in "$folder"/*FDR.txt; do
+        echo -e "\n####################"
+        echo "$file"
+        echo -e "####################\n"
+
+        if $first_file; then
+            awk 'NR==1 {print $0 "\tFolder"} NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+            first_file=false
+        else
+            awk 'NR>1 && $9 < 0.01 {print $0 "\t\"'$folder_name'\""}' "$file" >>"$output_file"
+        fi
+    done
+done
