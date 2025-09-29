@@ -1,0 +1,74 @@
+sampleID,display_name,lineage,subtype,cluster,growth_rate,func_lineage,num_in_cluster,Primary/Metastasis,Pool_ID,Cell Line Name,CCLE_Name,Cell Set,primary_disease,Subtype,lineage_molecular_subtype,DepMap_ID,ccle_name,cell_iname
+ACH-000070,697,blood,"acute lymphoblastic leukemia, b-cell",1,NA,blood,20,Primary,P940,697,697_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), B-cell",0,ACH-000070,NA,NA
+ACH-000782,SEM,blood,"acute lymphoblastic leukemia, b-cell",1,NA,blood,20,Primary,P940,SEM,SEM_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), B-cell",0,ACH-000782,NA,NA
+ACH-000938,NALM6,blood,"acute lymphoblastic leukemia, b-cell",1,NA,blood,20,Primary,P937,NALM-6,NALM6_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), B-cell",0,ACH-000938,NA,NA
+ACH-001106,KOPN8,blood,"acute lymphoblastic leukemia, b-cell",1,NA,blood,20,Primary,P938,KOPN-8,KOPN8_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), B-cell",0,ACH-001106,NA,NA
+ACH-000101,KE37,blood,"acute lymphoblastic leukemia, t-cell",39,NA,thymus,18,NA,P937,KE-37,KE37_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), T-cell",0,ACH-000101,NA,NA
+ACH-000105,ALLSIL,blood,"acute lymphoblastic leukemia, t-cell",39,NA,thymus,18,Primary,P938,ALL-SIL,ALLSIL_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), T-cell",0,ACH-000105,NA,NA
+ACH-000122,SUPT11,blood,"acute lymphoblastic leukemia, t-cell",39,NA,thymus,18,NA,P937,SUP-T11,SUPT11_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), T-cell",0,ACH-000122,NA,NA
+ACH-000197,TALL1,blood,"acute lymphoblastic leukemia, t-cell",39,NA,thymus,18,Primary,P940,TALL-1,TALL1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), T-cell",0,ACH-000197,NA,NA
+ACH-000372,P12ICHIKAWA,blood,"acute lymphoblastic leukemia, t-cell",39,NA,thymus,18,NA,P939,P12-ICHIKAWA,P12ICHIKAWA_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Lymphoblastic Leukemia (ALL), T-cell",0,ACH-000372,NA,NA
+ACH-000006,MONOMAC6,blood,acute myeloid leukemia,45,NA,blood,19,Primary,P940,MONO-MAC-6,MONOMAC6_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Myelogenous Leukemia (AML), M5 (Eosinophilic/Monocytic)",0,ACH-000006,NA,NA
+ACH-000113,OCIAML2,blood,acute myeloid leukemia,45,NA,blood,19,Primary,P942,OCI-AML2,OCIAML2_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Myelogenous Leukemia (AML), M4 (Myelomonocytic)",0,ACH-000113,NA,NA
+ACH-000146,THP1,blood,acute myeloid leukemia,45,NA,blood,19,Primary,P937,THP-1,THP1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Myelogenous Leukemia (AML), M5 (Eosinophilic/Monocytic)",0,ACH-000146,NA,NA
+ACH-000168,NOMO1,blood,acute myeloid leukemia,45,NA,blood,19,Primary,P941,NOMO-1,NOMO1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Myelogenous Leukemia (AML), M5 (Eosinophilic/Monocytic)",0,ACH-000168,NA,NA
+ACH-000294,NB4,blood,acute myeloid leukemia,45,NA,blood,19,Primary,P942,NB-4,NB4_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Leukemia,"Acute Myelogenous Leukemia (AML), M3 (Promyelocytic)",0,ACH-000294,NA,NA
+ACH-000212,CAL120,breast,basal B,2,0.38031776,NA,258,Metastasis,P931,CAL-120,CAL120_BREAST,PR500,Breast Cancer,Carcinoma,basal_B,ACH-000212,CAL120_BREAST,CAL120
+ACH-000768,MDAMB231,breast,basal B,2,0.16212907,NA,258,Metastasis,P914,MDA-MB-231,MDAMB231_BREAST,PR500,Breast Cancer,Carcinoma,basal_B,ACH-000768,MDAMB231_BREAST,MDAMB231
+ACH-000288,BT549,breast,basal B,2,0.13396793,NA,258,Primary,P922,BT-549,BT549_BREAST,PR500,Breast Cancer,Breast Ductal Carcinoma,basal_B,ACH-000288,BT549_BREAST,BT549
+ACH-000147,T47D,breast,luminal,5,0.19779918,breast,14,Metastasis,P909,T-47D,T47D_BREAST,PR500,Breast Cancer,Breast Ductal Carcinoma,luminal,ACH-000147,T47D_BREAST,T47D
+ACH-000019,MCF7,breast,luminal,5,-0.0483926,breast,14,Metastasis,P933,MCF7,MCF7_BREAST,PR500,Breast Cancer,Carcinoma,luminal,ACH-000019,MCF7_BREAST,MCF7
+ACH-000097,ZR751,breast,luminal,5,-0.0558658,breast,14,Metastasis,P910,ZR-75-1,ZR751_BREAST,PR500,Breast Cancer,Breast Ductal Carcinoma,luminal,ACH-000097,ZR751_BREAST,ZR751
+ACH-000352,HCC1428,breast,luminal,5,-0.1751215,breast,14,Metastasis,P934,HCC1428,HCC1428_BREAST,PR500,Breast Cancer,Carcinoma,luminal,ACH-000352,HCC1428_BREAST,HCC1428
+ACH-000276,HCC38,breast,basal A,18,0.05963227,breast,10,Primary,P934,HCC38,HCC38_BREAST,PR500,Breast Cancer,Breast Ductal Carcinoma,basal_A,ACH-000276,HCC38_BREAST,HCC38
+ACH-000137,8MGBA,central_nervous_system,astrocytoma,2,0.68693724,NA,258,Primary,P930,8-MG-BA,8MGBA_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Astrocytoma,0,ACH-000137,8MGBA_CENTRAL_NERVOUS_SYSTEM,8MGBA
+ACH-000571,T98G,central_nervous_system,glioblastoma,2,0.59267615,NA,258,Primary,P912,T98G,T98G_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000571,T98G_CENTRAL_NERVOUS_SYSTEM,T98G
+ACH-000273,SF539,central_nervous_system,glioma,2,0.53947884,NA,258,Primary,P930,SF539,SF539_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioma,0,ACH-000273,SF539_CENTRAL_NERVOUS_SYSTEM,SF539
+ACH-000570,YKG1,central_nervous_system,glioblastoma,2,0.52993125,NA,258,Primary,P905,YKG1,YKG1_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000570,YKG1_CENTRAL_NERVOUS_SYSTEM,YKG1
+ACH-000232,U251MG,central_nervous_system,astrocytoma,2,0.51727025,NA,258,Primary,P932,U-251 MG,U251MG_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Astrocytoma,0,ACH-000232,U251MG_CENTRAL_NERVOUS_SYSTEM,U251MG
+ACH-000756,GI1,central_nervous_system,glioblastoma,2,0.51476946,NA,258,Primary,P901,GI-1,GI1_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000756,GI1_CENTRAL_NERVOUS_SYSTEM,GI1
+ACH-000609,SF126,central_nervous_system,astrocytoma,2,0.42135035,NA,258,Primary,P930,SF126,SF126_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Astrocytoma,0,ACH-000609,SF126_CENTRAL_NERVOUS_SYSTEM,SF126
+ACH-000558,A172,central_nervous_system,glioblastoma,2,0.41619721,NA,258,Primary,P930,A172,A172_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000558,A172_CENTRAL_NERVOUS_SYSTEM,A172
+ACH-000211,DAOY,central_nervous_system,medulloblastoma,2,0.40738025,NA,258,Primary,P945,Daoy,DAOY_CENTRAL_NERVOUS_SYSTEM,PR300,Brain Cancer,Medulloblastoma,non_MYC,ACH-000211,DAOY_CENTRAL_NERVOUS_SYSTEM,Daoy
+ACH-000863,DBTRG05MG,central_nervous_system,glioblastoma,2,0.3942274,NA,258,Primary,P908,DBTRG-05MG,DBTRG05MG_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000863,DBTRG05MG_CENTRAL_NERVOUS_SYSTEM,DBTRG05MG
+ACH-000445,KNS60,central_nervous_system,glioblastoma,2,0.38088187,NA,258,Primary,P914,KNS-60,KNS60_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000445,KNS60_CENTRAL_NERVOUS_SYSTEM,KNS60
+ACH-000098,GAMG,central_nervous_system,glioblastoma,2,0.35538059,NA,258,Primary,P901,GAMG,GAMG_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000098,GAMG_CENTRAL_NERVOUS_SYSTEM,GAMG
+ACH-000776,ONS76,central_nervous_system,medulloblastoma,2,0.34695382,NA,258,Primary,P945,ONS-76,ONS76_CENTRAL_NERVOUS_SYSTEM,PR300,Brain Cancer,Medulloblastoma,non_MYC,ACH-000776,ONS76_CENTRAL_NERVOUS_SYSTEM,ONS76
+ACH-000738,GB1,central_nervous_system,glioblastoma,2,0.3005464,NA,258,Primary,P901,GB-1,GB1_CENTRAL_NERVOUS_SYSTEM,PR500,Brain Cancer,Glioblastoma,0,ACH-000738,GB1_CENTRAL_NERVOUS_SYSTEM,GB1
+ACH-000959,SNUC4,colorectal,adenocarcinoma,34,0.60252058,colorectal,32,NA,P909,SNU-C4,SNUC4_LARGE_INTESTINE,PR500,Colon/Colorectal Cancer,Adenocarcinoma,MSI,ACH-000959,SNUC4_LARGE_INTESTINE,SNUC4
+ACH-000985,LS411N,colorectal,adenocarcinoma,34,0.44796831,colorectal,32,Primary,P932,LS411N,LS411N_LARGE_INTESTINE,PR500,Colon/Colorectal Cancer,Adenocarcinoma,MSI,ACH-000985,LS411N_LARGE_INTESTINE,LS411N
+ACH-000955,SNU407,colorectal,adenocarcinoma,34,0.2446214,colorectal,32,Metastasis,P905,SNU-407,SNU407_LARGE_INTESTINE,PR500,Colon/Colorectal Cancer,Adenocarcinoma,MSI,ACH-000955,SNU407_LARGE_INTESTINE,SNU407
+ACH-000046,ACHN,kidney,renal cell carcinoma,23,0.76889356,kidney,35,Metastasis,P931,ACHN,ACHN_KIDNEY,PR500,Kidney Cancer,Renal Cell Carcinoma,0,ACH-000046,ACHN_KIDNEY,ACHN
+ACH-000684,KMRC1,kidney,kidney clear cell carcinoma,23,0.53249884,kidney,35,Primary,P908,KMRC-1,KMRC1_KIDNEY,PR500,Kidney Cancer,"Renal Carcinoma, clear cell",0,ACH-000684,KMRC1_KIDNEY,KMRC1
+ACH-000250,KMRC20,kidney,renal cell carcinoma,23,0.50127802,kidney,35,Primary,P931,KMRC-20,KMRC20_KIDNEY,PR500,Kidney Cancer,Renal Cell Carcinoma,0,ACH-000250,KMRC20_KIDNEY,KMRC20
+ACH-000649,786O,kidney,kidney clear cell carcinoma,23,0.43684128,kidney,35,Primary,P911,786-O,786O_KIDNEY,PR500,Kidney Cancer,"Renal Carcinoma, clear cell",0,ACH-000649,786O_KIDNEY,786O
+ACH-000313,KMRC3,kidney,kidney clear cell carcinoma,23,0.36254614,kidney,35,Primary,P910,KMRC-3,KMRC3_KIDNEY,PR500,Kidney Cancer,"Renal Carcinoma, clear cell",0,ACH-000313,KMRC3_KIDNEY,KMRC3
+ACH-000171,VMRCRCZ,kidney,renal cell carcinoma,23,0.32115346,kidney,35,Primary,P909,VMRC-RCZ,VMRCRCZ_KIDNEY,PR500,Kidney Cancer,Renal Cell Carcinoma,0,ACH-000171,VMRCRCZ_KIDNEY,VMRCRCZ
+ACH-000411,769P,kidney,kidney clear cell carcinoma,23,0.31915315,kidney,35,Primary,P935,769-P,769P_KIDNEY,PR500,Kidney Cancer,"Renal Carcinoma, clear cell",0,ACH-000411,769P_KIDNEY,769P
+ACH-000159,OSRC2,kidney,renal cell carcinoma,23,0.20952255,kidney,35,Primary,P934,OS-RC-2,OSRC2_KIDNEY,PR500,Kidney Cancer,Renal Cell Carcinoma,0,ACH-000159,OSRC2_KIDNEY,OSRC2
+ACH-001318,PLCPRF5,liver,hepatocellular carcinoma,20,0.35054193,liver,8,Primary,P905,PLC/PRF/5,PLCPRF5_LIVER,PR500,Liver Cancer,Hepatocellular Carcinoma,0,ACH-001318,PLCPRF5_LIVER,PLCPRF5
+ACH-000493,SNU423,liver,hepatocellular carcinoma,2,0.39878856,NA,258,Primary,P910,SNU-423,SNU423_LIVER,PR500,Liver Cancer,Hepatocellular Carcinoma,0,ACH-000493,SNU423_LIVER,SNU423
+ACH-000217,JHH6,liver,hepatocellular carcinoma,2,0.36427053,NA,258,Primary,P906,JHH-6,JHH6_LIVER,PR500,Liver Cancer,Hepatocellular Carcinoma,0,ACH-000217,JHH6_LIVER,JHH6
+ACH-000420,SNU449,liver,hepatocellular carcinoma,23,0.24482162,kidney,35,Primary,P915,SNU-449,SNU449_LIVER,PR500,Liver Cancer,Hepatocellular Carcinoma,0,ACH-000420,SNU449_LIVER,SNU449
+ACH-000221,SNU398,liver,hepatocellular carcinoma,49,0.3926162,NA,258,Primary,P912,SNU-398,SNU398_LIVER,PR500,Liver Cancer,Hepatocellular Carcinoma,0,ACH-000221,SNU398_LIVER,SNU398
+ACH-001145,OC316,ovary,"adenocarcinoma, serous",2,0.77200963,NA,258,Metastasis,P930,OC 316,OC316_OVARY,PR500,Ovarian Cancer,"Adenocarcinoma, serous",0,ACH-001145,OC316_OVARY,OC316
+ACH-000936,EFO27,ovary,"adenocarcinoma, endometrioid",2,0.42342531,NA,258,Metastasis,P906,EFO-27,EFO27_OVARY,PR500,Ovarian Cancer,"Adenocarcinoma, endometrioid",0,ACH-000936,EFO27_OVARY,EFO27
+ACH-000237,JHOM1,ovary,"adenocarcinoma, mucinous",2,0.39029978,NA,258,Primary,P908,JHOM-1,JHOM1_OVARY,PR500,Ovarian Cancer,"Adenocarcinoma, mucinous",0,ACH-000237,JHOM1_OVARY,JHOM1
+ACH-000962,OC314,ovary,"cystadenocarcinoma, clear cell",19,0.79320782,uterus,43,Metastasis,P912,OC 314,OC314_OVARY,PR500,Ovarian Cancer,"Cystadenocarcinoma, clear cell",0,ACH-000962,OC314_OVARY,OC314
+ACH-000885,TOV21G,ovary,"adenocarcinoma, clear cell",19,0.54713557,uterus,43,Primary,P909,TOV-21G,TOV21G_OVARY,PR500,Ovarian Cancer,"Adenocarcinoma, clear cell",0,ACH-000885,TOV21G_OVARY,TOV21G
+ACH-000663,OVTOKO,ovary,"adenocarcinoma, clear cell",19,0.45351279,uterus,43,Metastasis,P909,OVTOKO,OVTOKO_OVARY,PR500,Ovarian Cancer,"Adenocarcinoma, clear cell",0,ACH-000663,OVTOKO_OVARY,OVTOKO
+ACH-000966,IGROV1,ovary,"adenocarcinoma, mixed",19,0.45295105,uterus,43,Primary,P911,IGROV1,IGROV1_OVARY,PR500,Ovarian Cancer,"Adenocarcinoma, mixed",0,ACH-000966,IGROV1_OVARY,IGROV1
+ACH-000259,KELLY,peripheral_nervous_system,MYCN amp,28,0.28487845,peripheral_nervous_system,24,Primary,P945,KELLY,KELLY_AUTONOMIC_GANGLIA,PR300,Neuroblastoma,0,MYCN_amp,ACH-000259,KELLY_AUTONOMIC_GANGLIA,KELLY
+ACH-000260,SKNAS,peripheral_nervous_system,NA,29,0.12790125,adrenal,5,Metastasis,P933,SK-N-AS,SKNAS_AUTONOMIC_GANGLIA,PR500,Neuroblastoma,0,0,ACH-000260,SKNAS_AUTONOMIC_GANGLIA,SKNAS
+ACH-000366,SKNDZ,peripheral_nervous_system,MYCN amp,28,NA,peripheral_nervous_system,24,Metastasis,P946,SK-N-DZ,SKNDZ_AUTONOMIC_GANGLIA,PR300,Neuroblastoma,0,MYCN_amp,ACH-000366,NA,NA
+ACH-001301,COGN278,peripheral_nervous_system,MYCN amp,28,NA,peripheral_nervous_system,24,NA,P946,COG-N-278,COGN278_AUTONOMIC_GANGLIA,PR300,Neuroblastoma,0,MYCN_amp,ACH-001301,NA,NA
+ACH-000626,U266B1,plasma_cell,"multiple myeloma, plasmacytoma",22,NA,lymphocyte,126,NA,P942,U266B1,U266B1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Myeloma,"Multiple Myeloma, plasmacytoma",0,ACH-000626,NA,NA
+ACH-000653,JJN3,plasma_cell,multiple myeloma,22,NA,lymphocyte,126,Primary,P942,JJN-3,JJN3_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Myeloma,Multiple Myeloma,0,ACH-000653,NA,NA
+ACH-000763,MM1S,plasma_cell,multiple myeloma,22,NA,lymphocyte,126,Primary,P939,MM1-S,MM1S_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Myeloma,Multiple Myeloma,0,ACH-000763,NA,NA
+ACH-000838,AMO1,plasma_cell,"multiple myeloma, plasmacytoma",22,NA,lymphocyte,126,Primary,P937,AMO-1,AMO1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,PR300,Myeloma,"Multiple Myeloma, plasmacytoma",0,ACH-000838,NA,NA
+ACH-000812,COLO783,skin,NA,8,0.62526803,skin,35,Metastasis,P912,COLO-783,COLO783_SKIN,PR500,Skin Cancer,Melanoma,0,ACH-000812,COLO783_SKIN,COLO783
+ACH-000915,IPC298,skin,melanocytic,8,0.5856241,skin,35,Primary,P935,IPC-298,IPC298_SKIN,PR500,Skin Cancer,Melanoma,0,ACH-000915,IPC298_SKIN,IPC298
+ACH-000987,MEWO,skin,melanocytic,8,0.41963856,skin,35,Metastasis,NA,NA,NA,NA,NA,NA,NA,NA,MEWO_SKIN,MeWo
+ACH-000450,MELHO,skin,melanocytic,8,0.39696605,skin,35,Primary,P932,MEL-HO,MELHO_SKIN,PR500,Skin Cancer,Melanoma,0,ACH-000450,MELHO_SKIN,MELHO
+ACH-000650,IGR37,skin,melanocytic,8,0.35054395,skin,35,Metastasis,P906,IGR-37,IGR37_SKIN,PR500,Skin Cancer,Melanoma,0,ACH-000650,IGR37_SKIN,IGR37
+ACH-000614,RVH421,skin,NA,8,0.25778347,skin,35,Metastasis,P909,RVH-421,RVH421_SKIN,PR500,Skin Cancer,Melanoma,0,ACH-000614,RVH421_SKIN,RVH421
