@@ -1,0 +1,48 @@
+StrippedName,DepMap_ID,CCLE_Name,primary_disease,Subtype,Disease Subtype,Disease Sub-subtype,lineage,sex,age,Cellosaurus_NCIt_disease,Cellosaurus_NCIt_id,Cellosaurus_issues
+769P,ACH-000411,769P_KIDNEY,Kidney Cancer,"Renal Carcinoma, clear cell",renal_cell_carcinoma,clear_cell,kidney,Female,63,Renal cell carcinoma,C9385,NA
+786O,ACH-000649,786O_KIDNEY,Kidney Cancer,"Renal Carcinoma, clear cell",renal_cell_carcinoma,clear_cell,kidney,Male,58,Renal cell carcinoma,C9385,NA
+8MGBA,ACH-000137,8MGBA_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Astrocytoma,glioma,astrocytoma,central_nervous_system,Female,54,Glioblastoma,C3058,NA
+A172,ACH-000558,A172_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Glioblastoma,glioma,glioblastoma,central_nervous_system,Male,53,Glioblastoma,C3058,NA
+A375,ACH-000219,A375_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Female,54,Amelanotic melanoma,C3802,NA
+ACHN,ACH-000046,ACHN_KIDNEY,Kidney Cancer,Renal Cell Carcinoma,renal_cell_carcinoma,NA,kidney,Male,22,Papillary renal cell carcinoma,C6975,NA
+CAL120,ACH-000212,CAL120_BREAST,Breast Cancer,Carcinoma,breast_carcinoma,ERneg_HER2neg,breast,Female,43,Breast carcinoma,C4872,NA
+COGN278,ACH-001301,COGN278_AUTONOMIC_GANGLIA,Neuroblastoma,0,neuroblastoma,NA,peripheral_nervous_system,NA,4,Neuroblastoma,C3270,NA
+COLO783,ACH-000812,COLO783_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Female,48,Melanoma,C3224,NA
+DAOY,ACH-000211,DAOY_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Medulloblastoma,medulloblastoma,NA,central_nervous_system,Male,4,Medulloblastoma,C3222,NA
+DBTRG05MG,ACH-000863,DBTRG05MG_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Glioblastoma,glioma,glioblastoma,central_nervous_system,Female,59,Anaplastic astrocytoma,C9477,NA
+EFO27,ACH-000936,EFO27_OVARY,Ovarian Cancer,"Adenocarcinoma, endometrioid",ovary_adenocarcinoma,endometrioid,ovary,Female,36,Ovarian mucinous adenocarcinoma,C5243,NA
+GAMG,ACH-000098,GAMG_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Glioblastoma,glioma,glioblastoma,central_nervous_system,Female,42,Glioblastoma,C3058,NA
+GB1,ACH-000738,GB1_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Glioblastoma,glioma,glioblastoma,central_nervous_system,Male,35,Glioblastoma,C3058,NA
+GI1,ACH-000756,GI1_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Glioblastoma,glioma,glioblastoma,central_nervous_system,Male,61,Gliosarcoma,C3796,NA
+HCC1428,ACH-000352,HCC1428_BREAST,Breast Cancer,Carcinoma,breast_carcinoma,ERpos_HER2neg,breast,Female,49,Breast adenocarcinoma,C5214,NA
+HCC38,ACH-000276,HCC38_BREAST,Breast Cancer,Breast Ductal Carcinoma,breast_ductal_carcinoma,ERneg_HER2neg,breast,Female,50,Breast ductal carcinoma,C4017,NA
+HEK,NA,NA,NA,NA,NA,NA,kidney,NA,NA,NA,NA,NA
+IGR37,ACH-000650,IGR37_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Male,26,Melanoma,C3224,NA
+IPC298,ACH-000915,IPC298_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Female,64,Cutaneous melanoma,C3510,NA
+JHH6,ACH-000217,JHH6_LIVER,Liver Cancer,Hepatocellular Carcinoma,hepatocellular_carcinoma,NA,liver,Female,57,Hepatitis C infection,C3098,NA
+JHOM1,ACH-000237,JHOM1_OVARY,Ovarian Cancer,"Adenocarcinoma, mucinous",ovary_adenocarcinoma,mucinous,ovary,Female,88,Ovarian mucinous adenocarcinoma,C5243,NA
+K562,ACH-000551,K562_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,Leukemia,"Chronic Myelogenous Leukemia (CML), blast crisis",CML,blast_crisis,blood,Female,53,"Blast phase chronic myelogenous leukemia, BCR-ABL1 positive",C9110,NA
+KELLY,ACH-000259,KELLY_AUTONOMIC_GANGLIA,Neuroblastoma,0,neuroblastoma,NA,peripheral_nervous_system,Female,1,Neuroblastoma,C3270,NA
+KMRC1,ACH-000684,KMRC1_KIDNEY,Kidney Cancer,"Renal Carcinoma, clear cell",renal_cell_carcinoma,clear_cell,kidney,Male,Adult,Clear cell renal cell carcinoma,C4033,NA
+KMRC20,ACH-000250,KMRC20_KIDNEY,Kidney Cancer,Renal Cell Carcinoma,renal_cell_carcinoma,NA,kidney,NA,NA,Clear cell renal cell carcinoma,C4033,NA
+KNS60,ACH-000445,KNS60_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Glioblastoma,glioma,glioblastoma,central_nervous_system,Male,55,Glioblastoma,C3058,NA
+MCF7,ACH-000019,MCF7_BREAST,Breast Cancer,Carcinoma,breast_carcinoma,ERpos_HER2neg,breast,Female,69,Invasive breast carcinoma of no special type,C4194,NA
+MDAMB231,ACH-000768,MDAMB231_BREAST,Breast Cancer,Carcinoma,breast_carcinoma,ERneg_HER2neg,breast,Female,51,Breast adenocarcinoma,C5214,NA
+MEL202,ACH-001554,MEL202_UVEA,Eye Cancer,Uveal Melanoma,NA,NA,eye,Female,NA,NA,NA,NA
+MELHO,ACH-000450,MELHO_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Female,NA,Melanoma,C3224,Misidentified/contaminated. Shown to be identical to MEL-Wei. This cell line was reported to be isogenic with LCL-Ho (CVCL_1868) but it does not have the same STR profile (PubMed=10508494; PubMed=20143388). According to DSMZ ACC-62 it is a human female cell line.
+MeWo,ACH-000987,MEWO_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Male,78,Cutaneous melanoma,C3510,NA
+OC314,ACH-000962,OC314_OVARY,Ovarian Cancer,"Cystadenocarcinoma, clear cell",ovary_adenocarcinoma,clear_cell,ovary,Female,39,Ovarian serous adenocarcinoma,C7550,NA
+OC316,ACH-001145,OC316_OVARY,Ovarian Cancer,"Adenocarcinoma, serous",ovary_adenocarcinoma,serous,ovary,Female,60,Ovarian serous adenocarcinoma,C7550,Possibly contaminated. May be identical to OC 314 (CVCL_1616) according to STR profiling done at ICLC and to MSI data (PubMed=15677628).
+OVTOKO,ACH-000663,OVTOKO_OVARY,Ovarian Cancer,"Adenocarcinoma, clear cell",ovary_adenocarcinoma,clear_cell,ovary,Female,78,Ovarian clear cell adenocarcinoma,C40078,NA
+PLCPRF5,ACH-001318,PLCPRF5_LIVER,Liver Cancer,Hepatocellular Carcinoma,hepatocellular_carcinoma,NA,liver,Male,24,Adult hepatocellular carcinoma,C7956,Often called PLC8024 in Chinese literature probably because of a concatenation between PLC/PRF/5 and ATCC-8024
+RVH421,ACH-000614,RVH421_SKIN,Skin Cancer,Melanoma,melanoma,NA,skin,Male,28,Melanoma,C3224,NA
+SF126,ACH-000609,SF126_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Astrocytoma,glioma,astrocytoma,central_nervous_system,Female,50,Glioblastoma,C3058,NA
+SKNAS,ACH-000260,SKNAS_AUTONOMIC_GANGLIA,Neuroblastoma,0,neuroblastoma,NA,peripheral_nervous_system,Female,6,Neuroblastoma,C3270,NA
+SNU398,ACH-000221,SNU398_LIVER,Liver Cancer,Hepatocellular Carcinoma,hepatocellular_carcinoma,NA,liver,Male,42,Adult hepatocellular carcinoma,C7956,NA
+SNU423,ACH-000493,SNU423_LIVER,Liver Cancer,Hepatocellular Carcinoma,hepatocellular_carcinoma,NA,liver,Male,40,Adult hepatocellular carcinoma,C7956,NA
+SNU449,ACH-000420,SNU449_LIVER,Liver Cancer,Hepatocellular Carcinoma,hepatocellular_carcinoma,NA,liver,Male,52,Adult hepatocellular carcinoma,C7956,NA
+SNUC4,ACH-000959,SNUC4_LARGE_INTESTINE,Colon/Colorectal Cancer,Adenocarcinoma,colorectal_adenocarcinoma,NA,colorectal,Male,35,Colon adenocarcinoma,C4349,NA
+T47D,ACH-000147,T47D_BREAST,Breast Cancer,Breast Ductal Carcinoma,breast_ductal_carcinoma,ERpos_HER2neg,breast,Female,54,Invasive breast carcinoma of no special type,C4194,NA
+TOV21G,ACH-000885,TOV21G_OVARY,Ovarian Cancer,"Adenocarcinoma, clear cell",ovary_adenocarcinoma,clear_cell,ovary,Female,62,Ovarian clear cell adenocarcinoma,C40078,NA
+U251MG,ACH-000232,U251MG_CENTRAL_NERVOUS_SYSTEM,Brain Cancer,Astrocytoma,glioma,astrocytoma,central_nervous_system,Male,75,Astrocytoma,C60781,NA
+VMRCRCZ,ACH-000171,VMRCRCZ_KIDNEY,Kidney Cancer,Renal Cell Carcinoma,renal_cell_carcinoma,NA,kidney,NA,NA,Renal cell carcinoma,C9385,NA
