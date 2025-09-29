@@ -341,38 +341,38 @@ for (seq in shortlist_psi) {
 
 outdir <- "~/Dropbox (Harvard University)/02Splicing/test_psi_log_scaled_dumb_max_metric/"
 # Get only the "shortlist".
-for (seq in shortlist_psi) {
-  for (gene in colnames(gex_mat_aligned_shortlist)) {
-    gex_values <- gex_mat_aligned_shortlist[, gene]
-    psi_values <- all_samples_mat_aligned_shortlist[seq, ]
-    
-    # Get cell line name with the highest PSI value.
-    cell_line_max_psi <- names(psi_values)[which.max(psi_values)]
-    
-    # Get the cell line with the highest gene expression value
-    cell_line_max_gex <- names(gex_values)[which.max(gex_values)]
-    
-    # Check if the cell line with the highest PSI value also has the highest gene expression
-    if (cell_line_max_psi == cell_line_max_gex) {
-      plot_df <- data.frame(gex_values, psi_values, cell_line = rownames(gex_mat_aligned_shortlist))
-      corr_val <- cor(gex_values, psi_values, use = "pairwise.complete.obs", method = "pearson")
-      
-      # Generate the scatter plot
-      p <- ggplot(plot_df, aes(x = gex_values, y = psi_values, color = cell_line)) +
-        geom_point() +
-        theme_minimal() +
-        labs(x = "Gene expression", y = paste(seq, "PSI")) +
-        ggtitle(paste(gene, seq)) + 
-        # Add subtitle with the gene name and sequence name
-        theme(plot.title = element_text(size = 10, face = "bold"),
-              plot.subtitle = element_text(size = 8, face = "italic")) + 
-        # Add correlation as subtitle text
-        labs(subtitle = paste("Correlation:", round(corr_val, 3)))
-      # Save the plot to a file
-      ggsave(filename = paste0(outdir, gene, "_", seq, "_scatter_plot_shortlist.png"), plot = p, width = 8, height = 6)
-    }
-  }
-}
+# for (seq in shortlist_psi) {
+#   for (gene in colnames(gex_mat_aligned_shortlist)) {
+#     gex_values <- gex_mat_aligned_shortlist[, gene]
+#     psi_values <- all_samples_mat_aligned_shortlist[seq, ]
+#     
+#     # Get cell line name with the highest PSI value.
+#     cell_line_max_psi <- names(psi_values)[which.max(psi_values)]
+#     
+#     # Get the cell line with the highest gene expression value
+#     cell_line_max_gex <- names(gex_values)[which.max(gex_values)]
+#     
+#     # Check if the cell line with the highest PSI value also has the highest gene expression
+#     if (cell_line_max_psi == cell_line_max_gex) {
+#       plot_df <- data.frame(gex_values, psi_values, cell_line = rownames(gex_mat_aligned_shortlist))
+#       corr_val <- cor(gex_values, psi_values, use = "pairwise.complete.obs", method = "pearson")
+#       
+#       # Generate the scatter plot
+#       p <- ggplot(plot_df, aes(x = gex_values, y = psi_values, color = cell_line)) +
+#         geom_point() +
+#         theme_minimal() +
+#         labs(x = "Gene expression", y = paste(seq, "PSI")) +
+#         ggtitle(paste(gene, seq)) + 
+#         # Add subtitle with the gene name and sequence name
+#         theme(plot.title = element_text(size = 10, face = "bold"),
+#               plot.subtitle = element_text(size = 8, face = "italic")) + 
+#         # Add correlation as subtitle text
+#         labs(subtitle = paste("Correlation:", round(corr_val, 3)))
+#       # Save the plot to a file
+#       ggsave(filename = paste0(outdir, gene, "_", seq, "_scatter_plot_shortlist.png"), plot = p, width = 8, height = 6)
+#     }
+#   }
+# }
 
 # Also get for reverse upsilon.
 shortlist_psi <- reverse_upsilon_df %>% filter(upsilon > 0.6) %>% pull(gene)
@@ -381,36 +381,36 @@ all_samples_mat_aligned_shortlist <- all_samples_mat_aligned[shortlist_psi, ]
 # Plot heatmap for the shortlist_psi.
 pheatmap(all_samples_mat_aligned_shortlist, cluster_rows = TRUE, cluster_cols = TRUE, show_rownames = TRUE, show_colnames = TRUE, fontsize = 6,)
 
-for (seq in shortlist_psi) {
-  for (gene in colnames(gex_mat_aligned_shortlist)) {
-    gex_values <- gex_mat_aligned_shortlist[, gene]
-    psi_values <- all_samples_mat_aligned_shortlist[seq, ]
-    
-    # Get cell line name with the highest PSI value.
-    cell_line_max_psi <- names(psi_values)[which.min(psi_values)]
-    
-    # Get the cell line with the highest gene expression value
-    cell_line_max_gex <- names(gex_values)[which.max(gex_values)]
-    
-    # Check if the cell line with the highest PSI value also has the highest gene expression
-    if (cell_line_max_psi == cell_line_max_gex) {
-      print(paste("Gene:", gene, "Sequence:", seq, "Cell line:", cell_line_max_psi, "has the highest PSI and GEX"))
-      
-      # Create a dataframe for plotting
-      plot_df <- data.frame(gex_values, psi_values, cell_line = rownames(gex_mat_aligned_shortlist))
-      
-      # Generate the scatter plot
-      p <- ggplot(plot_df, aes(x = gex_values, y = psi_values, color = cell_line)) +
-        geom_point() +
-        theme_minimal() +
-        labs(x = "Gene expression", y = paste(seq, "PSI")) +
-        ggtitle(paste("Scatter plot for", seq, "and", gene))
-      
-      # Save the plot to a file
-      ggsave(filename = paste0(outdir, gene, "_", seq, "_scatter_plot_shortlist.png"), plot = p, width = 8, height = 6)
-    }
-  }
-}
+# for (seq in shortlist_psi) {
+#   for (gene in colnames(gex_mat_aligned_shortlist)) {
+#     gex_values <- gex_mat_aligned_shortlist[, gene]
+#     psi_values <- all_samples_mat_aligned_shortlist[seq, ]
+#     
+#     # Get cell line name with the highest PSI value.
+#     cell_line_max_psi <- names(psi_values)[which.min(psi_values)]
+#     
+#     # Get the cell line with the highest gene expression value
+#     cell_line_max_gex <- names(gex_values)[which.max(gex_values)]
+#     
+#     # Check if the cell line with the highest PSI value also has the highest gene expression
+#     if (cell_line_max_psi == cell_line_max_gex) {
+#       print(paste("Gene:", gene, "Sequence:", seq, "Cell line:", cell_line_max_psi, "has the highest PSI and GEX"))
+#       
+#       # Create a dataframe for plotting
+#       plot_df <- data.frame(gex_values, psi_values, cell_line = rownames(gex_mat_aligned_shortlist))
+#       
+#       # Generate the scatter plot
+#       p <- ggplot(plot_df, aes(x = gex_values, y = psi_values, color = cell_line)) +
+#         geom_point() +
+#         theme_minimal() +
+#         labs(x = "Gene expression", y = paste(seq, "PSI")) +
+#         ggtitle(paste("Scatter plot for", seq, "and", gene))
+#       
+#       # Save the plot to a file
+#       ggsave(filename = paste0(outdir, gene, "_", seq, "_scatter_plot_shortlist.png"), plot = p, width = 8, height = 6)
+#     }
+#   }
+# }
 
 
 ##### We try to look at the sequences that are significant based on one-vs-all #####
@@ -484,42 +484,42 @@ top_seq <- top_seq %>% left_join(num_obs_per_seq, by = "ExonID") %>% filter(num_
 outdir <- "~/Dropbox (Harvard University)/02Splicing/test_psi_high_corr_rmats_sig_seq_first/"
 # Loop through the shortlisted genes and create scatter plots for each gene's expression against PSI.
 # Do the same for the shortlisted PSI values
-for (seq in unique(top_seq$ExonID)) {
-  for (gene in colnames(gex_mat_aligned_shortlist)) {
-    gex_values <- gex_mat_aligned_shortlist[, gene]
-    psi_values <- all_samples_mat_aligned[seq, ]
-    
-    # Create a dataframe for plotting
-    plot_df <- data.frame(gex_values, psi_values, cell_line = rownames(gex_mat_aligned_shortlist))
-    corr_val <- cor(gex_values, psi_values, use = "pairwise.complete.obs", method = "pearson")
-    if (is.na(corr_val)) {
-      # skip
-      next
-    }
-    if (abs(corr_val) < 0.5){
-      # skip
-      next
-    }
-    
-    # Generate the scatter plot
-    p <- ggplot(plot_df, aes(x = gex_values, y = psi_values, color = cell_line)) +
-      geom_point() +
-      theme_minimal() +
-      labs(x = "Gene expression", y = paste(seq, "PSI")) +
-      ggtitle(paste(gene, seq)) + 
-      # Add subtitle with the gene name and sequence name
-      theme(plot.title = element_text(size = 10, face = "bold"),
-            plot.subtitle = element_text(size = 8, face = "italic")) + 
-      # Add correlation as subtitle text
-      labs(subtitle = paste("Correlation:", round(corr_val, 3))) + 
-      # Set the X and Y limits
-      xlim(c(0, 8)) + ylim(c(-5, 5))
-    
-    
-    # Save the plot to a file
-    ggsave(filename = paste0(outdir, gene, "_", seq, "_scatter_plot.png"), plot = p, width = 8, height = 6)
-  }
-}
+# for (seq in unique(top_seq$ExonID)) {
+#   for (gene in colnames(gex_mat_aligned_shortlist)) {
+#     gex_values <- gex_mat_aligned_shortlist[, gene]
+#     psi_values <- all_samples_mat_aligned[seq, ]
+#     
+#     # Create a dataframe for plotting
+#     plot_df <- data.frame(gex_values, psi_values, cell_line = rownames(gex_mat_aligned_shortlist))
+#     corr_val <- cor(gex_values, psi_values, use = "pairwise.complete.obs", method = "pearson")
+#     if (is.na(corr_val)) {
+#       # skip
+#       next
+#     }
+#     if (abs(corr_val) < 0.5){
+#       # skip
+#       next
+#     }
+#     
+#     # Generate the scatter plot
+#     p <- ggplot(plot_df, aes(x = gex_values, y = psi_values, color = cell_line)) +
+#       geom_point() +
+#       theme_minimal() +
+#       labs(x = "Gene expression", y = paste(seq, "PSI")) +
+#       ggtitle(paste(gene, seq)) + 
+#       # Add subtitle with the gene name and sequence name
+#       theme(plot.title = element_text(size = 10, face = "bold"),
+#             plot.subtitle = element_text(size = 8, face = "italic")) + 
+#       # Add correlation as subtitle text
+#       labs(subtitle = paste("Correlation:", round(corr_val, 3))) + 
+#       # Set the X and Y limits
+#       xlim(c(0, 8)) + ylim(c(-5, 5))
+#     
+#     
+#     # Save the plot to a file
+#     ggsave(filename = paste0(outdir, gene, "_", seq, "_scatter_plot.png"), plot = p, width = 8, height = 6)
+#   }
+# }
 
 # Extract gene and exon IDs
 exon_list <- unique(top_seq$ExonID)
