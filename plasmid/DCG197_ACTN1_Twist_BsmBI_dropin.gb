@@ -1,0 +1,22 @@
+LOCUS       DCG197_ACTN1_Twist_BsmBI_dropin         428 bp    DNA     linear   UNA 12-FEB-2023
+DEFINITION  A new nucleotide sequence entered manually.
+ACCESSION   urn.local...h1-fwnihd4
+VERSION     urn.local...h1-fwnihd4
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+FEATURES             Location/Qualifiers
+     primer_bind     1..21
+                     /standard_name="ACTN_dropinF"
+     primer_bind     complement(406..428)
+                     /standard_name="ACTN_dropinR"
+ORIGIN      
+        1 taagcgtctc atgcagccat ctgcagccat ctaagtttca taaaggcagg gatttttgtc
+       61 cattttaatt gatttttgtc aatttcattt aaaattgtca tatagtaaac actcattgtt
+      121 tgtccaaatg tcaaatgact gggtttccag aacaggttga cacctttact cctgttctgt
+      181 tactgaccgg cccttcccct tctgggtcct ccatttcctc atctggcaca tggacagatg
+      241 gctgacccat cctgaaagtc gccttgttgt tcctgcccca ggtgcggcag ctggtgcctc
+      301 ggagggacca agctctgacg gaggagcatg cccgacagca gcacaatgag aggctacgca
+      361 agcagtttgg agcccaggcc aatgtcatcg ggccctggat ccagaccaag taagtaggga
+      421 gacgatgc
+//

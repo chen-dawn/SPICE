@@ -1,0 +1,416 @@
+LOCUS       DC298-Ef1a-MapSY-3PieceGibsonVectorMEDIUM_double_BsmBI        8365 bp    DNA     circular UNA 20-JUL-2022
+DEFINITION  Golden Gate/Type IIS Cloning ligation product.
+ACCESSION   urn.local...3s4-f32bpl8
+VERSION     urn.local...3s4-f32bpl8
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+FEATURES             Location/Qualifiers
+     primer_bind     complement(206..247)
+                     /standard_name="pcDNA PCR"
+     primer_bind     206..247
+                     /standard_name="ForwardmCherry"
+     misc_feature    <227..>1694
+                     /note="Geneious type: Concatenated sequence"
+                     /standard_name="DC183 pU6-pegRNA-GG-acceptor with mCherry
+                     tmpKnot GOOD BsaI (concatenated sequence 1)"
+     source          <227..>1694
+                     /organism="unspecified"
+                     /mol_type="genomic DNA"
+     misc_feature    <227..>228
+                     /standard_name="Lac-operon"
+     misc_feature    <229..239
+                     /standard_name="Lac-operon"
+     misc_feature    complement(243..291)
+                     /standard_name="polyA signal"
+     CDS             complement(295..1002)
+                     /codon_start=1
+                     /product="monomeric derivative of DsRed fluorescent
+                     protein (Shaner et al., 2004)"
+                     /note="mammalian codon-optimized"
+                     /translation="MVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYE
+                     GTQTAKLKVTKGGPLPFAWDILSPQFMYGSKAYVKHPADIPDYLKLSFPEGFKWERVM
+                     NFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDG
+                     ALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQ
+                     YERAEGRHSTGGMDELYK"
+                     /standard_name="mCherry"
+     primer_bind     complement(570..589)
+                     /note="mCherry, forward primer"
+                     /standard_name="mCherry-F"
+     primer_bind     complement(570..589)
+                     /note="Derived using Geneious Prime 2021.0.3 'Annotate
+                     from Database' based on nucleotide similarity"
+                     /standard_name="JK077"
+     primer_bind     complement(570..589)
+                     /note="Derived using Geneious Prime 2021.0.3 'Annotate
+                     from Database' based on nucleotide similarity"
+                     /standard_name="JK103"
+     primer_bind     839..857
+                     /note="mCherry, reverse primer"
+                     /standard_name="mCherry-R"
+     misc_feature    complement(985..>1002)
+                     /standard_name="JK092"
+     primer_bind     complement(1001..1020)
+                     /standard_name="Forward"
+     misc_feature    complement(1003..1008)
+                     /standard_name="Kozak"
+     primer_bind     1021..1053
+                     /standard_name="Reverse Primer"
+     primer_bind     1021..1046
+                     /standard_name="Reverse"
+     primer_bind     complement(1021..1039)
+                     /standard_name="T7"
+     misc_feature    complement(1031..1039)
+                     /standard_name="F primer 1"
+     regulatory      complement(1040..1694)
+                     /note="Geneious type: promoter"
+                     /standard_name="PCMV"
+     primer_bind     1040
+                     /standard_name="T7"
+     misc_feature    complement(1040..1063)
+                     /standard_name="F primer 1"
+     misc_feature    1695..2965
+                     /standard_name="Ef1a insert"
+     misc_feature    <1695..1738
+                     /standard_name="PD1712 binding"
+     regulatory      1702..2959
+                     /note="Geneious type: promoter"
+                     /standard_name="EF-1a"
+     misc_feature    1702..1731
+                     /standard_name="GH"
+     primer_bind     complement(2945..2988)
+                     /standard_name="ReversePrimerWithEf1a"
+     primer_bind     2945..2988
+                     /standard_name="ForwardPrimerwithEf1a"
+     misc_feature    2966..3308
+                     /standard_name="VCP10_ACTN_gBlock"
+     source          <2973..>2987
+                     /organism="pcDNA3.1(+)"
+                     /mol_type="other DNA"
+     CDS             2998..>3000
+                     /standard_name="VCP_Exon10"
+     CDS             <3001..3138
+                     /codon_start=1
+                     /standard_name="Exon3"
+     primer_bind     3001..3030
+                     /standard_name="MediumF"
+     misc_feature    <3001..>3238
+                     /standard_name="VCP10_ACTN_gBlock"
+     misc_feature    <3001..>3238
+                     /standard_name="EMC7_ACTN_gBlock"
+     misc_feature    3002..3238
+                     /note="Geneious type: Editing History Replacement"
+                     /standard_name="GTCGCTTTGACAGGGAGGTAGATATTGGAATTCCTGATGCTA
+                     CAGGACGCTTAGAGATTCTTCAGATCCATACCAAGAACATGAAGCTGGCAGATGATGT
+                     GGACCTGGAACAGGTGAAGTGATGATGATGGCTGACCAGGCGTTACAGTGTCTCTAGG
+                     CAGTTGCTGGGAACTGGCTAGAGACATAAGGTTAAGATGTGAGGAGATGGGTTTTGAT
+                     TTCTGGACAGGGGAAAGGAAGTAATCTGAGATTGAATCCAGGAAATG"
+     misc_feature    3139..3238
+                     /standard_name="100bp"
+     primer_bind     complement(3239..3258)
+                     /standard_name=441
+     misc_feature    3239..>3277
+                     /standard_name="multiple cloning site"
+     primer_bind     complement(3241..3277)
+                     /standard_name="ReverseAddBsmBI"
+     misc_feature    3258..3263
+                     /standard_name="EcoRI"
+     misc_feature    complement(<3264..>3269)
+                     /standard_name="VCP10_ACTN_gBlock"
+     misc_feature    complement(<3264..>3269)
+                     /standard_name="TWIST LIBRARY TO ORDER"
+     misc_feature    complement(3264..3269)
+                     /standard_name="BsmBI"
+     misc_feature    3264..3269
+                     /note="Geneious type: Editing History Replacement"
+                     /standard_name="A"
+     primer_bind     3278..3308
+                     /standard_name="AroundtheworldF"
+     misc_feature    <3278..>3286
+                     /standard_name="TWIST LIBRARY TO ORDER"
+     misc_feature    3278..3286
+                     /note="Geneious type: Editing History Replacement"
+                     /standard_name="GTGTGGTGGGATCCTGCAGCCATCTAAGTTTCATAAAGGCAG
+                     GGATTTTTGTCCATTTTAATTGATTTTTGTCAATTTCATTTAAAATTGTCATATAGTA
+                     AACACTCATTGTTTGTCCAAATGTCAAATGACTGGGTTTCCAGAACAGGTTGACACCT
+                     TTACTCCTGTTCTGTTACTGACCGGCCCTTCCCCTTCTGGGTCCTCCATTTCCTCATC
+                     TGGCACATGGACAGATGGCTGACCCATCCTGAAAGTCGCCTTGTTGTTCCTGCCCCAG
+                     GTGCGGCAGCTGGTGCCTCGGAGGGACCAAGCTCTGACGGAGGAGCATGCCCGACAGC
+                     AGCACAATGAGAGGCTACGCAAGCAGTTTGGAGCCCAGGCCAATGTCATCGGGCCCTG
+                     GATCCAGACCAAGGTAAGTAGATGCGCTAATGCAT"
+     misc_feature    3280..3285
+                     /standard_name="BsmBI"
+     misc_feature    3286
+                     /standard_name="Linker to Downstream barcode"
+     primer_bind     3287..3308
+                     /standard_name=489
+     misc_feature    3287..3308
+                     /standard_name="10xCaptureSequence1"
+     misc_feature    <3309..3344
+                     /note="Geneious type: Concatenated sequence"
+                     /standard_name="Piece3-eGFPFullReporterGG (concatenated
+                     sequence 4)"
+     source          <3309..>3344
+                     /organism="pcDNA3.1(+)"
+                     /mol_type="other DNA"
+     misc_feature    <3309..3344
+                     /standard_name="Piece3"
+     misc_feature    <3309..3344
+                     /standard_name="Bunch of Cloning sites"
+     primer_bind     3314..3333
+                     /note="Derived using Geneious Prime 2021.0.3 'Annotate
+                     from Database' based on nucleotide similarity"
+                     /standard_name="JK110"
+     misc_feature    3341..3344
+                     /note="Geneious type: ligation"
+                     /standard_name="Ligation"
+     misc_feature    3341..>3961
+                     /note="Geneious type: Concatenated sequence"
+                     /standard_name="Piece0_BsmBI_backbone (concatenated
+                     sequence 1)"
+     source          <3341..>3344
+                     /organism="pcDNA3.1(+)"
+                     /mol_type="other DNA"
+     misc_feature    3341..3344
+                     /standard_name="LigationSite"
+     misc_feature    <3341..3344
+                     /standard_name="Piece3"
+     misc_feature    <3341..3344
+                     /standard_name="Bunch of Cloning sites"
+     primer_bind     3345..3384
+                     /standard_name="WPRE-F"
+     primer_bind     complement(3345..3374)
+                     /standard_name="WPRE_Reverse"
+     misc_feature    3345..3933
+                     /note="woodchuck hepatitis virus posttranscriptional 
+                     regulatory element"
+                     /standard_name="WPRE"
+     misc_feature    3345..3392
+                     /standard_name="pcDNA backbone"
+     misc_feature    3345..3933
+                     /note="Geneious type: Editing History Insertion"
+                     /standard_name
+     primer_bind     complement(3398..3418)
+                     /note="WPRE, reverse primer"
+                     /standard_name="WPRE-R"
+     CDS             complement(3816..3827)
+                     /codon_start=1
+                     /product="Factor Xa recognition and cleavage site"
+                     /translation="IEGR"
+                     /standard_name="Factor Xa site"
+     primer_bind     complement(3928..3947)
+                     /standard_name="WPRE_R"
+     source          <3934..>3947
+                     /organism="synthetic DNA construct"
+                     /mol_type="other DNA"
+     misc_feature    complement(3959..>3961)
+                     /standard_name="BGH_rev_primer"
+     regulatory      3962..4189
+                     /note="Geneious type: terminator"
+                     /standard_name="bGH_PA_terminator"
+     misc_feature    complement(<3962..3976)
+                     /standard_name="BGH_rev_primer"
+     primer_bind     complement(3983..4001)
+                     /note="Derived using Geneious Prime 2021.0.3 'Annotate
+                     from Database' based on nucleotide similarity"
+                     /standard_name="JK102"
+     primer_bind     complement(3983..4001)
+                     /standard_name="DCS002pDC003"
+     rep_origin      4252..4558
+     misc_feature    complement(4672..4692)
+                     /standard_name="pBABE_3_primer"
+     regulatory      4690..4958
+                     /note="Geneious type: promoter"
+                     /standard_name="SV40_promoter"
+     rep_origin      4857..4934
+     misc_feature    4919..4938
+                     /standard_name="SV40pro_F_primer"
+     CDS             5073..5867
+                     /translation="MIEQDGLHAGSPAAWVERLFGYDWAQQTIGCSDAAVFRLSAQGR
+                     PVLFVKTDLSGALNELQDEAARLSWLATTGVPCAAVLDVVTEAGRDWLLLGEVPGQDL
+                     LSSHLAPAEKVSIMADAMRRLHTLDPATCPFDHQAKHRIERARTRMEAGLVDQDDLDE
+                     EHQGLAPAELFARLKARMPDGEDLVVTHGDACLPNIMVENGRFSGFIDCGRLGVADRY
+                     QDIALATRDIAEELGGEWADRFLVLYGIAAPDSQRIAFYRLLDEFF*"
+                     /standard_name="ORF frame 3"
+     gene            5076..5864
+                     /gene="NeoR/KanR"
+                     /standard_name="NeoR/KanR"
+     CDS             complement(5382..5918)
+                     /translation="MAGWASLGRSFRTPESRSEELVKKAIEGDALRIGSGDTVKHEEA
+                     VSPFAAKLFSNITGSQRYVLIAVRHTQPATVDESRKAAIFHHDIRQAGIAMGHDEILA
+                     VGHARLEPGEQFGWREPLMLFVQIILIDKTGFHPSTCSLDAMFRLVVEWAGSRIKRMQ
+                     PPHCISHDGYFLGRSKVR*"
+                     /standard_name="ORF frame 3"
+     regulatory      6044..6163
+                     /note="Geneious type: terminator"
+                     /standard_name="SV40_PA_terminator"
+     misc_feature    6132..6151
+                     /standard_name="EBV_rev_primer"
+     regulatory      complement(6207..6225)
+                     /note="Geneious type: promoter"
+                     /standard_name="M13_reverse_primer"
+     misc_feature    complement(6224..6246)
+                     /standard_name="M13_pUC_rev_primer"
+     regulatory      complement(6260..6289)
+                     /note="Geneious type: promoter"
+                     /standard_name="lac_promoter"
+     primer_bind     complement(6276..6295)
+                     /note="Derived using Geneious Prime 2021.0.3 'Annotate
+                     from Database' based on nucleotide similarity"
+                     /standard_name="JK025"
+     gene            complement(7369..8229)
+                     /gene="Ampicillin"
+                     /standard_name="Ampicillin"
+     CDS             complement(7369..8229)
+                     /translation="MSIQHFRVALIPFFAAFCLPVFAHPETLVKVKDAEDQLGARVGY
+                     IELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRIDAGQEQLGRRIHYSQNDLVE
+                     YSPVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRL
+                     DRWEPELNEAIPNDERDTTMPVAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPL
+                     LRSALPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIA
+                     EIGASLIKHW*"
+                     /standard_name="ORF frame 2"
+     regulatory      complement(8271..8299)
+                     /note="Geneious type: promoter"
+                     /standard_name="AmpR_promoter"
+ORIGIN      
+        1 gacggatcgg gagatctccc gatcccctat ggtgcactct cagtacaatc tgctctgatg
+       61 ccgcatagtt aagccagtat ctgctccctg cttgtgtgtt ggaggtcgct gagtagtgcg
+      121 cgagcaaaat ttaagctaca acaaggcaag gcttgaccga caattgcatg aagaatctgc
+      181 ttagggttag gcgttttgcg ctgcttcgcg atgtacgggc cagatagacc atgattacgc
+      241 cacacacaaa aaaccaacac acagatgtaa tgaaaataaa gatattttat tttacttgta
+      301 cagctcgtcc atgccgccgg tggagtggcg gccctcggcg cgttcgtact gttccacgat
+      361 ggtgtagtcc tcgttgtggg aggtgatgtc caacttgatg ttgacgttgt aggcgccggg
+      421 cagctgcacg ggcttcttgg ccttgtaggt ggtcttgacc tcagcgtcgt agtggccgcc
+      481 gtccttcagc ttcagcctct gcttgatctc gcccttcagg gcgccgtcct cggggtacat
+      541 ccgctcggag gaggcctccc agcccatggt cttcttctgc attacggggc cgtcggaggg
+      601 gaagttggtg ccgcgcagct tcaccttgta gatgaactcg ccgtcctgca gggaggagtc
+      661 ctgggtcacg gtcaccacgc cgccgtcctc gaagttcatc acgcgctccc acttgaagcc
+      721 ctcggggaag gacagcttca agtagtcggg gatgtcggcg gggtgcttca cgtaggcctt
+      781 ggagccgtac atgaactgag gggacaggat gtcccaggcg aagggcaggg ggccaccctt
+      841 ggtcaccttc agcttggcgg tctgggtgcc ctcgtagggg cggccctcgc cctcgccctc
+      901 gatctcgaac tcgtggccgt tcacggagcc ctccatgtgc accttgaagc gcatgaactc
+      961 cttgatgatg gccatgttat cctcctcgcc cttgctcacc atggtggcgg taccaagctt
+     1021 ccctatagtg agtcgtatta atttcgataa gccagtaagc agtgggttct ctagttagcc
+     1081 agagagctct gcttatatag acctcccacc gtacacgcct accgcccatt tgcgtcaatg
+     1141 gggcggagtt gttacgacat tttggaaagt cccgttgatt ttggtgccaa aacaaactcc
+     1201 cattgacgtc aatggggtgg agacttggaa atccccgtga gtcaaaccgc tatccacgcc
+     1261 cattgatgta ctgccaaaac cgcatcacca tggtaatagc gatgactaat acgtagatgt
+     1321 actgccaagt aggaaagtcc cataaggtca tgtactgggc ataatgccag gcgggccatt
+     1381 taccgtcatt gacgtcaata gggggcgtac ttggcatatg atacacttga tgtactgcca
+     1441 agtgggcagt ttaccgtaaa tagtccaccc attgacgtca atggaaagtc cctattggcg
+     1501 ttactatggg aacatacgtc attattgacg tcaatgggcg ggggtcgttg ggcggtcagc
+     1561 caggcgggcc atttaccgta agttatgtaa cgcggaactc catatatggg ctatgaacta
+     1621 atgaccccgt aattgattac tattaataac tagtcaataa tcaatgtcaa cgcgtatatc
+     1681 tggcccgtac atcgaagctg atgcaaagat ggataaagtt ttaaacagag aggaatcttt
+     1741 gcagctaatg gaccttctag gtcttgaaag gagtgggaat tggctccggt gcccgtcagt
+     1801 gggcagagcg cacatcgccc acagtccccg agaagttggg gggaggggtc ggcaattgaa
+     1861 ccggtgccta gagaaggtgg cgcggggtaa actgggaaag tgatgtcgtg tactggctcc
+     1921 gcctttttcc cgagggtggg ggagaaccgt atataagtgc agtagtcgcc gtgaacgttc
+     1981 tttttcgcaa cgggtttgcc gccagaacac aggtaagtgc cgtgtgtggt tcccgcgggc
+     2041 ctggcctctt tacgggttat ggcccttgcg tgccttgaat tacttccact ggctgcagta
+     2101 cgtgattctt gatcccgagc ttcgggttgg aagtgggtgg gagagttcga ggccttgcgc
+     2161 ttaaggagcc ccttcgcctc gtgcttgagt tgaggcctgg cctgggcgct ggggccgccg
+     2221 cgtgcgaatc tggtggcacc ttcgcgcctg tctcgctgct ttcgataagt ctctagccat
+     2281 ttaaaatttt tgatgacctg ctgcgacgct ttttttctgg caagatagtc ttgtaaatgc
+     2341 gggccaagat ctgcacactg gtatttcggt ttttggggcc gcgggcggcg acggggcccg
+     2401 tgcgtcccag cgcacatgtt cggcgaggcg gggcctgcga gcgcggccac cgagaatcgg
+     2461 acgggggtag tctcaagctg gccggcctgc tctggtgcct ggcctcgcgc cgccgtgtat
+     2521 cgccccgccc tgggcggcaa ggctggcccg gtcggcacca gttgcgtgag cggaaagatg
+     2581 gccgcttccc ggccctgctg cagggagctc aaaatggagg acgcggcgct cgggagagcg
+     2641 ggcgggtgag tcacccacac aaaggaaaag ggcctttccg tcctcagccg tcgcttcatg
+     2701 tgactccacg gagtaccggg cgccgtccag gcacctcgat tagttctcga gcttttggag
+     2761 tacgtcgtct ttaggttggg gggaggggtt ttatgcgatg gagtttcccc acactgagtg
+     2821 ggtggagact gaagttaggc cagcttggca cttgatgtaa ttctccttgg aatttgccct
+     2881 ttttgagttt ggatcttggt tcattctcaa gcctcagaca gtggttcaaa gtttttttct
+     2941 tccatttcag gtgtcgtgac gtacgggatc acctagcgtt taaacttgat cgccaccatg
+     3001 gcaagatatg tgaattacat caaaacatca gaggttgtca gactgcccta tcctctccaa
+     3061 atgaaatctt caggtccacc ttcttacttt attaaaaggg aatcgtgggg ctggacagac
+     3121 tttctaatga acccaatggt atgtatcagg ctaaaataaa gcactttact aatacctaat
+     3181 ttgcttctag gcagtggaaa cttcaaacct ctgtgagata gaaagctgag gtcagattaa
+     3241 gcttcgacac cgagctcgaa ttcgagacgc tagtccaacc gtctcagctt taaggccggt
+     3301 cctagcaatc gagtctagag ggcccgttta aacccgctga tcagaatcaa cctctggatt
+     3361 acaaaatttg tgaaagattg actggtattc ttaactatgt tgctcctttt acgctatgtg
+     3421 gatacgctgc tttaatgcct ttgtatcatg ctattgcttc ccgtatggct ttcattttct
+     3481 cctccttgta taaatcctgg ttgctgtctc tttatgagga gttgtggccc gttgtcaggc
+     3541 aacgtggcgt ggtgtgcact gtgtttgctg acgcaacccc cactggttgg ggcattgcca
+     3601 ccacctgtca gctcctttcc gggactttcg ctttccccct ccctattgcc acggcggaac
+     3661 tcatcgccgc ctgccttgcc cgctgctgga caggggctcg gctgttgggc actgacaatt
+     3721 ccgtggtgtt gtcggggaaa tcatcgtcct ttccttggct gctcgcctgt gttgccacct
+     3781 ggattctgcg cgggacgtcc ttctgctacg tcccttcggc cctcaatcca gcggaccttc
+     3841 cttcccgcgg cctgctgccg gctctgcggc ctcttccgcg tcttcgcctt cgccctcaga
+     3901 cgagtcggat ctccctttgg gccgcctccc cgcctgagat cctttaaccg ctgatcagcc
+     3961 tcgactgtgc cttctagttg ccagccatct gttgtttgcc cctcccccgt gccttccttg
+     4021 accctggaag gtgccactcc cactgtcctt tcctaataaa atgaggaaat tgcatcgcat
+     4081 tgtctgagta ggtgtcattc tattctgggg ggtggggtgg ggcaggacag caagggggag
+     4141 gattgggaag acaatagcag gcatgctggg gatgcggtgg gctctatggc ttctgaggcg
+     4201 gaaagaacca gctggggctc tagggggtat ccccacgcgc cctgtagcgg cgcattaagc
+     4261 gcggcgggtg tggtggttac gcgcagcgtg accgctacac ttgccagcgc cctagcgccc
+     4321 gctcctttcg ctttcttccc ttcctttctc gccacgttcg ccggctttcc ccgtcaagct
+     4381 ctaaatcggg ggctcccttt agggttccga tttagtgctt tacggcacct cgaccccaaa
+     4441 aaacttgatt agggtgatgg ttcacgtagt gggccatcgc cctgatagac ggtttttcgc
+     4501 cctttgacgt tggagtccac gttctttaat agtggactct tgttccaaac tggaacaaca
+     4561 ctcaacccta tctcggtcta ttcttttgat ttataaggga ttttgccgat ttcggcctat
+     4621 tggttaaaaa atgagctgat ttaacaaaaa tttaacgcga attaattctg tggaatgtgt
+     4681 gtcagttagg gtgtggaaag tccccaggct ccccagcagg cagaagtatg caaagcatgc
+     4741 atctcaatta gtcagcaacc aggtgtggaa agtccccagg ctccccagca ggcagaagta
+     4801 tgcaaagcat gcatctcaat tagtcagcaa ccatagtccc gcccctaact ccgcccatcc
+     4861 cgcccctaac tccgcccagt tccgcccatt ctccgcccca tggctgacta atttttttta
+     4921 tttatgcaga ggccgaggcc gcctctgcct ctgagctatt ccagaagtag tgaggaggct
+     4981 tttttggagg cctaggcttt tgcaaaaagc tcccgggagc ttgtatatcc attttcggat
+     5041 ctgatcaaga gacaggatga ggatcgtttc gcatgattga acaagatgga ttgcacgcag
+     5101 gttctccggc cgcttgggtg gagaggctat tcggctatga ctgggcacaa cagacaatcg
+     5161 gctgctctga tgccgccgtg ttccggctgt cagcgcaggg gcgcccggtt ctttttgtca
+     5221 agaccgacct gtccggtgcc ctgaatgaac tgcaggacga ggcagcgcgg ctatcgtggc
+     5281 tggccacgac gggcgttcct tgcgcagctg tgctcgacgt tgtcactgaa gcgggaaggg
+     5341 actggctgct attgggcgaa gtgccggggc aggatctcct gtcatctcac cttgctcctg
+     5401 ccgagaaagt atccatcatg gctgatgcaa tgcggcggct gcatacgctt gatccggcta
+     5461 cctgcccatt cgaccaccaa gcgaaacatc gcatcgagcg agcacgtact cggatggaag
+     5521 ccggtcttgt cgatcaggat gatctggacg aagagcatca ggggctcgcg ccagccgaac
+     5581 tgttcgccag gctcaaggcg cgcatgcccg acggcgagga tctcgtcgtg acccatggcg
+     5641 atgcctgctt gccgaatatc atggtggaaa atggccgctt ttctggattc atcgactgtg
+     5701 gccggctggg tgtggcggac cgctatcagg acatagcgtt ggctacccgt gatattgctg
+     5761 aagagcttgg cggcgaatgg gctgaccgct tcctcgtgct ttacggtatc gccgctcccg
+     5821 attcgcagcg catcgccttc tatcgccttc ttgacgagtt cttctgagcg ggactctggg
+     5881 gttcgaaatg accgaccaag cgacgcccaa cctgccatca cgagatttcg attccaccgc
+     5941 cgccttctat gaaaggttgg gcttcggaat cgttttccgg gacgccggct ggatgatcct
+     6001 ccagcgcggg gatctcatgc tggagttctt cgcccacccc aacttgttta ttgcagctta
+     6061 taatggttac aaataaagca atagcatcac aaatttcaca aataaagcat ttttttcact
+     6121 gcattctagt tgtggtttgt ccaaactcat caatgtatct tatcatgtct gtataccgtc
+     6181 gacctctagc tagagcttgg cgtaatcatg gtcatagctg tttcctgtgt gaaattgtta
+     6241 tccgctcaca attccacaca acatacgagc cggaagcata aagtgtaaag cctggggtgc
+     6301 ctaatgagtg agctaactca cattaattgc gttgcgctca ctgcccgctt tccagtcggg
+     6361 aaacctgtcg tgccagctgc attaatgaat cggccaacgc gcggggagag gcggtttgcg
+     6421 tattgggcgc tcttccgctt cctcgctcac tgactcgctg cgctcggtcg ttcggctgcg
+     6481 gcgagcggta tcagctcact caaaggcggt aatacggtta tccacagaat caggggataa
+     6541 cgcaggaaag aacatgtgag caaaaggcca gcaaaaggcc aggaaccgta aaaaggccgc
+     6601 gttgctggcg tttttccata ggctccgccc ccctgacgag catcacaaaa atcgacgctc
+     6661 aagtcagagg tggcgaaacc cgacaggact ataaagatac caggcgtttc cccctggaag
+     6721 ctccctcgtg cgctctcctg ttccgaccct gccgcttacc ggatacctgt ccgcctttct
+     6781 cccttcggga agcgtggcgc tttctcatag ctcacgctgt aggtatctca gttcggtgta
+     6841 ggtcgttcgc tccaagctgg gctgtgtgca cgaacccccc gttcagcccg accgctgcgc
+     6901 cttatccggt aactatcgtc ttgagtccaa cccggtaaga cacgacttat cgccactggc
+     6961 agcagccact ggtaacagga ttagcagagc gaggtatgta ggcggtgcta cagagttctt
+     7021 gaagtggtgg cctaactacg gctacactag aagaacagta tttggtatct gcgctctgct
+     7081 gaagccagtt accttcggaa aaagagttgg tagctcttga tccggcaaac aaaccaccgc
+     7141 tggtagcggt ttttttgttt gcaagcagca gattacgcgc agaaaaaaag gatctcaaga
+     7201 agatcctttg atcttttcta cggggtctga cgctcagtgg aacgaaaact cacgttaagg
+     7261 gattttggtc atgagattat caaaaaggat cttcacctag atccttttaa attaaaaatg
+     7321 aagttttaaa tcaatctaaa gtatatatga gtaaacttgg tctgacagtt accaatgctt
+     7381 aatcagtgag gcacctatct cagcgatctg tctatttcgt tcatccatag ttgcctgact
+     7441 ccccgtcgtg tagataacta cgatacggga gggcttacca tctggcccca gtgctgcaat
+     7501 gataccgcga gacccacgct caccggctcc agatttatca gcaataaacc agccagccgg
+     7561 aagggccgag cgcagaagtg gtcctgcaac tttatccgcc tccatccagt ctattaattg
+     7621 ttgccgggaa gctagagtaa gtagttcgcc agttaatagt ttgcgcaacg ttgttgccat
+     7681 tgctacaggc atcgtggtgt cacgctcgtc gtttggtatg gcttcattca gctccggttc
+     7741 ccaacgatca aggcgagtta catgatcccc catgttgtgc aaaaaagcgg ttagctcctt
+     7801 cggtcctccg atcgttgtca gaagtaagtt ggccgcagtg ttatcactca tggttatggc
+     7861 agcactgcat aattctctta ctgtcatgcc atccgtaaga tgcttttctg tgactggtga
+     7921 gtactcaacc aagtcattct gagaatagtg tatgcggcga ccgagttgct cttgcccggc
+     7981 gtcaatacgg gataataccg cgccacatag cagaacttta aaagtgctca tcattggaaa
+     8041 acgttcttcg gggcgaaaac tctcaaggat cttaccgctg ttgagatcca gttcgatgta
+     8101 acccactcgt gcacccaact gatcttcagc atcttttact ttcaccagcg tttctgggtg
+     8161 agcaaaaaca ggaaggcaaa atgccgcaaa aaagggaata agggcgacac ggaaatgttg
+     8221 aatactcata ctcttccttt ttcaatatta ttgaagcatt tatcagggtt attgtctcat
+     8281 gagcggatac atatttgaat gtatttagaa aaataaacaa ataggggttc cgcgcacatt
+     8341 tccccgaaaa gtgccacctg acgtc
+//
