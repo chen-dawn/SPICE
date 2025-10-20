@@ -5,7 +5,7 @@ library(Biostrings)
 library(ggpointdensity)
 library(pheatmap)
 
-output_filepath <- "/Users/dawnxi/melange/figures_outputs/fig05/"
+output_filepath <- "/Users/dawnxi/melange/figures_outputs/fig04/"
 color_palette1 <- c("#E96052", "#F08944", "#F9AB57", "#FFD16D", "#FFE7B8", "#AADDE1", "#70BDD6", "#4F8DA3", "#336695", "#1A426D")
 color_palette1_custom <- colorRampPalette(color_palette1)(100)
 color_palette1_custom_rev <- colorRampPalette(rev(color_palette1))(100)
@@ -57,7 +57,7 @@ for (i in 1:length(filepaths_barcode)) {
     )
   
   ggsave(
-    filename = paste0(output_filepath, "fig05_sequence_scatter_barcode_", i, ".pdf"),
+    filename = paste0(output_filepath, "fig04_sequence_scatter_barcode_", i, ".pdf"),
     plot = p1,
     width = 8,
     height = 8,
@@ -93,7 +93,7 @@ for (i in 1:length(filepaths_gene_barcode)) {
     )
   
   ggsave(
-    filename = paste0(output_filepath, "fig05_sequence_scatter_gene_barcode_", i, ".pdf"),
+    filename = paste0(output_filepath, "fig04_sequence_scatter_gene_barcode_", i, ".pdf"),
     plot = p1,
     width = 8,
     height = 8,
@@ -131,7 +131,7 @@ for (i in 1:length(filepaths_barcode_across_celltypes)) {
     )
   
   ggsave(
-    filename = paste0(output_filepath, "fig05_sequence_scatter_celltype_barcode_", i, ".pdf"),
+    filename = paste0(output_filepath, "fig04_sequence_scatter_celltype_barcode_", i, ".pdf"),
     plot = p1,
     width = 8,
     height = 8,
@@ -167,7 +167,7 @@ for (i in 1:length(filepaths_gene_barcode_across_celltypes)) {
     )
   
   ggsave(
-    filename = paste0(output_filepath, "fig05_sequence_scatter_celltype_gene_barcode_", i, ".pdf"),
+    filename = paste0(output_filepath, "fig04_sequence_scatter_celltype_gene_barcode_", i, ".pdf"),
     plot = p1,
     width = 8,
     height = 8,
@@ -262,7 +262,7 @@ p_box_noncell <- ggplot(cor_results_noncell, aes(x = dataset, y = pearson_r, fil
   ylim(0.6, 0.8)
 
 ggsave(
-  filename = paste0(output_filepath, "fig05_pearson_boxplot_noncell.pdf"),
+  filename = paste0(output_filepath, "fig04_pearson_boxplot_noncell.pdf"),
   plot = p_box_noncell,
   width = 6,
   height = 6,
@@ -289,7 +289,7 @@ p_box_cell <- ggplot(cor_results_cell, aes(x = dataset, y = pearson_r, fill = da
   ylim(0.8, 1)
 
 ggsave(
-  filename = paste0(output_filepath, "fig05_pearson_boxplot_cell.pdf"),
+  filename = paste0(output_filepath, "fig04_pearson_boxplot_cell.pdf"),
   plot = p_box_cell,
   width = 6,
   height = 6,
@@ -376,7 +376,7 @@ for (barcode in sampled_barcodes) {
   plot_list[[length(plot_list) + 1]] <- p[[4]]  # Grab the gtable
 }
 
-pdf(file = paste0(output_filepath, "fig05_PSI_heatmaps_barcode_stacked.pdf"), width = 8, height = 1.5 * length(plot_list))
+pdf(file = paste0(output_filepath, "fig04_PSI_heatmaps_barcode_stacked.pdf"), width = 8, height = 1.5 * length(plot_list))
 grid.arrange(grobs = plot_list, ncol = 1)
 dev.off()
 
@@ -419,13 +419,13 @@ for (celltype in unique(df_new_barcode$Celltype)[1:5]) {
                 breaks = breaks)
   
   # Save each heatmap as an individual PDF
-  pdf(file = paste0(output_filepath, "fig05_PSI_heatmap_", celltype, ".pdf"), 
+  pdf(file = paste0(output_filepath, "fig04_PSI_heatmap_", celltype, ".pdf"), 
       width = 8, height = 3)
   grid.arrange(grobs = list(p[[4]]))
   dev.off()
   
   # Save each heatmap as an individual PNG
-  png(file = paste0(output_filepath, "fig05_PSI_heatmap_", celltype, ".png"),
+  png(file = paste0(output_filepath, "fig04_PSI_heatmap_", celltype, ".png"),
       width = 2400, height = 800, res = 300)
   grid.arrange(grobs = list(p[[4]]))
   dev.off()
