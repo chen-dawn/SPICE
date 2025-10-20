@@ -1,0 +1,42 @@
+LOCUS       PRISM_TwistLibrary_V3_with_BsmBI         300 bp    DNA     linear   UNA 12-FEB-2023
+DEFINITION  GoldenGate with BsmBI.
+ACCESSION   urn.local...w-fs5vk5x
+VERSION     urn.local...w-fs5vk5x
+KEYWORDS    .
+SOURCE      other sequences; artificial sequences; vectors.
+  ORGANISM  other sequences; artificial sequences; vectors.
+FEATURES             Location/Qualifiers
+     misc_feature    1..300
+                     /note="Geneious type: Editing History Insertion"
+                     /standard_name
+     misc_feature    1..20
+                     /standard_name="LIGATION"
+     primer_bind     1..20
+                     /standard_name="TwistV3ForwardAmp"
+     intron          21..235
+                     /standard_name="Inserted Library Element"
+     misc_feature    <21..296
+                     /standard_name="TWIST LIBRARY TO ORDER"
+     misc_feature    236..240
+                     /standard_name="Linker"
+     misc_feature    complement(241..246)
+                     /standard_name="BsmBI"
+     misc_feature    250..255
+                     /standard_name="BsmBI"
+     misc_feature    256..260
+                     /standard_name="Linker to Downstream barcode"
+     misc_feature    261..274
+                     /standard_name="14bp Barcode"
+     misc_feature    275..296
+                     /standard_name="10xCaptureSequence1"
+     misc_feature    279..>300
+                     /standard_name="LIGATION"
+     primer_bind     complement(279..300)
+                     /standard_name="TwistV3ReverseAmp"
+ORIGIN      
+        1 aagcttcgac accgagctcg gtaagttttt gaacatggaa gggcaagcca aatattattc
+       61 tcacagggaa agttgtatcc agcctttgag gtggggaggt ctgtgtgtat gacggcgttt
+      121 gtttatgatc cagaggattc gtttgatatc gagataatcg atacgatcag tagtttgaat
+      181 actcagtagt ttgaattgct cttgaattgc tcttgatgtg tgtctgtctc cacagtgcag
+      241 gagacgctgc gtctcagtag nnnnnnnnnn nnnngcttta aggccggtcc tagcaatcga
+//
