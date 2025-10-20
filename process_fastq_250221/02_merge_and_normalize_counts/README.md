@@ -1,6 +1,7 @@
 # Explanation of PSI Adjustment for Exon Skipped Reads - addressing batch effects from barcode swapping
 
-
+Note (19 Oct 2025): We are actually using V3 in our analysis. 
+ 
 In our analysis, we encounter a phenomenon known as "PSI depression." This occurs when sequences that are expected to be consistently included in the analysis are not, due to factors such as PCR cycles and the presence of chimeric reads. 
 
 ## Version 1: Modeling the Barcode Swapping Rate using PSI
