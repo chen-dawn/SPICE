@@ -328,5 +328,24 @@ pdf("/Volumes/broad_dawnccle/test/fig02_frameshift_heatmap.pdf", width = 12, hei
 grid.arrange(PSI_heatmap$gtable, SLED_normalized_heatmap$gtable, ncol = 2, widths = c(1, 3))
 dev.off()
 
+######### Calculate the correaltion values between the PSI and sled values #########
+# Flatten matrices into vectors for comparison
+PSI_values <- as.vector(PSI_matrix)
+SLED_values <- as.vector(SLED_matrix)
+
+# Combine into a dataframe
+comparison_df <- data.frame(
+  PSI = PSI_values,
+  SLED = SLED_values
+)
+
+# Calculate correlations
+pearson_cor <- cor(comparison_df$PSI, comparison_df$SLED, method = "pearson")
+spearman_cor <- cor(comparison_df$PSI, comparison_df$SLED, method = "spearman")
+
+# Print correlation results
+cat("Pearson correlation:", round(pearson_cor, 3), "\n")
+cat("Spearman correlation:", round(spearman_cor, 3), "\n")
+
 
 

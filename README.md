@@ -1,6 +1,6 @@
 # SPICE
 
-Analysis code for the paper ”Generative Design of Cell Type-Specific mRNA Splicing Elements for Programmable Gene Regulation”
+Analysis code for the paper ”Generative Design of Cell Type-Specific RNA Splicing Elements for Programmable Gene Regulation”
 
 Individual code for generating the figures can be found in the `figures` folder. 
 
