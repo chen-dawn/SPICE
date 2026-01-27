@@ -1,0 +1,4 @@
+qsub -v celltype1=A549_U2AF1_S34S_,celltype2=A549_U2AF1_S34F_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_A549_mut_PSI_scPairs.sh
+qsub -v celltype1=A549_U2AF1_S34S_,celltype2=A549_U2AF1_S34Y_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_A549_mut_PSI_scPairs.sh
+qsub -v celltype1=A549_U2AF1_S34F_,celltype2=A549_U2AF1_S34Y_ /broad/dawnccle/melange/process_fastq_250221/04_run_pairadise/run_pairadise_pair_A549_mut_PSI_scPairs.sh
+
