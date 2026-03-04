@@ -1,7 +1,6 @@
 library(tidyverse)
 library(vroom)
 library(data.table)
-library(future.apply)
 library(pheatmap)
 library(dplyr)
 library(stringr)
@@ -11,6 +10,8 @@ library(patchwork)
 library(tidyr)
 library(ggplot2)
 library(ggseqlogo)
+library(stringdist)
+
 
 calculate_upsilon <- function(row) {
   non_na_row <- as.numeric(row[!is.na(row)])
@@ -57,7 +58,9 @@ KELLY_designed_data <- KELLY_designed_data_file %>%
   ungroup() %>% 
   select(condition, index_offset, design, PSI) %>%
   pivot_wider(names_from = condition, values_from = PSI) %>%
-  mutate(index_offset_design = paste(index_offset, design, sep = "__"))
+  mutate(index_offset_design = paste(index_offset, design, sep = "__")) %>%
+  filter(index_offset_design %in% KELLY_designed_reference$ID) 
+  
 
   
 
@@ -77,7 +80,8 @@ kelly_pairadise_PSI <- kelly_pairadise %>%
 
 kelly_pairadise_PSI <- kelly_pairadise_PSI %>%
   mutate(FDR = as.numeric(FDR)) %>%
-  mutate(significance = if_else(FDR < 0.05 & abs(deltaPSI) > 0.1, TRUE, FALSE))
+  mutate(significance = if_else(FDR < 0.05 & abs(deltaPSI) > 0.1, TRUE, FALSE)) 
+
 
 KELLY_designed_data <- KELLY_designed_data %>%
   left_join(kelly_pairadise_PSI, by = c("index_offset_design" = "ExonID")) %>%
@@ -90,10 +94,14 @@ KELLY_designed_data <- KELLY_designed_data %>%
                        design)
   ) 
 
-######## Figure S5E: Make volcano plot from KELLY-specific designed sequences
+######## Figure S5E: Make volcano plot from KELLY-specific designed sequences #####
+
+# Filter data to remove parent sequences
+plot_data <- KELLY_designed_data %>%
+  filter(design != "R2design0") 
 
 # Volcano plot
-plot <- ggplot(kelly_pairadise_PSI, aes(x = deltaPSI, y = -log10(FDR))) +
+plot <- ggplot(plot_data, aes(x = deltaPSI, y = -log10(FDR))) +
   geom_point(alpha = 0.7) +
   geom_hline(yintercept = -log10(0.05), linetype = "dashed") + 
   geom_vline(xintercept = c(-0.1, 0.1), linetype = "dashed") +
@@ -110,7 +118,7 @@ ggsave(outfile, plot, width = 3, height = 3, dpi = 300)
 
 
 
-######## Figure 5g: make a heatmap of the top sequences ######
+######## Figure 5g: Make a heatmap of the top sequences ######
 
 cols_of_interest <- c("KELLYspecific-KELLY", 
                       "KELLYspecific-HEK", 
@@ -118,7 +126,8 @@ cols_of_interest <- c("KELLYspecific-KELLY",
                       "KELLYspecific-T47D")
 
 df_sig <- KELLY_designed_data %>%
-  filter(significance == TRUE)
+  filter(significance == TRUE) %>%
+  filter(design != "R2design0")
 
 heatmap_matrix <- df_sig[, cols_of_interest] %>%
   as.matrix()
@@ -139,7 +148,7 @@ ggsave(outfile, plot, width = 5.5, height = 5.0, dpi = 300)
 
 
  
-######## Figure 5h: make examples of sequences that are kelly specific ##########
+######## Figure 5h: Make examples of sequences that are KELLY-specific ##########
 
 
 make_heatmap <- function(index_offset, cats, outfile) {
@@ -197,6 +206,43 @@ for (i in seq_len(nrow(jobs))) {
     outfile     = jobs$outfile[i]
   )
 }
+
+######## Text: Check if the designed sequences are very similar to any of the KELLY-specific positive hits that are in the training data #######
+
+designed_df <- KELLY_designed_data %>%
+  filter(significance == TRUE) %>%
+  filter(design != "R2design0") %>%
+  left_join(KELLY_designed_reference, by = c("index_offset_design" = "ID")) %>%
+  mutate(seq = toupper(seq)) 
+
+df47k  <- read.csv("/Volumes/broad_dawnccle/melange/figures_outputs/fig02/fig02_num_cell_type_celltype_specific.csv")
+twist_lib <- read_csv("/Volumes/broad_dawnccle/melange/data/20230130_twist_library_v3.csv")
+
+df47k <- df47k %>%
+  filter(target_cell_type == "Kelly") %>%
+  mutate(index_offset = sub("__.*$", "", index_offset)) %>%
+  left_join(twist_lib, by = c("index_offset" = "ID")) %>%
+  mutate(librarySequence = toupper(librarySequence))
+
+lib_seqs <- df47k$librarySequence
+
+dist_df <- designed_df %>%
+  rowwise() %>%
+  mutate(min_ed = min(stringdist(seq, lib_seqs, method = "lv"))) %>%
+  ungroup()
+
+write_csv(dist_df, file.path(output_filepath_supp, "designed_vs_47k_edit_distance_summary.csv"))
+
+p <- ggplot(dist_df, aes(x = "", y = min_ed)) +
+  geom_boxplot() +
+  theme_classic(base_size = 10) +
+  xlab(NULL) + ylab("Min edit distance to KELLY-specific sequence from unbiased library")
+
+ggsave(file.path(output_filepath_supp, "min_edit_distance_boxplot.png"), p, width = 3, height = 5, dpi = 300)
+ggsave(file.path(output_filepath_supp, "min_edit_distance_boxplot.pdf"), p, width = 3, height = 5)
+
+
+
 
 
 

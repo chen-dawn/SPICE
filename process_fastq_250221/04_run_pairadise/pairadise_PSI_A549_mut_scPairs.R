@@ -30,7 +30,7 @@ output_filename <- args[3]
 print(paste("Celltype 1: ", celltype1))
 print(paste("Celltype 2: ", celltype2))
 print(paste("Output filename: ", output_filename))
-all_sample_reps <- fread("/broad/dawnccle/processed_data/reprocess_250221/count_normalized_v4/A549_mut_all_samples_PSI_count_table.csv")
+all_sample_reps <- fread("/broad/dawnccle/processed_data/reprocess_250221/count_normalized_v4_merged/A549_mut_all_samples_PSI_count_table.csv")
 all_sample_reps <- all_sample_reps %>% 
   mutate(index_offset = paste0(index, "__", offset)) 
 print("Finished reading data")
